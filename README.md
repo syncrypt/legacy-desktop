@@ -14,6 +14,8 @@ Clone this repository and run:
 $ npm install
 ```
 
+Also, install the Syncrypt CLI client.
+
 ## Run
 
 Run this to start Syncrypt GUI:
@@ -22,14 +24,11 @@ Run this to start Syncrypt GUI:
 $ npm run dev
 ```
 
-Or run this two commands __simultaneously__ in different console tabs.
+Simultaneously start the Syncrypt daemon:
 
 ```bash
-$ npm run hot-server
-$ npm run start-hot
+$ syncrypt_daemon
 ```
-
-*Note: requires a node version >= 4 and an npm version >= 2.*
 
 ## Package
 
