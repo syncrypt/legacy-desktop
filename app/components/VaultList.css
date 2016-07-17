@@ -1,0 +1,22 @@
+.vaulticon {
+    height: 60px;
+    width: 60px;
+    margin-bottom: 10px;
+    background-image:url(../assets/vault.png);
+    background-repeat:no-repeat;
+    background-position: 0px 0px;
+    background-size: 60px;
+    margin-right: 20px;
+}
+
+.vaultinfo {
+}
+
+.vaultitem {
+    /* flexbox setup */
+    display: -webkit-flex;
+    -webkit-flex-direction: row;
+
+    display: flex;
+    flex-direction: row;
+}

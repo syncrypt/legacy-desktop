@@ -1,0 +1,13 @@
+.banner {
+  position: absolute;
+  top: 30%;
+  padding-top: 70px;
+  text-align: center;
+  height: 60px;
+  width: 100%;
+  margin-bottom: 10px;
+  background-image:url(../assets/spinner.gif);
+  background-repeat:no-repeat;
+  background-position: 50% 0px;
+  background-size: 60px;
+}
