@@ -46,5 +46,7 @@ a:hover {
 
 ::-webkit-input-placeholder {
    color: #4D4D4D !important;
-   padding: 
+}
+#root, #root>div {
+  height: 100%;
 }
