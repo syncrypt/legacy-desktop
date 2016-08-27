@@ -3,7 +3,7 @@ import SyncryptComponent from '../components/SyncryptComponent';
 import { Link } from 'react-router';
 import { connect } from 'react-redux';
 import './LoginPage.global.css';
-import { Button, FormGroup, FormControl, HelpBlock, ControlLabel } from 'react-bootstrap';
+import { Grid, Row, Col, Button, FormGroup, FormControl, HelpBlock, ControlLabel } from 'react-bootstrap';
 import ReactDOM from 'react-dom';import rest from '../api'
 
 
@@ -60,25 +60,29 @@ class LoginPage extends SyncryptComponent {
 
   render() {
     return (
-      <div className="login-page">
-        <h1>Syncrypt Login</h1>
-        <form>
-          <FormGroup controlId="formBasicText">
-            {
-              this.state.errors.map((e, i) =>
-                <div key={i} className="loginError">
-                  Login failed: {e}
-                </div>
-              )
-            }
-            <ControlLabel>Email</ControlLabel>
-            <FormControl ref="email" type="text" placeholder="Email" />
-            <ControlLabel>Password</ControlLabel>
-            <FormControl ref="password" type="password" placeholder="Password" onKeyDown={this.enterPressed} />
-            <Button bsStyle="primary" onClick={this.login}>Login</Button>
-          </FormGroup>
-        </form>
-      </div>
+      <Grid className="login-page">
+        <Row>
+          <Col md={4} mdOffset={4}>
+            <img className="login-header-logo" src="./assets/logo.png"/>
+            <form>
+              <FormGroup controlId="formBasicText">
+                {
+                  this.state.errors.map((e, i) =>
+                    <div key={i} className="loginError">
+                      Login failed: {e}
+                    </div>
+                  )
+                }
+                <ControlLabel>Email</ControlLabel>
+                <FormControl ref="email" type="text" placeholder="Email" />
+                <ControlLabel>Password</ControlLabel>
+                <FormControl ref="password" type="password" placeholder="Password" onKeyDown={this.enterPressed} />
+                <Button bsStyle="primary" onClick={this.login}>Login</Button>
+              </FormGroup>
+            </form>
+          </Col>
+        </Row>
+      </Grid>
     );
   }
 }

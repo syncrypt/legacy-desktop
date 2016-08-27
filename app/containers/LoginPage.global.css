@@ -19,16 +19,29 @@ body {
   background: linear-gradient(0deg, #3B6491, #F3967F);
   height: 100%;
 }
+
+.login-page button {
+  margin-top: 50px;
+  width: 300px;
+  font-size: 25px;
+  color: #4d4d4d;
+  opacity: 0.5;
+}
+
+.login-page button:hover {
+  opacity: 1.0;
+}
+
 .form-group {
   margin-top: 100px;
 
 }
 .form-control{
   display: block;
-    width: 200px;
+    width: 300px;
     height: 25px;
     padding:0px 0px;
-    font-size: 18px;
+    font-size: 25px;
     font-family: "Hind", Arial, Helvetica, Helvetica Neue;
     font-weight: 500;
     font-style: normal;
@@ -141,10 +154,15 @@ button, input, select, textarea {
     font-family: inherit;
     font-size: inherit;
     line-height: inherit;
-    margin-left: auto;
+    margin-left: 0;
     margin-right: auto;
 }
 
 .loginError {
 
+}
+
+.login-header-logo {
+  height: 75px;
+  margin-top: 100px;
 }
