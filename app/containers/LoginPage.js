@@ -40,7 +40,7 @@ class LoginPage extends Component {
       })
     } else {
       if (data.status == "ok") {
-        // todo: redirecting to /main
+        this.props.history.push("/main")
       } else {
         this.setState({
           errors: this.state.errors.concat(data.text)
