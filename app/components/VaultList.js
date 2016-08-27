@@ -52,14 +52,24 @@ class VaultList extends SyncryptComponent {
 
   constructor() {
       super()
-      this.bindFunctions(["addNewVault"]);
+      this.bindFunctions(["addNewVault", "addNewVaultCallback"]);
   }
 
   addNewVault() {
-    var folder = remote.dialog.showOpenDialog({properties: ['openDirectory']});
-    if (folder) {
-      this.props.dispatch(rest.actions.vaults.post({}, { folder }));
+    var folders = remote.dialog.showOpenDialog({properties: ['openDirectory']});
+    if (folders.length > 0) {
+      this.props.dispatch(
+        rest.actions.vaults.post(
+          {},
+          { body: JSON.stringify({ folder: folders[0] }) },
+          this.addNewVaultCallback
+        )
+    );
     }
+  }
+
+  addNewVaultCallback(err, data) {
+    this.props.dispatch(rest.actions.vaults());
   }
 
   render() {
