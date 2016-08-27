@@ -12,11 +12,15 @@
 .vaultinfo {
 }
 
-.vaultitem {
+.vault-card {
     /* flexbox setup */
     display: -webkit-flex;
     -webkit-flex-direction: row;
 
     display: flex;
     flex-direction: row;
+}
+
+.new-vault-card {
+    cursor: pointer;
 }

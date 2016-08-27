@@ -1,8 +1,9 @@
 import React, { Component, PropTypes } from 'react';
 import { Link } from 'react-router';
-import styles from './VaultList.css';
-import { ListGroup, ListGroupItem, Badge, Button } from 'react-bootstrap';
+import { Grid, Col, ListGroup, ListGroupItem, Badge, Button } from 'react-bootstrap';
 import { shell } from 'electron';
+
+import './VaultList.global.css';
 
 
 class VaultItem extends Component {
@@ -17,18 +18,26 @@ class VaultItem extends Component {
   render() {
     const { vault } = this.props;
     return (
-      <ListGroupItem className={styles.vaultitem}>
-        <div className={styles.vaulticon}></div>
-        <div className={styles.vaultinfo}>
-            <h2>Vault {vault.id} <Badge>{vault.state}</Badge>
-            </h2>
-            <ul>
-                <li>Path: {vault.folder}</li>
-                <li>Shared with {vault.user_count} user(s)</li>
-            </ul>
+      <Col className="card vault-card" sm={4}>
+        <div className="vaulticon"></div>
+        <div className="vaultinfo">
+            <h2>{vault.id} <Badge>{vault.state}</Badge></h2>
+            {vault.folder}, {vault.user_count} user(s)
             <Button onClick={() => this.showFolder()}>Show files</Button>
         </div>
-      </ListGroupItem>
+      </Col>
+    );
+  }
+}
+
+class NewVaultItem extends Component {
+  /* Just shows a empty vault with a "+" button */
+  render() {
+    const { vault } = this.props;
+    return (
+      <Col className="card vault-card new-vault-card" sm={4}>
+        <div className="vault-plus">+</div>
+      </Col>
     );
   }
 }
@@ -41,9 +50,10 @@ export default class VaultList extends Component {
   render() {
     return (
       <div>
-        <ListGroup>
-        {this.props.vaults.map(v => <VaultItem key={v.id} vault={v} />)}
-        </ListGroup>
+        <Grid>
+          {this.props.vaults.map(v => <VaultItem key={v.id} vault={v} />)}
+          <NewVaultItem />
+        </Grid>
       </div>
     );
   }
