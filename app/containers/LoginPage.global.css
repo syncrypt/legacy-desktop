@@ -93,6 +93,7 @@ control:focus {
     background-color: #F8B194;
     border-color: #F8B194;
     transition: all 0.3s ease-out;
+    opacity: inherit;
 }
 .btn-primary:focus, .btn-primary:hover {
     background-color: #F8B194;

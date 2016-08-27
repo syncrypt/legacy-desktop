@@ -1,12 +1,13 @@
 .container {
   height: 64px;
   position: relative;
-  background-color: #dddddd;
+  background-color: #BEC2CD;
   margin-bottom: 10px;
   background-image:url(../assets/header.png);
   background-repeat:no-repeat;
   background-position: 30px 0px;
   background-size: 150px;
+  width: 100%;
 }
 
 .container h2 {
@@ -21,4 +22,14 @@
   position: absolute;
   right: 20px;
   top: 20px;
+}
+
+.card {
+    border: 1px solid #BEC2CD;
+    border-radius: 10px;
+    height: 160px;
+    overflow: hidden;
+    margin: 10px;
+    padding: 10px;
+    width: 200px;
 }
