@@ -34,12 +34,20 @@ class LoginPage extends Component {
   }
 
   loginError(err, data) {
-    if(data == undefined){
+    if (err) {
       this.setState({
         errors: this.state.errors.concat("Syncrypt Daemon Error")
       })
     } else {
-
+      alert(data.text);
+      if (data.status == "ok") {
+        alert("Success, redirecting to /main...");
+      }
+      else {
+        this.setState({
+          errors: this.state.errors.concat(data.text);
+        })
+      }
     }
   }
 
