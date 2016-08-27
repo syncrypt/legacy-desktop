@@ -36,7 +36,6 @@ class HomePage extends Component {
 
 function mapStateToProps(state) {
   return {
-    counter: state.counter,
     vaults: state.vaults.data,
     stats: state.stats.sync ? state.stats.data.stats : {}
   };
