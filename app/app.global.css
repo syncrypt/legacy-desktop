@@ -2,7 +2,7 @@ body {
   position: relative;
   color: #333;
   height: 100vh;
-  background-color: #f3f3f3;
+  background: white;
   font-family: Arial, Helvetica, Helvetica Neue;
   overflow-y: hidden;
 }
@@ -43,4 +43,3 @@ a:hover {
    margin: 10px;
    padding: 10px;
 }
-

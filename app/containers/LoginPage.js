@@ -2,7 +2,7 @@ import React from 'react';
 import SyncryptComponent from '../components/SyncryptComponent';
 import { Link } from 'react-router';
 import { connect } from 'react-redux';
-import styles from './LoginPage.css';
+import './LoginPage.global.css';
 import { Button, FormGroup, FormControl, HelpBlock, ControlLabel } from 'react-bootstrap';
 import ReactDOM from 'react-dom';import rest from '../api'
 
@@ -60,7 +60,7 @@ class LoginPage extends SyncryptComponent {
 
   render() {
     return (
-      <div>
+      <div className="login-page">
         <h1>Syncrypt Login</h1>
         <form>
           <FormGroup controlId="formBasicText">
