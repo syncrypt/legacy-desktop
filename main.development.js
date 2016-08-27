@@ -10,6 +10,7 @@ const appPath = path.dirname(app.getAppPath());
 let daemonPath = path.join(appPath, "app", "client", "syncrypt_daemon");
 
 if (process.env.NODE_ENV === 'development') {
+  daemonPath = "client/syncrypt_daemon"
   require('electron-debug')(); // eslint-disable-line global-require
 }
 
@@ -21,7 +22,6 @@ app.on('window-all-closed', () => {
 
 const installExtensions = async () => {
   if (process.env.NODE_ENV === 'development') {
-    daemonPath = "client/syncrypt_daemon"
     const installer = require('electron-devtools-installer'); // eslint-disable-line global-require
     const extensions = [
       'REACT_DEVELOPER_TOOLS',
