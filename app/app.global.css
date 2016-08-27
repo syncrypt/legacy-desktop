@@ -43,3 +43,8 @@ a:hover {
    margin: 10px;
    padding: 10px;
 }
+
+::-webkit-input-placeholder {
+   color: #4D4D4D !important;
+   padding: 
+}
