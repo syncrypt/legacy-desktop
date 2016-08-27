@@ -37,7 +37,10 @@ app.on('ready', async () => {
   mainWindow = new BrowserWindow({
     show: false,
     width: 1024,
-    height: 728
+    height: 728,
+    title: "Syncrypt",
+    frame: true,
+    resizable: true
   });
 
   mainWindow.loadURL(`file://${__dirname}/app/app.html`);
@@ -67,9 +70,9 @@ app.on('ready', async () => {
 
   if (process.platform === 'darwin') {
     template = [{
-      label: 'Electron',
+      label: 'Syncrypt',
       submenu: [{
-        label: 'About ElectronReact',
+        label: 'About Syncrypt',
         selector: 'orderFrontStandardAboutPanel:'
       }, {
         type: 'separator'
@@ -79,7 +82,7 @@ app.on('ready', async () => {
       }, {
         type: 'separator'
       }, {
-        label: 'Hide ElectronReact',
+        label: 'Hide Syncrypt',
         accelerator: 'Command+H',
         selector: 'hide:'
       }, {
