@@ -1,17 +1,16 @@
-import React, { Component, PropTypes } from 'react';
+import React from 'react';
+import SyncryptComponent from '../components/SyncryptComponent';
 import { Link } from 'react-router';
 import { connect } from 'react-redux';
 import styles from './LoginPage.css';
 import { Button, FormGroup, FormControl, HelpBlock, ControlLabel } from 'react-bootstrap';
-import ReactDOM from 'react-dom';
-import rest from '../api'
+import ReactDOM from 'react-dom';import rest from '../api'
 
-class LoginPage extends Component {
+
+class LoginPage extends SyncryptComponent {
   constructor(props) {
     super(props);
-    this.login = this.login.bind(this);
-    this.loginError = this.loginError.bind(this);
-    this.enterPressed = this.enterPressed.bind(this);
+    this.bindFunctions(["login", "loginError", "enterPressed"])
     this.state = {
       errors: []
     };

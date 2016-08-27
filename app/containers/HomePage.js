@@ -1,4 +1,5 @@
-import React, { Component, PropTypes } from 'react';
+import React, { PropTypes } from 'react';
+import SyncryptComponent from '../components/SyncryptComponent';
 import styles from './HomePage.css';
 import VaultList from '../components/VaultList';
 import rest from '../api'
@@ -6,7 +7,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { Button, Container, Grid, Row } from 'react-bootstrap';
 
-class HomePage extends Component {
+class HomePage extends SyncryptComponent {
   static propTypes = {
     dispatch: PropTypes.func.isRequired
   };

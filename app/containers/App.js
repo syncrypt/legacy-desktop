@@ -1,9 +1,10 @@
-import React, { Component, PropTypes } from 'react';
+import React, { PropTypes } from 'react';
+import SyncryptComponent from '../components/SyncryptComponent';
 import rest from '../api'
 import { connect } from 'react-redux';
 import ConnectingPage from '../components/ConnectingPage';
 
-class App extends Component {
+class App extends SyncryptComponent {
   static propTypes = {
     children: PropTypes.element.isRequired,
     connected: PropTypes.bool.isRequired
@@ -11,7 +12,7 @@ class App extends Component {
 
   constructor(props) {
     super(props);
-    this.tick = this.tick.bind(this);
+    this.bindFunctions(["tick"])
   }
 
   componentDidMount() {
