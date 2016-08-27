@@ -11,6 +11,7 @@ class LoginPage extends Component {
     super(props);
     this.login = this.login.bind(this);
     this.loginError = this.loginError.bind(this);
+    this.enterPressed = this.enterPressed.bind(this);
     this.state = {
       errors: []
     };
@@ -46,6 +47,12 @@ class LoginPage extends Component {
     return ReactDOM.findDOMNode(this.refs[name]).value
   }
 
+  enterPressed(event) {
+    if (event.keyCode == 13) {
+      return this.login();
+    }
+  }
+
   render() {
     return (
       <div>
@@ -56,7 +63,7 @@ class LoginPage extends Component {
             <ControlLabel>Email</ControlLabel>
             <FormControl ref="email" type="text" placeholder="Email" />
             <ControlLabel>Password</ControlLabel>
-            <FormControl ref="password" type="password" placeholder="Password" />
+            <FormControl ref="password" type="password" placeholder="Password" onKeyDown={this.enterPressed} />
             <Button bsStyle="primary" onClick={this.login}>Login</Button>
           </FormGroup>
         </form>
