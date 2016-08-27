@@ -41,8 +41,7 @@ class LoginPage extends Component {
     } else {
       if (data.status == "ok") {
         // todo: redirecting to /main
-      }
-      else {
+      } else {
         this.setState({
           errors: this.state.errors.concat(data.text)
         })
@@ -66,7 +65,13 @@ class LoginPage extends Component {
         <h1>Syncrypt Login</h1>
         <form>
           <FormGroup controlId="formBasicText">
-            {this.state.errors.map((e, i) => <div key={i} className="loginError">Login failed: {e}</div>)}
+            {
+              this.state.errors.map((e, i) =>
+                <div key={i} className="loginError">
+                  Login failed: {e}
+                </div>
+              )
+            }
             <ControlLabel>Email</ControlLabel>
             <FormControl ref="email" type="text" placeholder="Email" />
             <ControlLabel>Password</ControlLabel>
