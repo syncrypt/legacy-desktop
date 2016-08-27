@@ -16,9 +16,13 @@ export default reduxApi({
   vaults: {
     url: `/v1/vault/`,
     transformer: transformers.array,
+  },
+  login: {
+    url: `/v1/login/`,
+    options: {
+      method: "post"
+    }
   }
 })
 .use("fetch", adapterFetch(fetch))
 .use("rootUrl", "http://localhost:28080");
-
-
