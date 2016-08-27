@@ -21,16 +21,16 @@ class HomePage extends SyncryptComponent {
   render() {
     const {vaults, stats} = this.props;
     return (
-        <div>
-            <div className={styles.container}>
-                <div className={styles.stats}>{stats.stats} STATs, {stats.downloads} DOWNLOADs, {stats.uploads} UPLOADs</div>
-            </div>
-            <Grid>
-            <Row>
-                <VaultList vaults={vaults} />
-            </Row>
-            </Grid>
-        </div>
+      <div>
+        <div className={styles.container}>
+        <div className={styles.stats}>{stats.stats} STATs, {stats.downloads} DOWNLOADs, {stats.uploads} UPLOADs</div>
+      </div>
+      <Grid>
+        <Row>
+          <VaultList vaults={vaults} />
+        </Row>
+      </Grid>
+      </div>
     );
   }
 }
