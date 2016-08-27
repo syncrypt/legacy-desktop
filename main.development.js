@@ -1,9 +1,13 @@
 import { app, BrowserWindow, Menu, shell } from 'electron';
+import path from 'path';
+import child_process from 'child_process';
 
 let menu;
 let template;
 let mainWindow = null;
 
+const appPath = path.dirname(app.getAppPath());
+let daemonPath = path.join(appPath, "app", "client", "syncrypt_daemon");
 
 if (process.env.NODE_ENV === 'development') {
   require('electron-debug')(); // eslint-disable-line global-require
@@ -17,6 +21,7 @@ app.on('window-all-closed', () => {
 
 const installExtensions = async () => {
   if (process.env.NODE_ENV === 'development') {
+    daemonPath = "client/syncrypt_daemon"
     const installer = require('electron-devtools-installer'); // eslint-disable-line global-require
     const extensions = [
       'REACT_DEVELOPER_TOOLS',
@@ -33,6 +38,8 @@ const installExtensions = async () => {
 
 app.on('ready', async () => {
   await installExtensions();
+
+  child_process.spawn(daemonPath);
 
   mainWindow = new BrowserWindow({
     show: false,
