@@ -61,8 +61,7 @@ class LoginPage extends SyncryptComponent {
   render() {
     return (
       <Grid className="login-page">
-        <Row>
-          <Col md={4} mdOffset={4}>
+        <div className="login-content">
             <img className="login-header-logo" src="./assets/logo.png"/>
             <form>
               <FormGroup controlId="formBasicText">
@@ -80,8 +79,7 @@ class LoginPage extends SyncryptComponent {
                 <Button bsStyle="primary" onClick={this.login}>Login</Button>
               </FormGroup>
             </form>
-          </Col>
-        </Row>
+        </div>
       </Grid>
     );
   }
