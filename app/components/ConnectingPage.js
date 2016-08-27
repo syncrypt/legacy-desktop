@@ -1,8 +1,9 @@
-import React, { Component, PropTypes } from 'react';
+import React from 'react';
+import SyncryptComponent from '../components/SyncryptComponent';
 import { Link } from 'react-router';
 import styles from './ConnectingPage.css';
 
-class ConnectingPage extends Component {
+class ConnectingPage extends SyncryptComponent {
   render() {
     return (
       <div>

@@ -1,4 +1,5 @@
-import React, { Component, PropTypes } from 'react';
+import React, { PropTypes } from 'react';
+import SyncryptComponent from '../components/SyncryptComponent';
 import styles from './HomePage.css';
 import VaultList from '../components/VaultList';
 import rest from '../api'
@@ -6,7 +7,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { Button, Container, Grid, Row } from 'react-bootstrap';
 
-class HomePage extends Component {
+class HomePage extends SyncryptComponent {
   static propTypes = {
     dispatch: PropTypes.func.isRequired
   };
@@ -20,23 +21,22 @@ class HomePage extends Component {
   render() {
     const {vaults, stats} = this.props;
     return (
-        <div>
-            <div className={styles.container}>
-                <div className={styles.stats}>{stats.stats} STATs, {stats.downloads} DOWNLOADs, {stats.uploads} UPLOADs</div>
-            </div>
-            <Grid>
-            <Row>
-                <VaultList vaults={vaults} />
-            </Row>
-            </Grid>
-        </div>
+      <div>
+        <div className={styles.container}>
+        <div className={styles.stats}>{stats.stats} STATs, {stats.downloads} DOWNLOADs, {stats.uploads} UPLOADs</div>
+      </div>
+      <Grid>
+        <Row>
+          <VaultList vaults={vaults} />
+        </Row>
+      </Grid>
+      </div>
     );
   }
 }
 
 function mapStateToProps(state) {
   return {
-    counter: state.counter,
     vaults: state.vaults.data,
     stats: state.stats.sync ? state.stats.data.stats : {}
   };
