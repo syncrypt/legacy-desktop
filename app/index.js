@@ -9,13 +9,13 @@ import configureStore from './store/configureStore';
 import './app.global.css';
 import { remote } from 'electron';
 import path from 'path';
-import child_process from 'child_process'
+import child_process from 'child_process';
 
 const store = configureStore();
 const history = syncHistoryWithStore(hashHistory, store);
 
 const appPath = path.dirname(remote.app.getAppPath());
-const daemonPath = path.join(appPath, "app", "client", "syncrypt_daemon")
+const daemonPath = path.join(appPath, "app", "client", "syncrypt_daemon");
 const daemonProcess = child_process.spawn(daemonPath);
 
 render(
