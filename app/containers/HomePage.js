@@ -6,7 +6,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { Button, Container, Grid, Row } from 'react-bootstrap';
 
-export default class HomePage extends Component {
+class HomePage extends Component {
   static propTypes = {
     dispatch: PropTypes.func.isRequired
   };
