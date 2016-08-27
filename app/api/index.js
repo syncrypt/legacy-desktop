@@ -16,6 +16,7 @@ export default reduxApi({
   vaults: {
     url: `/v1/vault/`,
     transformer: transformers.array,
+    crud: true
   },
   login: {
     url: `/v1/login/`,

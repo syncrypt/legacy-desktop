@@ -1,7 +1,10 @@
 import React, { Component, PropTypes } from 'react';
 import { Link } from 'react-router';
 import { Grid, Col, ListGroup, ListGroupItem, Badge, Button } from 'react-bootstrap';
-import { shell } from 'electron';
+import { shell, remote } from 'electron';
+import { connect } from 'react-redux';
+import SyncryptComponent from './SyncryptComponent';
+import rest from '../api';
 
 import './VaultList.global.css';
 
@@ -35,26 +38,40 @@ class NewVaultItem extends Component {
   render() {
     const { vault } = this.props;
     return (
-      <Col className="card vault-card new-vault-card" sm={4}>
+      <Col className="card vault-card new-vault-card" sm={4} {...this.props}>
         <div className="vault-plus">+</div>
       </Col>
     );
   }
 }
 
-export default class VaultList extends Component {
+class VaultList extends SyncryptComponent {
   static propTypes = {
     vaults: PropTypes.array.isRequired
   };
+
+  constructor() {
+      super()
+      this.bindFunctions(["addNewVault"]);
+  }
+
+  addNewVault() {
+    var folder = remote.dialog.showOpenDialog({properties: ['openDirectory']});
+    if (folder) {
+      this.props.dispatch(rest.actions.vaults.post({}, { folder }));
+    }
+  }
 
   render() {
     return (
       <div>
         <Grid>
           {this.props.vaults.map(v => <VaultItem key={v.id} vault={v} />)}
-          <NewVaultItem />
+          <NewVaultItem onClick={this.addNewVault} />
         </Grid>
       </div>
     );
   }
 }
+
+export default connect()(VaultList)
