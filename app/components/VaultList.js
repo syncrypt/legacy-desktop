@@ -24,8 +24,10 @@ class VaultItem extends Component {
       <div className="card vault-card">
         <div className="vault-icon"></div>
         <div className="vault-title">{vault.id}</div>
+
+        <div className="footer-vault">
         <div className="vault-users">{vault.user_count}</div>
-        <div className="vault-activity">5 GB <Button onClick={() => this.showFolder()}>Show files</Button>
+        <div className="vault-activity">5 GB</div>
 </div>
       </div>
     );
