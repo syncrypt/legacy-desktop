@@ -1,0 +1,16 @@
+.settings-bar .header {
+  height: 64px;
+  position: relative;
+  background-color: #BEC2CD;
+  margin-bottom: 10px;
+  background-image:url(../assets/header.png);
+  background-repeat:no-repeat;
+  background-position: 30px 0px;
+  background-size: 150px;
+  width: 100%;
+}
+
+.settings-bar .content .user-invite .add-user button {
+  background-image: url(../assets/add_button.png);
+  background-size: 25px 25px;
+}
