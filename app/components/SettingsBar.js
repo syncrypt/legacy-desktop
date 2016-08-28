@@ -9,7 +9,8 @@ import { connect } from 'react-redux';
 class SettingsBar extends SyncryptComponent {
   constructor(props) {
     super(props);
-    this.bindFunctions(["addUser"])
+    this.bindFunctions(["addUser"]);
+    this.className = "settings-bar";
     this.state = {
       errors: []
     };
@@ -21,8 +22,8 @@ class SettingsBar extends SyncryptComponent {
   }
 
   render() {
-    return (
-      <div className="settings-bar">
+    return super.render(
+      <div>
         <div className="header">
         </div>
         <div className="content">

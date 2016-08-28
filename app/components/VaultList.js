@@ -9,7 +9,12 @@ import rest from '../api';
 import './VaultList.css';
 
 
-class VaultItem extends Component {
+class VaultItem extends SyncryptComponent {
+  constructor(props) {
+    super(props);
+    this.className = "card vault-card";
+  }
+
   static propTypes = {
     vault: PropTypes.object.isRequired
   };
@@ -20,8 +25,8 @@ class VaultItem extends Component {
 
   render() {
     const { vault } = this.props;
-    return (
-      <div className="card vault-card">
+    return super.render(
+      <div>
         <div className="vault-icon"></div>
         <div className="vault-title">{vault.id}</div>
 
@@ -34,7 +39,11 @@ class VaultItem extends Component {
   }
 }
 
-class NewVaultItem extends Component {
+class NewVaultItem extends SyncryptComponent {
+  constructor(props) {
+    super(props);
+  }
+
   /* Just shows a empty vault with a "+" button */
   render() {
     const { vault } = this.props;
@@ -52,8 +61,9 @@ class VaultList extends SyncryptComponent {
   };
 
   constructor() {
-      super()
-      this.bindFunctions(["addNewVault", "addNewVaultCallback"]);
+    super()
+    this.bindFunctions(["addNewVault", "addNewVaultCallback"]);
+    this.className = "vault-list"
   }
 
   addNewVault() {
@@ -74,11 +84,11 @@ class VaultList extends SyncryptComponent {
   }
 
   render() {
-    return (
-        <div className="vault-list">
-          <NewVaultItem onClick={this.addNewVault} />
-          {this.props.vaults.map(v => <VaultItem key={v.id} vault={v} />)}
-        </div>
+    return super.render(
+      <div>
+        <NewVaultItem onClick={this.addNewVault} />
+        {this.props.vaults.map(v => <VaultItem key={v.id} vault={v} />)}
+      </div>
     );
   }
 }

@@ -7,6 +7,22 @@ class SyncryptComponent extends Component {
       this[fname] = this[fname].bind(this);
     }
   }
+
+  render(content) {
+    if(this.className) {
+      return (
+        <div className={this.className}>
+          {content}
+        </div>
+      );
+    } else {
+      return (
+        <div>
+          {content}
+        </div>
+      );
+    }
+  }
 }
 
 export default SyncryptComponent;
