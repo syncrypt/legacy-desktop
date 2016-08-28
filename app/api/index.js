@@ -18,12 +18,23 @@ export default reduxApi({
     transformer: transformers.array,
     crud: true
   },
-  login: {
-    url: `/v1/login/`,
-    options: {
-      method: "post"
+  auth: {
+    url: `/v1/auth/:method/`,
+    helpers: {
+      login(email, password) {
+        return [{ method: 'login'}, {
+          body: JSON.stringify({ email, password }),
+          method: "post"
+        }];
+      },
+      check() {
+        return [{ method: 'check'}, {}];
+      },
+      logout() {
+        return [{ method: 'logout'}, {}];
+      },
     }
-  }
+  },
 })
 .use("fetch", adapterFetch(fetch))
 .use("rootUrl", "http://localhost:28080");

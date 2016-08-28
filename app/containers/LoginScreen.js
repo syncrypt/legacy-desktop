@@ -19,16 +19,7 @@ class LoginScreen extends SyncryptComponent {
   login() {
     this.setState({errors: []})
     this.props.dispatch(
-      rest.actions.login(
-        {},
-        {
-          body: JSON.stringify({
-            email: this.formVal("email"),
-            password: this.formVal("password")
-          })
-        },
-        this.loginError
-      )
+      rest.actions.auth.login(this.formVal("email"), this.formVal("password"), this.loginError)
     );
   }
 
