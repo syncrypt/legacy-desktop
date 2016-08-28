@@ -21,14 +21,14 @@ class VaultItem extends Component {
   render() {
     const { vault } = this.props;
     return (
-      <Col className="card vault-card" xs={4}>
+      <div className="card vault-card">
         <div className="vaulticon"></div>
         <div className="vaultinfo">
             <h2>{vault.id} <Badge>{vault.state}</Badge></h2>
             {vault.folder}, {vault.user_count} user(s)
             <Button onClick={() => this.showFolder()}>Show files</Button>
         </div>
-      </Col>
+      </div>
     );
   }
 }
@@ -38,9 +38,9 @@ class NewVaultItem extends Component {
   render() {
     const { vault } = this.props;
     return (
-      <Col className="card vault-card new-vault-card" xs={4} {...this.props}>
+      <div className="card vault-card new-vault-card" xs={4} {...this.props}>
         <div className="vault-plus">+</div>
-      </Col>
+      </div>
     );
   }
 }
@@ -74,12 +74,10 @@ class VaultList extends SyncryptComponent {
 
   render() {
     return (
-      <div>
-        <Grid>
+        <div className="vault-list">
           <NewVaultItem onClick={this.addNewVault} />
           {this.props.vaults.map(v => <VaultItem key={v.id} vault={v} />)}
-        </Grid>
-      </div>
+        </div>
     );
   }
 }
