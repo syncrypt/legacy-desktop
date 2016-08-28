@@ -13,6 +13,7 @@
 }
 
 .card {
+   display: inline-block;
    border: 1px solid #e6e6e6;
    border-radius: 8px;
    height: 190px;
@@ -24,18 +25,19 @@
    position: relative;
 }
 
-.vault-card {
-    /* flexbox setup */
-    /*display: -webkit-flex;
-    -webkit-flex-direction: row;
-    flex-direction: row; */
-    display: inline-block;
+.vault-card-selected {
+  display: inline-block;
+  font-size: 1000px;
+  background: linear-gradient(0deg, #667381, #F3967F);
+}
+
+.vault-card:hover {
+  background: linear-gradient(0deg, #667381, #F3967F);
 }
 
 .new-vault-card {
-    background-color: white;
-    cursor: pointer;
-
+  background-color: white;
+  cursor: pointer;
 }
 .vault-plus {
   width: 100%;

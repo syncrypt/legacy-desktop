@@ -9,7 +9,14 @@ import rest from '../api';
 import './VaultList.css';
 
 
-class VaultItem extends Component {
+class VaultItem extends SyncryptComponent {
+  constructor(props) {
+    super(props);
+
+    this.state = { className: "card vault-card" };
+    this.bindFunctions(["openSettings"]);
+  }
+
   static propTypes = {
     vault: PropTypes.object.isRequired
   };
@@ -18,12 +25,17 @@ class VaultItem extends Component {
     shell.openItem(this.props.vault.folder);
   }
 
+  openSettings() {
+    // TODO: set SettingsBar content accordingly
+    this.setState({ className: "card vault-card-selected" });
+  }
+
   render() {
     const { vault } = this.props;
     return (
-      <div className="card vault-card">
+      <div className={this.state.className} onClick={this.openSettings}>
         <div className="vault-icon"></div>
-        <div className="vault-title">{vault.id}</div>
+        <div className="vault-title">{vault.name || vault.id}</div>
 
         <div className="footer-vault">
         <div className="vault-users">{vault.user_count}</div>
@@ -39,7 +51,7 @@ class NewVaultItem extends Component {
   render() {
     const { vault } = this.props;
     return (
-      <div className="card vault-card new-vault-card" xs={4} {...this.props}>
+      <div className="card new-vault-card" xs={4} {...this.props}>
         <div className="vault-plus"></div>
       </div>
     );
