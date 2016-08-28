@@ -16,6 +16,9 @@ store.dispatch(rest.actions.auth.check((err, data) => {
     if (data.connected) {
         history.push('/main');
     }
+    else {
+        history.push('/');
+    }
 }));
 
 render(

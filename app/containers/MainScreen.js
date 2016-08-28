@@ -12,6 +12,17 @@ class MainScreen extends SyncryptComponent {
     dispatch: PropTypes.func.isRequired
   };
 
+  constructor(props) {
+    super(props);
+    this.bindFunctions(["logout"]);
+  }
+
+  logout() {
+    this.props.dispatch(rest.actions.auth.logout((err, data) => {
+        this.props.history.push('/');
+    }));
+  }
+
   componentDidMount() {
     const {dispatch} = this.props;
     dispatch(rest.actions.stats.sync());
@@ -24,7 +35,7 @@ class MainScreen extends SyncryptComponent {
       <div className="main-screen">
         <div className="main-screen-header">
         <div className="main-screen-stats">{stats.stats} / {stats.downloads} / {stats.uploads}
-        <Button>Logout</Button>
+        <Button onClick={this.logout}>Logout</Button>
       </div>
       </div>
       <Grid>
