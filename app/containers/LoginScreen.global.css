@@ -14,7 +14,7 @@ body {
 }
 
 
-.login-page {
+.login-screen {
   height: 100%;
   background: linear-gradient(0deg, #3B6491, #F3967F);
   height: 100%;
@@ -22,7 +22,7 @@ body {
   margin-right: auto;
 }
 
-.login-page button {
+.login-screen button {
   margin-top: 80px;
   width: 333px;
   font-size: 20px;
@@ -31,7 +31,7 @@ body {
   border-radius: 15px;
 }
 
-.login-page button:hover {
+.login-screen button:hover {
   opacity: 1.0;
 }
 

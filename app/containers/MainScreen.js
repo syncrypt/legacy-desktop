@@ -1,13 +1,13 @@
 import React, { PropTypes } from 'react';
 import SyncryptComponent from '../components/SyncryptComponent';
-import styles from './HomePage.css';
+import styles from './MainScreen.css';
 import VaultList from '../components/VaultList';
 import rest from '../api'
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { Button, Container, Grid, Row } from 'react-bootstrap';
 
-class HomePage extends SyncryptComponent {
+class MainScreen extends SyncryptComponent {
   static propTypes = {
     dispatch: PropTypes.func.isRequired
   };
@@ -46,4 +46,4 @@ function mapDispatchToProps(dispatch) {
   return {dispatch};
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(HomePage);
+export default connect(mapStateToProps, mapDispatchToProps)(MainScreen);

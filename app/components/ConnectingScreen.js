@@ -1,9 +1,9 @@
 import React from 'react';
 import SyncryptComponent from '../components/SyncryptComponent';
 import { Link } from 'react-router';
-import styles from './ConnectingPage.css';
+import styles from './ConnectingScreen.css';
 
-class ConnectingPage extends SyncryptComponent {
+class ConnectingScreen extends SyncryptComponent {
   render() {
     return (
       <div>
@@ -15,4 +15,4 @@ class ConnectingPage extends SyncryptComponent {
   }
 }
 
-export default ConnectingPage;
+export default ConnectingScreen;

@@ -2,12 +2,12 @@ import React from 'react';
 import SyncryptComponent from '../components/SyncryptComponent';
 import { Link } from 'react-router';
 import { connect } from 'react-redux';
-import './LoginPage.global.css';
+import './LoginScreen.global.css';
 import { Grid, Row, Col, Button, FormGroup, FormControl, HelpBlock, ControlLabel } from 'react-bootstrap';
 import ReactDOM from 'react-dom';import rest from '../api'
 
 
-class LoginPage extends SyncryptComponent {
+class LoginScreen extends SyncryptComponent {
   constructor(props) {
     super(props);
     this.bindFunctions(["login", "loginError", "enterPressed"])
@@ -60,7 +60,7 @@ class LoginPage extends SyncryptComponent {
 
   render() {
     return (
-      <Grid className="login-page">
+      <Grid className="login-screen">
         <div className="login-content">
             <img className="login-header-logo" src="./assets/logo.png"/>
             <form>
@@ -85,4 +85,4 @@ class LoginPage extends SyncryptComponent {
   }
 }
 
-export default connect()(LoginPage);
+export default connect()(LoginScreen);

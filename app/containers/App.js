@@ -2,7 +2,7 @@ import React, { PropTypes } from 'react';
 import SyncryptComponent from '../components/SyncryptComponent';
 import rest from '../api'
 import { connect } from 'react-redux';
-import ConnectingPage from '../components/ConnectingPage';
+import ConnectingScreen from '../components/ConnectingScreen';
 
 class App extends SyncryptComponent {
   static propTypes = {
@@ -34,7 +34,7 @@ class App extends SyncryptComponent {
   render() {
     return (
       <div>
-        { this.props.connected ? this.props.children : <ConnectingPage /> }
+        { this.props.connected ? this.props.children : <ConnectingScreen /> }
       </div>
     );
   }
