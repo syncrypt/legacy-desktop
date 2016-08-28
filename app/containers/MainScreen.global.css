@@ -3,10 +3,10 @@
   position: relative;
   background-color: #b6c3e6;
   margin-bottom: 10px;
-  background-image:url(../assets/header.png);
+  background-image:url(../assets/logo.png);
   background-repeat:no-repeat;
-  background-position: 30px 0px;
-  background-size: 150px;
+  background-position: 20px ;
+  background-size: 170px;
   width: 100%;
 }
 

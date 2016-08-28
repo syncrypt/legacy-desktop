@@ -18,7 +18,8 @@
    height: 230px;
    width: 280px;
    overflow: hidden;
-   margin: 10px;
+   margin-left:20px;
+   margin-top: 10px;
    padding: 10px;
 }
 
@@ -43,9 +44,8 @@
   background-repeat: no-repeat;
   margin-left: 80px;
   margin-right: 90px;
-  margin-top: 40px;
+  margin-top: 30px;
   padding: 0px;
-
 }
 .vault-plus:hover {
   width: 100%;
@@ -55,7 +55,48 @@
   background-repeat: no-repeat;
   margin-left: 80px;
   margin-right: 90px;
-  margin-top: 40px;
+  margin-top: 30px;
   padding: 0px;
 
+}
+
+.vault-icon {
+  height: 100px;
+  weight: 100px;
+  margin-left: 80px;
+  margin-right: 90px;
+  margin-top: 30px;
+  background-color: #f9b194;
+  padding: 0px;
+  border-radius: 50px;
+}
+
+.vault-title {
+  font-family: "Hind", Arial, Helvetica, Helvetica Neue;
+  font-weight: 300;
+  font-size: 14px;
+  color: #e6e6e6;
+  text-align: center;
+  width: 100%;
+  margin-top: 10px;
+  margin-left: 10px;
+  margin-right: 10px;
+
+}
+
+
+.vault-users {
+  background-image:url(../assets/avatar.png);
+  background-size: 10%;
+  background-repeat: no-repeat;
+  padding-left: 35px;
+  font-family: "Hind", Arial, Helvetica, Helvetica Neue;
+  font-weight: 300;
+  margin-left: 10px;
+  margin-top: 20px;
+
+}
+
+.vault-activity {
+  
 }

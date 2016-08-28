@@ -22,12 +22,11 @@ class VaultItem extends Component {
     const { vault } = this.props;
     return (
       <div className="card vault-card">
-        <div className="vaulticon"></div>
-        <div className="vaultinfo">
-            <h2>{vault.id} <Badge>{vault.state}</Badge></h2>
-            {vault.folder}, {vault.user_count} user(s)
-            <Button onClick={() => this.showFolder()}>Show files</Button>
-        </div>
+        <div className="vault-icon"></div>
+        <div className="vault-title">{vault.id}</div>
+        <div className="vault-users">{vault.user_count}</div>
+        <div className="vault-activity">5 GB <Button onClick={() => this.showFolder()}>Show files</Button>
+</div>
       </div>
     );
   }
