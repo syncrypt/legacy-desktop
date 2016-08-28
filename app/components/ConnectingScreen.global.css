@@ -1,6 +1,11 @@
-.banner {
+.connecting-screen {
+  background: linear-gradient(0deg, #3B6491, #F3967F);
+  height: 100%;
+}
+
+.connecting-screen .banner {
   position: absolute;
-  top: 30%;
+  top: 40%;
   padding-top: 70px;
   text-align: center;
   height: 60px;

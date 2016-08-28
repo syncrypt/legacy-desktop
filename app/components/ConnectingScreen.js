@@ -1,14 +1,13 @@
 import React from 'react';
 import SyncryptComponent from '../components/SyncryptComponent';
 import { Link } from 'react-router';
-import styles from './ConnectingScreen.css';
+import './ConnectingScreen.global.css';
 
 class ConnectingScreen extends SyncryptComponent {
   render() {
     return (
-      <div>
-        <div className={styles.banner}>
-          Waiting for Syncrypt Daemon...
+      <div className="connecting-screen">
+        <div className="banner">
         </div>
       </div>
     );
