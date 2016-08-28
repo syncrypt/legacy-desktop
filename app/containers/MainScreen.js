@@ -5,7 +5,7 @@ import VaultList from '../components/VaultList';
 import rest from '../api'
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { Button, Container, Grid, Row } from 'react-bootstrap';
+import { Button, Container, Grid, Row, Col } from 'react-bootstrap';
 
 class Header extends SyncryptComponent {
   render() {
@@ -52,16 +52,19 @@ class MainScreen extends SyncryptComponent {
   }
 
   render() {
-    const {vaults, stats} = this.props;
+    const {vaults, stats, vault_members} = this.props;
     return (
-      <div className="main-screen">
-        <Header stats={stats} onLogoutClick={this.logout} />
-        <Grid>
-          <Row>
-            <VaultList vaults={vaults} />
-          </Row>
-        </Grid>
-        <Footer vaults={vaults} stats={stats} onLogoutClick={this.logout} />
+      <div>
+        <div className="main-screen">
+          <Header stats={stats} onLogoutClick={this.logout} />
+          <Grid>
+            <Row>
+              <VaultList vaults={vaults} />
+            </Row>
+          </Grid>
+          <Footer vaults={vaults} stats={stats} onLogoutClick={this.logout} />
+        </div>
+        { this.props.sidebar }
       </div>
     );
   }

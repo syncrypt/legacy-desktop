@@ -1,16 +1,79 @@
+.settings-bar {
+  width: 40%;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
 .settings-bar .header {
   height: 64px;
   position: relative;
-  background-color: #BEC2CD;
+  background-color: #b6c3e6;
   margin-bottom: 10px;
-  background-image:url(../assets/header.png);
   background-repeat:no-repeat;
   background-position: 30px 0px;
   background-size: 150px;
   width: 100%;
 }
 
-.settings-bar .content .user-invite .add-user button {
+.user-invite .add-user span {
+  float: none;
+}
+
+.add-user {
+  margin-left: 20px;
+}
+
+.add-user h2 {
+  margin-left: 20px;
+  display: inline;
+  position: relative;
+  top: -11px;
+}
+
+.add-user .email-input {
+  margin-left: 60px;
+  margin-top: 10px;
+}
+
+.add-user .user-plus {
+  display: inline-flex;
+  width: 40px;
+  height:40px;
   background-image: url(../assets/add_button.png);
-  background-size: 25px 25px;
+  background-size: 40px 40px;
+  background-repeat: no-repeat;
+}
+
+.add-user .user-plus:hover {
+  width:  40px;
+  height: 40px;
+  background-image: url(../assets/add_button_hover.png);
+  background-size: 40px 40px;
+  background-repeat: no-repeat;
+}
+
+.member-list {
+  margin-top: 5%;
+}
+
+.member-list table {
+  width: 100%;
+}
+
+.member-list th {
+  padding: 10px;
+}
+
+.member-list td {
+  padding: 10px;
+}
+
+.member-list .email {
+  display: block;
+}
+
+.vault-member-icon {
+  height: 50px;
+  width: 50px;
 }

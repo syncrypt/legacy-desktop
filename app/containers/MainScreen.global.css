@@ -1,3 +1,7 @@
+.main-screen {
+  width: 60%;
+}
+
 .main-screen-header {
   height: 64px;
   position: relative;
