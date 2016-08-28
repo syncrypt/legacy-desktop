@@ -1,7 +1,7 @@
 .container {
   height: 64px;
   position: relative;
-  background-color: #BEC2CD;
+  background-color: #b6c3e6;
   margin-bottom: 10px;
   background-image:url(../assets/header.png);
   background-repeat:no-repeat;
@@ -25,7 +25,7 @@
 }
 
 .card {
-    border: 1px solid #BEC2CD;
+    border: 2px solid #b6c3e6;
     border-radius: 10px;
     height: 160px;
     overflow: hidden;
