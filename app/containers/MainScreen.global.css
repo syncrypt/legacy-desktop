@@ -23,3 +23,15 @@
   right: 20px;
   top: 20px;
 }
+
+.main-screen-footer {
+  position: fixed;
+  font-size: 14px;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+  height: 26px;
+  background-color: #b6c3e6;
+  color: #666;
+  padding: 5px;
+}

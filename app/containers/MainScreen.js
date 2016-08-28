@@ -7,6 +7,28 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { Button, Container, Grid, Row } from 'react-bootstrap';
 
+class Header extends SyncryptComponent {
+  render() {
+    const {vaults, stats} = this.props;
+    return (<div className="main-screen-header">
+        <div className="main-screen-stats">
+          <Button onClick={this.props.onLogoutClick}>Logout</Button>
+        </div>
+      </div>)
+  }
+}
+
+class Footer extends SyncryptComponent {
+  render() {
+    const {vaults, stats} = this.props;
+    return (
+      <div className="main-screen-footer">
+        {vaults.length} Vault(s) / {stats.stats} / {stats.downloads} / {stats.uploads}
+      </div>
+    )
+  }
+}
+
 class MainScreen extends SyncryptComponent {
   static propTypes = {
     dispatch: PropTypes.func.isRequired
@@ -33,16 +55,13 @@ class MainScreen extends SyncryptComponent {
     const {vaults, stats} = this.props;
     return (
       <div className="main-screen">
-        <div className="main-screen-header">
-        <div className="main-screen-stats">{stats.stats} / {stats.downloads} / {stats.uploads}
-        <Button onClick={this.logout}>Logout</Button>
-      </div>
-      </div>
-      <Grid>
-        <Row>
-          <VaultList vaults={vaults} />
-        </Row>
-      </Grid>
+        <Header stats={stats} onLogoutClick={this.logout} />
+        <Grid>
+          <Row>
+            <VaultList vaults={vaults} />
+          </Row>
+        </Grid>
+        <Footer vaults={vaults} stats={stats} onLogoutClick={this.logout} />
       </div>
     );
   }
