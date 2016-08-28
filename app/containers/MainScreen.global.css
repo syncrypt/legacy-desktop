@@ -1,4 +1,4 @@
-.container {
+.main-screen-header {
   height: 64px;
   position: relative;
   background-color: #b6c3e6;
@@ -10,26 +10,16 @@
   width: 100%;
 }
 
-.container h2 {
+.main-screen-header h2 {
   font-size: 3rem;
 }
 
-.container a {
+.main-screen-header a {
   font-size: 1.4rem;
 }
 
-.stats {
+.main-screen-stats {
   position: absolute;
   right: 20px;
   top: 20px;
-}
-
-.card {
-    border: 2px solid #b6c3e6;
-    border-radius: 10px;
-    height: 160px;
-    overflow: hidden;
-    margin: 10px;
-    padding: 10px;
-    width: 200px;
 }

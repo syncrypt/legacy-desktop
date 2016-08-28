@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react';
 import SyncryptComponent from '../components/SyncryptComponent';
-import styles from './MainScreen.css';
+import './MainScreen.global.css';
 import VaultList from '../components/VaultList';
 import rest from '../api'
 import { bindActionCreators } from 'redux';
@@ -21,9 +21,11 @@ class MainScreen extends SyncryptComponent {
   render() {
     const {vaults, stats} = this.props;
     return (
-      <div>
-        <div className={styles.container}>
-        <div className={styles.stats}>{stats.stats} STATs, {stats.downloads} DOWNLOADs, {stats.uploads} UPLOADs</div>
+      <div className="main-screen">
+        <div className="main-screen-header">
+        <div className="main-screen-stats">{stats.stats} / {stats.downloads} / {stats.uploads}
+        <Button>Logout</Button>
+      </div>
       </div>
       <Grid>
         <Row>
