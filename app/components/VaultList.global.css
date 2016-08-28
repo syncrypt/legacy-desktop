@@ -73,7 +73,6 @@
 }
 
 .vault-title {
-  font-family: "Hind", Arial, Helvetica, Helvetica Neue;
   font-weight: 300;
   font-size: 13px;
   color: #e6e6e6;
@@ -91,7 +90,6 @@
   background-size: 20px;
   background-repeat: no-repeat;
   padding-left: 35px;
-  font-family: "Hind", Arial, Helvetica, Helvetica Neue;
   font-weight: 300;
   font-size: 15px;
   color: #b3b3b3;
@@ -105,7 +103,6 @@
   background-image:url(../assets/vault.png);
   background-size: 20px;
   background-repeat: no-repeat;
-  font-family: "Hind", Arial, Helvetica, Helvetica Neue;
   font-weight: 300;
   font-size: 15px;
   color: #b3b3b3;

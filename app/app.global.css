@@ -1,9 +1,12 @@
+* {
+  font-family: "Hind", Arial, Helvetica, Helvetica Neue;
+}
+
 body {
   position: relative;
   color: #333;
   height: 100vh;
   background: white;
-  font-family: Arial, Helvetica, Helvetica Neue;
   overflow-y: hidden;
 }
 

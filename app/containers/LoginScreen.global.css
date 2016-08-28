@@ -4,7 +4,6 @@ body {
   color: #4d4d4d;
   height: 100%;
   background: white;
-  font-family: "Hind", Arial, Helvetica, Helvetica Neue;
   overflow-y: hidden;
   font-size: 18px;
   line-height: 1.42857143;
@@ -40,13 +39,12 @@ body {
 
 }
 
-.form-control{
+.form-control {
   display: block;
   width: 333px;
   height: 25px;
   padding:0px 0px;
   font-size: 20px;
-  font-family: "Hind", Arial, Helvetica, Helvetica Neue;
   font-weight: 300;
   font-style: normal;
   line-height: 1.42857143;
@@ -156,7 +154,6 @@ btn {
 }
 
 button, input, select, textarea {
-  font-family: inherit;
   font-size: inherit;
   line-height: inherit;
   margin-left: 0;
