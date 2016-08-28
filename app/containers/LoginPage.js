@@ -65,6 +65,11 @@ class LoginPage extends SyncryptComponent {
             <img className="login-header-logo" src="./assets/logo.png"/>
             <form>
               <FormGroup controlId="formBasicText">
+                <ControlLabel>Email</ControlLabel>
+                <FormControl ref="email" type="text" placeholder="Email" />
+                <ControlLabel>Password</ControlLabel>
+                <FormControl ref="password" type="password" placeholder="Password" onKeyDown={this.enterPressed} />
+                <Button bsStyle="primary" onClick={this.login}>Login</Button>
                 {
                   this.state.errors.map((e, i) =>
                     <div key={i} className="loginError">
@@ -72,11 +77,6 @@ class LoginPage extends SyncryptComponent {
                     </div>
                   )
                 }
-                <ControlLabel>Email</ControlLabel>
-                <FormControl ref="email" type="text" placeholder="Email" />
-                <ControlLabel>Password</ControlLabel>
-                <FormControl ref="password" type="password" placeholder="Password" onKeyDown={this.enterPressed} />
-                <Button bsStyle="primary" onClick={this.login}>Login</Button>
               </FormGroup>
             </form>
         </div>

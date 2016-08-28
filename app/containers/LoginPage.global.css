@@ -164,7 +164,12 @@ button, input, select, textarea {
 }
 
 .loginError {
-
+  margin-top: 40px;
+  text-align: center;
+  color: #F3967F;
+  font-size: 15px;
+  font-weight: 300;
+  opacity: 0.85;
 }
 
 .login-header-logo {
