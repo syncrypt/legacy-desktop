@@ -7,7 +7,7 @@ import routes from './routes';
 import rest from './api';
 import configureStore from './store/configureStore';
 
-import './app.global.css';
+import './app.css';
 
 const store = configureStore();
 const history = syncHistoryWithStore(hashHistory, store);

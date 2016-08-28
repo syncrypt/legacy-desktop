@@ -2,7 +2,7 @@ import React from 'react';
 import SyncryptComponent from '../components/SyncryptComponent';
 import { Link } from 'react-router';
 import { connect } from 'react-redux';
-import './LoginScreen.global.css';
+import './LoginScreen.css';
 import { Grid, Row, Col, Button, FormGroup, FormControl, HelpBlock, ControlLabel } from 'react-bootstrap';
 import ReactDOM from 'react-dom';import rest from '../api'
 

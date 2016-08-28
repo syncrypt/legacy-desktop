@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react';
 import SyncryptComponent from '../components/SyncryptComponent';
-import './MainScreen.global.css';
+import './MainScreen.css';
 import VaultList from '../components/VaultList';
 import rest from '../api'
 import { bindActionCreators } from 'redux';

@@ -1,7 +1,7 @@
 import React from 'react';
 import SyncryptComponent from './SyncryptComponent';
 import { Link } from 'react-router';
-import './SettingsBar.global.css';
+import './SettingsBar.css';
 import { Button, FormGroup, FormControl } from 'react-bootstrap';
 import { connect } from 'react-redux';
 

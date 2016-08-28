@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 import SyncryptComponent from './SyncryptComponent';
 import rest from '../api';
 
-import './VaultList.global.css';
+import './VaultList.css';
 
 
 class VaultItem extends Component {
