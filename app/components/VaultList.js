@@ -38,9 +38,9 @@ class VaultItem extends SyncryptComponent {
         <div className="vault-title">{vault.name || vault.id}</div>
 
         <div className="footer-vault">
-        <div className="vault-users">{vault.user_count}</div>
-        <div className="vault-activity">5 GB</div>
-</div>
+          <div className="vault-users">{vault.user_count}</div>
+          <div className="vault-activity">{vault.size || "? GB"}</div>
+        </div>
       </div>
     );
   }
