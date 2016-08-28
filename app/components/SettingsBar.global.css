@@ -1,9 +1,13 @@
 .settings-bar {
   width: 40%;
+  height: 100%;
   position: absolute;
   right: 0;
   top: 0;
   font-size: 15px;
+  border-left-style: solid;
+  border-left-color: #e6e6e6;
+  border-left-width: 2px;
 }
 
 .settings-bar h2 {
@@ -20,6 +24,14 @@
   background-size: 150px;
   width: 100%;
 }
+
+.settings-bar .content {
+  margin-top: 25px;
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 
 .user-invite .add-user span {
   float: none;
@@ -63,7 +75,7 @@
 }
 
 .member-list table {
-  width: 100%;
+  left: 40px;
 }
 
 .member-list th {
