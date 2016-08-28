@@ -43,21 +43,24 @@
 }
 
 .add-user h2 {
-  margin-left: 20px;
-  display: inline;
-  position: relative;
-  top: -11px;
+  margin-left: 60px;
 }
 
 .add-user .email-input {
-  margin-left: 60px;
-  margin-top: 10px;
+  display: inline;
+  position: relative;
+  top: -15px;
+  margin-left: 30px;
+  margin-top: -11px;
+  border-bottom: 2px solid #e6e6e6;
 }
 
 .add-user .user-plus {
+  margin-top: 10px;
+  margin-left: -10px;
   display: inline-flex;
-  width: 40px;
-  height:40px;
+  width:  40px;
+  height: 40px;
   background-image: url(../assets/add_button.png);
   background-size: 40px 40px;
   background-repeat: no-repeat;

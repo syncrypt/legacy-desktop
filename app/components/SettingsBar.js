@@ -29,11 +29,11 @@ class SettingsBar extends SyncryptComponent {
           <div className="user-invite">
             <div className="add-user">
               <form>
+                <h2>Invite Users</h2>
                 <span>
                   <div className="user-plus" onClick={this.addUser}></div>
-                  <h2>Invite Users</h2>
+                  <FormControl ref="email" className="email-input" type="text" placeholder="Email" />
                 </span>
-                <FormControl ref="email" className="email-input" type="text" placeholder="Email" />
               </form>
             </div>
           </div>
