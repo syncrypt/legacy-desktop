@@ -3,6 +3,11 @@
   position: absolute;
   right: 0;
   top: 0;
+  font-size: 15px;
+}
+
+.settings-bar h2 {
+  font-size: 18px;
 }
 
 .settings-bar .header {
