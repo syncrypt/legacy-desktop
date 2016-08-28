@@ -2,7 +2,7 @@ import React, { PropTypes } from 'react';
 import SyncryptComponent from '../components/SyncryptComponent';
 import rest from '../api'
 import { connect } from 'react-redux';
-import ConnectingScreen from '../components/ConnectingScreen';
+import ConnectingScreen from '../screens/ConnectingScreen';
 
 class App extends SyncryptComponent {
   static propTypes = {

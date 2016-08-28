@@ -1,9 +1,9 @@
 import React from 'react';
 import { Route, IndexRoute } from 'react-router';
-import App from './containers/App';
-import MainScreen from './containers/MainScreen';
-import LoginScreen from './containers/LoginScreen';
+import App from './components/App';
 import SettingsBar from './components/SettingsBar';
+import MainScreen from './screens/MainScreen';
+import LoginScreen from './screens/LoginScreen';
 
 export default (
   <Route path="/" component={App}>
