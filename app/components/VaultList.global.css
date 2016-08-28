@@ -15,13 +15,13 @@
 .card {
    border: 1px solid #e6e6e6;
    border-radius: 8px;
-   height: 230px;
-   width: 280px;
+   height: 190px;
+   width: 240px;
    overflow: hidden;
    margin-left:20px;
    margin-top: 10px;
    padding: 10px;
-   position: relative;;
+   position: relative;
 }
 
 .vault-card {
@@ -43,9 +43,9 @@
   background-image:url(../assets/add_button.png);
   background-size: 100px 100px;
   background-repeat: no-repeat;
-  margin-left: 80px;
-  margin-right: 90px;
-  margin-top: 30px;
+  margin-left: 60px;
+  margin-right: 70px;
+  margin-top: 20px;
   padding: 0px;
 }
 .vault-plus:hover {
@@ -54,9 +54,9 @@
   background-image:url(../assets/add_button_hover.png);
   background-size: 100px 100px;
   background-repeat: no-repeat;
-  margin-left: 80px;
-  margin-right: 90px;
-  margin-top: 30px;
+  margin-left: 60px;
+  margin-right: 70px;
+  margin-top: 20px;
   padding: 0px;
 
 }
@@ -64,9 +64,9 @@
 .vault-icon {
   height: 100px;
   width: 100px;
-  margin-left: 80px;
-  margin-right: 90px;
-  margin-top: 30px;
+  margin-left: 60px;
+  margin-right: 70px;
+  margin-top: 10px;
   background-color: #f9b194;
   padding: 0px;
   border-radius: 50px;
@@ -75,11 +75,11 @@
 .vault-title {
   font-family: "Hind", Arial, Helvetica, Helvetica Neue;
   font-weight: 300;
-  font-size: 14px;
+  font-size: 13px;
   color: #e6e6e6;
   text-align: center;
   width: 100%;
-  margin-top: 10px;
+  margin-top: 5px;
   margin-left: 10px;
   margin-right: 10px;
 
@@ -88,31 +88,32 @@
 
 .vault-users {
   background-image:url(../assets/avatar.png);
-  background-size: 25px;
+  background-size: 20px;
   background-repeat: no-repeat;
   padding-left: 35px;
   font-family: "Hind", Arial, Helvetica, Helvetica Neue;
   font-weight: 300;
+  font-size: 15px;
   color: #b3b3b3;
   width: 80px;
   position: absolute;
-  bottom: 10px;
-  left: 10px;
+  bottom: 5px;
+  left: 20px;
 }
 
 .vault-activity {
   background-image:url(../assets/vault.png);
-  background-size: 25px;
+  background-size: 20px;
   background-repeat: no-repeat;
-  padding-left: 20px;
   font-family: "Hind", Arial, Helvetica, Helvetica Neue;
   font-weight: 300;
+  font-size: 15px;
   color: #b3b3b3;
-  padding-left: 35px;
+  padding-left: 25px;
   width: 80px;
   position: absolute;
-  bottom: 10px;
-  right: 10px;
+  bottom: 5px;
+  right: -5px;
 
 
 }
