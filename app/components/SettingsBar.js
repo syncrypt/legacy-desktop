@@ -42,9 +42,9 @@ class SettingsBar extends SyncryptComponent {
             <table>
               <tr>
                 <th></th>
-                <th><h2>Members</h2></th>
-                <th>Joined</th>
-                <th>Last Login</th>
+                <th className="name"><h2>Members</h2></th>
+                <th className="other">Joined</th>
+                <th className="other">Uploads</th>
               </tr>
 
               {
@@ -53,11 +53,11 @@ class SettingsBar extends SyncryptComponent {
                     <td>
                       <img className="vault-member-icon" src={user.icon_url} />
                     </td>
-                    <td>
+                    <td className="name">
                       {user.name} <span className="email">{user.email}</span>
                     </td>
-                    <td>{user.join_date}</td>
-                    <td>{user.last_login_date}</td>
+                    <td className="other">{user.join_date}</td>
+                    <td className="other">{user.uploads}</td>
                   </tr>
                 )
               }
@@ -77,7 +77,7 @@ function mapStateToProps(state) {
         email: "chris@syncrypt.space",
         name: "Christopher Bertels",
         join_date: "01.08.2016",
-        last_login_date: "28.08.2016"
+        uploads: 1000
       }
     ]
   };

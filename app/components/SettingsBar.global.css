@@ -78,16 +78,20 @@
   margin-top: 5%;
 }
 
-.member-list table {
-  left: 40px;
-}
-
 .member-list th {
   padding: 10px;
 }
 
 .member-list td {
   padding: 10px;
+}
+
+.member-list .name {
+  width: 50%;
+}
+
+.member-list .other {
+  width: 30%;
 }
 
 .member-list .email {
