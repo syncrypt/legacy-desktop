@@ -1,0 +1,17 @@
+.sidebar-toggle {
+  position: absolute;
+  width: 50px;
+  left: 0%;
+  top: 45%;
+}
+
+.toggle-right img {
+  width: 50px;
+}
+
+.toggle-left img {
+  width: 50px;
+  position: fixed;
+  right: 3px;
+  -webkit-transform: rotate(-180deg);
+}

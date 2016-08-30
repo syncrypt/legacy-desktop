@@ -36,7 +36,19 @@ class MainScreen extends SyncryptComponent {
 
   constructor(props) {
     super(props);
-    this.bindFunctions(["logout"]);
+    this.bindFunctions(["logout", "onToggleSidebar"]);
+    this.state = {
+      sidebarHidden: false,
+      className: "main-screen"
+    };
+  }
+
+  className() {
+    if(this.state.sidebarHidden) {
+      return "main-screen expanded";
+    } else {
+      return "main-screen";
+    }
   }
 
   logout() {
@@ -51,11 +63,16 @@ class MainScreen extends SyncryptComponent {
     dispatch(rest.actions.vaults.sync());
   }
 
+  onToggleSidebar(hidden) {
+    this.setState({sidebarHidden: hidden});
+  }
+
   render() {
     const {vaults, stats, vault_members} = this.props;
+    const Sidebar = this.props.sidebar.type;
     return (
       <div>
-        <div className="main-screen">
+        <div className={this.className()}>
           <Header stats={stats} onLogoutClick={this.logout} />
           <Grid>
             <Row>
@@ -64,7 +81,7 @@ class MainScreen extends SyncryptComponent {
           </Grid>
           <Footer vaults={vaults} stats={stats} onLogoutClick={this.logout} />
         </div>
-        { this.props.sidebar }
+        <Sidebar onToggle={this.onToggleSidebar}/>
       </div>
     );
   }

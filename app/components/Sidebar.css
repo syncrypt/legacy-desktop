@@ -1,0 +1,39 @@
+.sidebar {
+  width: 40%;
+  height: 100%;
+  position: absolute;
+  right: 0;
+  top: 0;
+  font-size: 15px;
+  border-left-style: solid;
+  border-left-color: #e6e6e6;
+  border-left-width: 2px;
+}
+
+.collapsed {
+  width: 0%;
+  right: 1px;
+}
+
+.sidebar h2 {
+  font-size: 18px;
+  font-weight: 400;
+}
+
+.sidebar .header {
+  height: 64px;
+  position: relative;
+  background-color: #b6c3e6;
+  margin-bottom: 10px;
+  background-repeat:no-repeat;
+  background-position: 30px 0px;
+  background-size: 150px;
+  width: 100%;
+}
+
+.sidebar .content {
+  margin-top: 25px;
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+}
