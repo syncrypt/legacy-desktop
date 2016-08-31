@@ -11,6 +11,7 @@
 }
 
 .add-user .email-input {
+  width: 80%;
   display: inline;
   position: relative;
   top: -15px;
