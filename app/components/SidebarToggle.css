@@ -4,6 +4,10 @@
   top: 45%;
 }
 
+.sidebar-toggle:hover {
+  opacity: 0.5;
+}
+
 .toggle-right img {
   position: relative;
   right: 0px;
