@@ -33,11 +33,11 @@ class Sidebar extends SyncryptComponent {
   render(content) {
     return (
       <div className={this.className()}>
-        <div className={"header" + (this.state.hidden ? " hidden" : "")}>
+        <div className="header">
         </div>
         <div>
           <SidebarToggle onClick={this.toggle} />
-          <div className={"content" + (this.state.hidden ? " hidden" : "")}>
+          <div className="content">
             {content}
           </div>
         </div>

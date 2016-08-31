@@ -1,9 +1,11 @@
 .main-screen {
   width: 60%;
+  -webkit-transition: width 1s;
 }
 
 .expanded {
   width: 100%;
+  -webkit-transition: width 1s;
 }
 
 .main-screen-header {
