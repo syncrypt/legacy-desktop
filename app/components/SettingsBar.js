@@ -4,11 +4,12 @@ import { Link } from 'react-router';
 import './SettingsBar.css';
 import { Button, FormGroup, FormControl } from 'react-bootstrap';
 import { connect } from 'react-redux';
+import { shell } from 'electron';
 
 class SettingsBar extends Sidebar {
   constructor(props) {
     super(props);
-    this.bindFunctions(["addUser"]);
+    this.bindFunctions(["addUser", "openVaultFolder"]);
   }
 
   addUser() {
@@ -16,7 +17,16 @@ class SettingsBar extends Sidebar {
     console.log("adding user");
   }
 
+  openVaultFolder() {
+    shell.openItem(this.props.vault.folder);
+  }
+
   render() {
+    this.setHeader(
+      <div className="vault-settings-header">
+        <Button onClick={this.openVaultFolder}>Open Vault Folder</Button>
+      </div>
+    );
     return super.render(
       <div>
         <div className="user-invite">

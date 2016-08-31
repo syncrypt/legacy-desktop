@@ -21,10 +21,6 @@ class VaultItem extends SyncryptComponent {
     vault: PropTypes.object.isRequired
   };
 
-  showFolder() {
-    shell.openItem(this.props.vault.folder);
-  }
-
   openSettings() {
     // TODO: set SettingsBar content accordingly
     this.setState({ className: "card vault-card-selected" });

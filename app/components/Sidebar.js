@@ -30,10 +30,15 @@ class Sidebar extends SyncryptComponent {
     }
   }
 
+  setHeader(header) {
+    this.state.header = header;
+  }
+
   render(content) {
     return (
       <div className={this.className()}>
         <div className="header">
+        {this.state.header}
         </div>
         <div>
           <SidebarToggle onClick={this.toggle} />
