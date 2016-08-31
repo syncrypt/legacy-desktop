@@ -7,12 +7,12 @@
 .toggle-right img {
   position: relative;
   right: 0px;
-  width: 50px;
+  width: 30px;
 }
 
 .toggle-left img {
-  width: 50px;
+  width: 30px;
   position: relative;
-  right: 50px;
+  right: 30px;
   -webkit-transform: rotate(-180deg);
 }
