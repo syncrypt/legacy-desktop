@@ -1,12 +1,12 @@
 import React from 'react';
 import Sidebar from './Sidebar';
 import { Link } from 'react-router';
-import './SettingsBar.css';
+import './VaultSettingsBar.css';
 import { Button, FormGroup, FormControl } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import { shell } from 'electron';
 
-class SettingsBar extends Sidebar {
+class VaultSettingsBar extends Sidebar {
   constructor(props) {
     super(props);
     this.bindFunctions(["addUser", "openVaultFolder"]);
@@ -85,4 +85,4 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps)(SettingsBar);
+export default connect(mapStateToProps)(VaultSettingsBar);

@@ -22,7 +22,7 @@ class VaultItem extends SyncryptComponent {
   };
 
   openSettings() {
-    // TODO: set SettingsBar content accordingly
+    // TODO: set Sidebar content accordingly using VaultSettingsBar
     this.setState({ className: "card vault-card-selected" });
   }
 
