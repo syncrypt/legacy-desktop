@@ -37,6 +37,7 @@
   background: linear-gradient(0deg, #667381, #F3967F);
   opacity: 0.7;
   transition: all 0.25s;
+  cursor: pointer;
 }
 
 .new-vault-card {
