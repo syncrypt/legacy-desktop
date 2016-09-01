@@ -70,8 +70,11 @@ class MainScreen extends SyncryptComponent {
     this.setState({sidebarHidden: hidden});
   }
 
-  selectedVault(vault, selected) {
-    if(!selected) {
+  selectedVault(vaultItem) {
+    const { vault } = vaultItem.props;
+    var selectedVault = this.state.selectedVault;
+
+    if(selectedVault && selectedVault.id === vault.id) {
       return this.unselectedVault();
     }
 
@@ -106,7 +109,10 @@ class MainScreen extends SyncryptComponent {
           <Header stats={stats} onLogoutClick={this.logout} />
           <Grid>
             <Row>
-              <VaultList vaults={vaults} onVaultSelect={this.selectedVault} />
+              <VaultList
+                vaults={vaults}
+                selectedVault={this.state.selectedVault}
+                onVaultSelect={this.selectedVault} />
             </Row>
           </Grid>
           <Footer vaults={vaults} stats={stats} onLogoutClick={this.logout} />
