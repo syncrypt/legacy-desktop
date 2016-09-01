@@ -1,12 +1,8 @@
 .account-settings-header {
   font-size: 20px;
-  margin-left: 15px;
-}
-
-.account-settings-header .account-email {
-  font-size: 13px;
-  top: 7px;
-  margin-left: 15px;
+  text-align: center;
+  position: relative;
+  top: 20px;
 }
 
 .account-settings .form-group {

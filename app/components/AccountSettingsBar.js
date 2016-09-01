@@ -19,7 +19,7 @@ class AccountSettingsBar extends Sidebar {
 
     this.setHeader(
       <div className="account-settings-header">
-        Account Settings <span className="account-email">{account.email}</span>
+        Account Settings
       </div>
     );
 
