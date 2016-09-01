@@ -11,25 +11,33 @@ import './VaultList.css';
 class VaultItem extends SyncryptComponent {
   constructor(props) {
     super(props);
-
-    this.state = { className: "card vault-card" };
-    this.bindFunctions(["onClick"]);
+    this.bindFunctions(["selectItem"]);
+    this.state = { selected: false };
   }
 
   static propTypes = {
     vault: PropTypes.object.isRequired,
-    onClick: PropTypes.func.isRequired,
+    onClick: PropTypes.func.isRequired
   };
 
-  onClick() {
-    this.setState({ className: "card vault-card-selected" });
-    this.props.onClick();
+  selectItem() {
+    var selected = !this.state.selected;
+    this.setState({ selected: selected });
+    this.props.onClick(selected);
+  }
+
+  className() {
+    if(this.state.selected) {
+      return "card vault-card-selected";
+    } else {
+      return "card vault-card";
+    }
   }
 
   render() {
     const { vault } = this.props;
     return (
-      <div className={this.state.className} onClick={this.onClick}>
+      <div className={this.className()} onClick={this.selectItem}>
         <div className="vault-icon"></div>
         <div className="vault-title">{vault.name || vault.id}</div>
 
@@ -86,7 +94,7 @@ class VaultList extends SyncryptComponent {
     return (
       <div className="vault-list">
         <NewVaultItem onClick={this.addNewVault} />
-        {this.props.vaults.map(v => <VaultItem key={v.id} vault={v} onClick={() => this.props.onVaultSelect(v)} />)}
+        {this.props.vaults.map(v => <VaultItem key={v.id} vault={v} onClick={(selected) => this.props.onVaultSelect(v, selected)} />)}
       </div>
     );
   }

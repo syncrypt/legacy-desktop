@@ -38,11 +38,10 @@ class MainScreen extends SyncryptComponent {
 
   constructor(props) {
     super(props);
-    this.bindFunctions(["logout", "onToggleSidebar", "selectedVault"]);
-    this.state = {
-      sidebarHidden: false,
-      className: "main-screen"
-    };
+    this.bindFunctions([
+      "logout", "onToggleSidebar", "selectedVault", "unselectedVault"
+    ]);
+    this.state = { sidebarHidden: false };
   }
 
   className() {
@@ -69,10 +68,21 @@ class MainScreen extends SyncryptComponent {
     this.setState({sidebarHidden: hidden});
   }
 
-  selectedVault(vault) {
+  selectedVault(vault, selected) {
+    if(!selected) {
+      return this.unselectedVault();
+    }
+
     this.setState({
       selectedVault: vault,
       sidebarHidden: this.state.sidebarHidden
+    });
+  }
+
+  unselectedVault() {
+    this.setState({
+      sidebarHidden: this.state.sidebarHidden,
+      selectedVault: null
     });
   }
 
