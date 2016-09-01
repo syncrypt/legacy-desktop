@@ -1,6 +1,5 @@
 import React from 'react';
 import Sidebar from './Sidebar';
-import { Link } from 'react-router';
 import './VaultSettingsBar.css';
 import { Button, FormGroup, FormControl } from 'react-bootstrap';
 import { connect } from 'react-redux';

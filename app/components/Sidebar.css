@@ -8,17 +8,14 @@
   border-left-style: solid;
   border-left-color: #e6e6e6;
   border-left-width: 2px;
-
-  -webkit-transition: right 1s;
-  -webkit-transition: width 1s;
+  transition: all 0.5s;
 }
 
 .collapsed {
   width: 0%;
   right: 1px;
-
-  -webkit-transition: right 1s;
-  -webkit-transition: width 1s;
+  position: fixed;
+  transition: all 0.5s;
 }
 
 .sidebar h2 {
@@ -42,4 +39,5 @@
   width: 90%;
   margin-left: auto;
   margin-right: auto;
+  transition: all 0.5s;
 }

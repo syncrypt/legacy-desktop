@@ -2,6 +2,7 @@ import React from 'react';
 import { Route, IndexRoute } from 'react-router';
 import App from './components/App';
 import VaultSettingsBar from './components/VaultSettingsBar';
+import AccountSettingsBar from './components/AccountSettingsBar';
 import MainScreen from './screens/MainScreen';
 import LoginScreen from './screens/LoginScreen';
 
