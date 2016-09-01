@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 import Sidebar from './Sidebar';
 import './VaultSettingsBar.css';
 import { Button, FormGroup, FormControl } from 'react-bootstrap';
@@ -6,6 +6,10 @@ import { connect } from 'react-redux';
 import { shell } from 'electron';
 
 class VaultSettingsBar extends Sidebar {
+  static propTypes = {
+    vault: PropTypes.object.isRequired
+  };
+
   constructor(props) {
     super(props);
     this.bindFunctions(["addUser", "openVaultFolder"]);
@@ -17,13 +21,18 @@ class VaultSettingsBar extends Sidebar {
   }
 
   openVaultFolder() {
-    shell.openItem(this.props.vault.folder);
+    if (process.platform === 'darwin') {
+      shell.openExternal("file://" + this.props.vault.folder);
+    } else {
+      shell.openItem(this.props.vault.folder);
+    }
   }
 
   render() {
     this.setHeader(
       <div className="vault-settings-header">
         <Button onClick={this.openVaultFolder}>Open Vault Folder</Button>
+        <span className="vault-name">{this.props.vault.name}</span>
       </div>
     );
     return super.render(

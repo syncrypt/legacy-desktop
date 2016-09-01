@@ -8,28 +8,28 @@ import rest from '../api';
 
 import './VaultList.css';
 
-
 class VaultItem extends SyncryptComponent {
   constructor(props) {
     super(props);
 
     this.state = { className: "card vault-card" };
-    this.bindFunctions(["openSettings"]);
+    this.bindFunctions(["onClick"]);
   }
 
   static propTypes = {
-    vault: PropTypes.object.isRequired
+    vault: PropTypes.object.isRequired,
+    onClick: PropTypes.func.isRequired,
   };
 
-  openSettings() {
-    // TODO: set Sidebar content accordingly using VaultSettingsBar
+  onClick() {
     this.setState({ className: "card vault-card-selected" });
+    this.props.onClick();
   }
 
   render() {
     const { vault } = this.props;
     return (
-      <div className={this.state.className} onClick={this.openSettings}>
+      <div className={this.state.className} onClick={this.onClick}>
         <div className="vault-icon"></div>
         <div className="vault-title">{vault.name || vault.id}</div>
 
@@ -56,12 +56,13 @@ class NewVaultItem extends Component {
 
 class VaultList extends SyncryptComponent {
   static propTypes = {
-    vaults: PropTypes.array.isRequired
+    vaults: PropTypes.array.isRequired,
+    onVaultSelect: PropTypes.func.isRequired
   };
 
   constructor() {
-      super()
-      this.bindFunctions(["addNewVault", "addNewVaultCallback"]);
+    super()
+    this.bindFunctions(["addNewVault", "addNewVaultCallback"]);
   }
 
   addNewVault() {
@@ -83,10 +84,10 @@ class VaultList extends SyncryptComponent {
 
   render() {
     return (
-        <div className="vault-list">
-          <NewVaultItem onClick={this.addNewVault} />
-          {this.props.vaults.map(v => <VaultItem key={v.id} vault={v} />)}
-        </div>
+      <div className="vault-list">
+        <NewVaultItem onClick={this.addNewVault} />
+        {this.props.vaults.map(v => <VaultItem key={v.id} vault={v} onClick={() => this.props.onVaultSelect(v)} />)}
+      </div>
     );
   }
 }

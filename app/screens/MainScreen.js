@@ -6,6 +6,8 @@ import rest from '../api'
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { Button, Container, Grid, Row, Col } from 'react-bootstrap';
+import VaultSettingsBar from '../components/VaultSettingsBar';
+import AccountSettingsBar from '../components/AccountSettingsBar';
 
 class Header extends SyncryptComponent {
   render() {
@@ -36,7 +38,7 @@ class MainScreen extends SyncryptComponent {
 
   constructor(props) {
     super(props);
-    this.bindFunctions(["logout", "onToggleSidebar"]);
+    this.bindFunctions(["logout", "onToggleSidebar", "selectedVault"]);
     this.state = {
       sidebarHidden: false,
       className: "main-screen"
@@ -67,21 +69,38 @@ class MainScreen extends SyncryptComponent {
     this.setState({sidebarHidden: hidden});
   }
 
+  selectedVault(vault) {
+    this.setState({
+      selectedVault: vault,
+      sidebarHidden: this.state.sidebarHidden
+    });
+  }
+
+  sidebar() {
+    var v = this.state.selectedVault;
+    if(v) {
+      return <VaultSettingsBar onToggle={this.onToggleSidebar} vault={v} />
+    } else {
+      return <AccountSettingsBar onToggle={this.onToggleSidebar} />;
+    }
+  }
+
   render() {
     const {vaults, stats, vault_members} = this.props;
-    const Sidebar = this.props.sidebar.type;
+    // const Sidebar = this.props.sidebar.type;
     return (
       <div>
         <div className={this.className()}>
           <Header stats={stats} onLogoutClick={this.logout} />
           <Grid>
             <Row>
-              <VaultList vaults={vaults} />
+              <VaultList vaults={vaults} onVaultSelect={this.selectedVault} />
             </Row>
           </Grid>
           <Footer vaults={vaults} stats={stats} onLogoutClick={this.logout} />
         </div>
-        <Sidebar onToggle={this.onToggleSidebar}/>
+        { this.sidebar() }
+
       </div>
     );
   }
