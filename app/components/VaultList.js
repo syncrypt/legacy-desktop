@@ -39,7 +39,7 @@ class VaultItem extends SyncryptComponent {
     return (
       <div className={this.className()} onClick={this.selectItem}>
         <div className="vault-icon"></div>
-        <div className="vault-title">{vault.name || vault.id}</div>
+        <div className="vault-title">{vault.metadata.name || vault.id}</div>
 
         <div className="footer-vault">
           <div className="vault-users">{vault.user_count}</div>

@@ -29,10 +29,11 @@ class VaultSettingsBar extends Sidebar {
   }
 
   render() {
+    const { vault } = this.props;
     this.setHeader(
       <div className="vault-settings-header">
         <Button onClick={this.openVaultFolder}>Open Vault Folder</Button>
-        <span className="vault-name">{this.props.vault.name}</span>
+        <span className="vault-name">{vault.metadata.name || vault.id}</span>
       </div>
     );
     return super.render(
