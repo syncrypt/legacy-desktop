@@ -20,6 +20,7 @@
    margin-top: 10px;
    padding: 10px;
    position: relative;
+   transition: all 0.25s;
 }
 
 .vault-card-selected {
@@ -28,9 +29,14 @@
   background: linear-gradient(0deg, #667381, #F3967F);
 }
 
+.vault-card {
+  transition: all 0.25s;
+}
+
 .vault-card:hover {
   background: linear-gradient(0deg, #667381, #F3967F);
   opacity: 0.7;
+  transition: all 0.25s;
 }
 
 .new-vault-card {
@@ -80,9 +86,7 @@
   margin-top: 11px;
   margin-left: 10px;
   margin-right: 10px;
-
 }
-
 
 .vault-users {
   background-image:url(../assets/avatar.png);
@@ -110,6 +114,4 @@
   position: absolute;
   bottom: 5px;
   right: -5px;
-
-
 }
