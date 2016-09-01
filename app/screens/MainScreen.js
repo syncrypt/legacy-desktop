@@ -12,11 +12,13 @@ import AccountSettingsBar from '../components/AccountSettingsBar';
 class Header extends SyncryptComponent {
   render() {
     const {vaults, stats} = this.props;
-    return (<div className="main-screen-header">
+    return (
+      <div className="main-screen-header">
         <div className="main-screen-stats">
           <Button onClick={this.props.onLogoutClick}>Logout</Button>
         </div>
-      </div>)
+      </div>
+    );
   }
 }
 
@@ -27,7 +29,7 @@ class Footer extends SyncryptComponent {
       <div className="main-screen-footer">
         {vaults.length} Vault(s) / {stats.stats} / {stats.downloads} / {stats.uploads}
       </div>
-    )
+    );
   }
 }
 
@@ -54,7 +56,7 @@ class MainScreen extends SyncryptComponent {
 
   logout() {
     this.props.dispatch(rest.actions.auth.logout((err, data) => {
-        this.props.history.push('/');
+      this.props.history.push('/');
     }));
   }
 
