@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import './LoginScreen.css';
 import { Grid, Row, Col, Button, FormGroup, FormControl, HelpBlock, ControlLabel } from 'react-bootstrap';
 import ReactDOM from 'react-dom';import rest from '../api'
+import { hashHistory } from 'react-router';
 
 
 class LoginScreen extends SyncryptComponent {
@@ -30,7 +31,7 @@ class LoginScreen extends SyncryptComponent {
       })
     } else {
       if (data.status == "ok") {
-        this.props.history.push("/main")
+        hashHistory.push("/main")
       } else {
         this.setState({
           errors: this.state.errors.concat(data.text)

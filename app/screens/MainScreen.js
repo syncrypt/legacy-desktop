@@ -8,6 +8,7 @@ import { connect } from 'react-redux';
 import { Button, Container, Grid, Row, Col } from 'react-bootstrap';
 import VaultSettingsBar from '../components/VaultSettingsBar';
 import AccountSettingsBar from '../components/AccountSettingsBar';
+import { hashHistory } from 'react-router';
 
 class Header extends SyncryptComponent {
   render() {
@@ -56,7 +57,7 @@ class MainScreen extends SyncryptComponent {
 
   logout() {
     this.props.dispatch(rest.actions.auth.logout((err, data) => {
-      this.props.history.push('/');
+      hashHistory.push('/');
     }));
   }
 
