@@ -18,6 +18,10 @@ export default reduxApi({
     transformer: transformers.array,
     crud: true
   },
+  vaultusers: {
+    url: `/v1/vault/:id/users/`,
+    transformer: transformers.array,
+  },
   auth: {
     url: `/v1/auth/:method/`,
     helpers: {

@@ -10,8 +10,8 @@ export default (
   <Route path="/" component={App}>
     <IndexRoute component={LoginScreen} />
     <Route path="/main" component={MainScreen}>
-      <Route path="/vault/:vault-id" components={{ sidebar: VaultSettingsBar }} />
-      <IndexRoute components={{ sidebar: VaultSettingsBar }} />
+        <IndexRoute components={{sidebar: AccountSettingsBar }} />
+        <Route path="vault/:vault_id" components={{ sidebar: VaultSettingsBar }} />
     </Route>
   </Route>
 );

@@ -97,8 +97,9 @@ class VaultList extends SyncryptComponent {
             <VaultItem
               key={v.id}
               vault={v}
-              selected={this.props.selectedVault ? (v.id === this.props.selectedVault.id) : false}
-              onClick={this.props.onVaultSelect}
+              selected={this.props.selectedVault && v.id === this.props.selectedVault.id || false}
+              onClick={() => this.props.onVaultSelect(
+                  (this.props.selectedVault && v.id === this.props.selectedVault.id) ? null : v)}
             />
           )
         }

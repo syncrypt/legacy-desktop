@@ -4,6 +4,7 @@ import './VaultSettingsBar.css';
 import { Button, FormGroup, FormControl } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import { shell } from 'electron';
+import rest from '../api'
 
 class VaultSettingsBar extends Sidebar {
   static propTypes = {
@@ -80,17 +81,19 @@ class VaultSettingsBar extends Sidebar {
   }
 }
 
-function mapStateToProps(state) {
+function mapStateToProps(state, ownProps) {
+  const { routeParams } = ownProps;
+  const { vaults, vaultusers } = state;
   return {
-    vault_members: [
-      {
+    vault: vaults.data.filter((v) => v.id == routeParams.vault_id)[0],
+    vault_members: (vaultusers.data || []).map((vu) =>
+      ({
         icon_url: "https://avatars0.githubusercontent.com/u/17142?v=3&s=460",
-        email: "chris@syncrypt.space",
-        name: "Christopher Bertels",
+        email: vu.email,
+        name: vu.email,
         join_date: "01.08.2016",
         uploads: 1000
-      }
-    ]
+      }))
   };
 }
 

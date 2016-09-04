@@ -9,6 +9,7 @@ import { Button, Container, Grid, Row, Col } from 'react-bootstrap';
 import VaultSettingsBar from '../components/VaultSettingsBar';
 import AccountSettingsBar from '../components/AccountSettingsBar';
 import { hashHistory } from 'react-router';
+import * as actions from '../actions';
 
 class Header extends SyncryptComponent {
   render() {
@@ -41,9 +42,7 @@ class MainScreen extends SyncryptComponent {
 
   constructor(props) {
     super(props);
-    this.bindFunctions([
-      "logout", "onToggleSidebar", "selectedVault", "unselectedVault"
-    ]);
+    this.bindFunctions([ "onToggleSidebar" ]);
     this.state = { sidebarHidden: false };
   }
 
@@ -53,12 +52,6 @@ class MainScreen extends SyncryptComponent {
     } else {
       return "main-screen";
     }
-  }
-
-  logout() {
-    this.props.dispatch(rest.actions.auth.logout((err, data) => {
-      hashHistory.push('/');
-    }));
   }
 
   componentDidMount() {
@@ -71,63 +64,37 @@ class MainScreen extends SyncryptComponent {
     this.setState({sidebarHidden: hidden});
   }
 
-  selectedVault(vaultItem) {
-    const { vault } = vaultItem.props;
-    var selectedVault = this.state.selectedVault;
-
-    if(selectedVault && selectedVault.id === vault.id) {
-      return this.unselectedVault();
-    }
-
-    this.setState({
-      selectedVault: vault,
-      sidebarHidden: this.state.sidebarHidden
-    });
-  }
-
-  unselectedVault() {
-    this.setState({
-      sidebarHidden: this.state.sidebarHidden,
-      selectedVault: null
-    });
-  }
-
-  sidebar() {
-    var v = this.state.selectedVault;
-    if(v) {
-      return <VaultSettingsBar onToggle={this.onToggleSidebar} vault={v} />
-    } else {
-      return <AccountSettingsBar onToggle={this.onToggleSidebar} />;
-    }
-  }
-
   render() {
-    const {vaults, stats, vault_members} = this.props;
-    // const Sidebar = this.props.sidebar.type;
+    const {vaults, stats } = this.props;
+
+    let boundActions = bindActionCreators(actions, this.props.dispatch);
+
     return (
       <div>
         <div className={this.className()}>
-          <Header stats={stats} onLogoutClick={this.logout} />
+          <Header stats={stats} onLogoutClick={boundActions.logout} />
           <Grid>
             <Row>
               <VaultList
                 vaults={vaults}
-                selectedVault={this.state.selectedVault}
-                onVaultSelect={this.selectedVault} />
+                selectedVault={this.props.selectedVault}
+                onVaultSelect={boundActions.selectVault} />
             </Row>
           </Grid>
-          <Footer vaults={vaults} stats={stats} onLogoutClick={this.logout} />
+          <Footer vaults={vaults} stats={stats} />
         </div>
-        { this.sidebar() }
-
+        { this.props.sidebar }
       </div>
     );
   }
 }
 
-function mapStateToProps(state) {
+function mapStateToProps(state, ownProps) {
+  const { vaults, navigation } = state;
   return {
-    vaults: state.vaults.data,
+    selectedVault: navigation.selected_vault_id ? (vaults.data || [])
+            .filter((v) => v.id == navigation.selected_vault_id)[0] : null,
+    vaults: vaults.data || [],
     stats: state.stats.sync ? state.stats.data.stats : {}
   };
 }
