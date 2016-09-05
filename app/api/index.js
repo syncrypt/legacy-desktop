@@ -22,6 +22,10 @@ export default reduxApi({
     url: `/v1/vault/:id/users/`,
     transformer: transformers.array,
   },
+  vaultuserkeys: {
+    url: `/v1/vault/:id/user/:email/keys/`,
+    transformer: transformers.array,
+  },
   auth: {
     url: `/v1/auth/:method/`,
     helpers: {
