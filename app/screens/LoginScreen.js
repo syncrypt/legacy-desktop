@@ -4,8 +4,8 @@ import { Link } from 'react-router';
 import { connect } from 'react-redux';
 import './LoginScreen.css';
 import { Grid, Row, Col, Button, FormGroup, FormControl, HelpBlock, ControlLabel } from 'react-bootstrap';
-import ReactDOM from 'react-dom';import rest from '../api'
 import { hashHistory } from 'react-router';
+import rest from '../api'
 
 
 class LoginScreen extends SyncryptComponent {
@@ -20,7 +20,7 @@ class LoginScreen extends SyncryptComponent {
   login() {
     this.setState({errors: []})
     this.props.dispatch(
-      rest.actions.auth.login(this.formVal("email"), this.formVal("password"), this.loginError)
+      rest.actions.auth.login(this.getFormValueByRef("email"), this.getFormValueByRef("password"), this.loginError)
     );
   }
 
@@ -38,10 +38,6 @@ class LoginScreen extends SyncryptComponent {
         })
       }
     }
-  }
-
-  formVal(name) {
-    return ReactDOM.findDOMNode(this.refs[name]).value
   }
 
   enterPressed(event) {

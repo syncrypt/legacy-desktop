@@ -4,7 +4,7 @@ import './VaultSettingsBar.css';
 import { Button, FormGroup, FormControl } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import { shell } from 'electron';
-import rest from '../api'
+import rest from '../api';
 
 class VaultSettingsBar extends Sidebar {
   static propTypes = {
@@ -17,8 +17,9 @@ class VaultSettingsBar extends Sidebar {
   }
 
   addUser() {
-    // TODO
-    console.log("adding user");
+    let email = this.getFormValueByRef('email');
+    console.log("adding user:", email);
+    // TODO this.props.dispatch(addVaultUser(this.props.vault, email));
   }
 
   openVaultFolder() {
