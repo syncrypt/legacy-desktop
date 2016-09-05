@@ -12,8 +12,6 @@ import './app.css';
 const store = configureStore();
 const history = syncHistoryWithStore(hashHistory, store);
 
-import { browserHistory } from 'react-router'
-
 store.dispatch(rest.actions.auth.check((err, data) => {
     if (data.connected) {
         hashHistory.push('/main');
