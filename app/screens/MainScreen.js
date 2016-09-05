@@ -42,12 +42,10 @@ class MainScreen extends SyncryptComponent {
 
   constructor(props) {
     super(props);
-    this.bindFunctions([ "onToggleSidebar" ]);
-    this.state = { sidebarHidden: false };
   }
 
   className() {
-    if(this.state.sidebarHidden) {
+    if (this.props.sidebarHidden) {
       return "main-screen expanded";
     } else {
       return "main-screen";
@@ -58,10 +56,6 @@ class MainScreen extends SyncryptComponent {
     const {dispatch} = this.props;
     dispatch(rest.actions.stats.sync());
     dispatch(rest.actions.vaults.sync());
-  }
-
-  onToggleSidebar(hidden) {
-    this.setState({sidebarHidden: hidden});
   }
 
   render() {
@@ -94,6 +88,7 @@ function mapStateToProps(state, ownProps) {
   return {
     selectedVault: navigation.selected_vault_id ? (vaults.data || [])
             .filter((v) => v.id == navigation.selected_vault_id)[0] : null,
+    sidebarHidden: navigation.sidebarHidden,
     vaults: vaults.data || [],
     stats: state.stats.sync ? state.stats.data.stats : {}
   };

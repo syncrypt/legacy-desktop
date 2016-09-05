@@ -4,9 +4,10 @@ import './VaultSettingsBar.css';
 import { Button, FormGroup, FormControl } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import { shell } from 'electron';
+import SyncryptComponent from './SyncryptComponent';
 import rest from '../api';
 
-class VaultSettingsBar extends Sidebar {
+class VaultSettingsBar extends SyncryptComponent {
   static propTypes = {
     vault: PropTypes.object.isRequired
   };
@@ -32,13 +33,12 @@ class VaultSettingsBar extends Sidebar {
 
   render() {
     const { vault } = this.props;
-    this.setHeader(
+    const header =
       <div className="vault-settings-header">
         <Button onClick={this.openVaultFolder}>Open Vault Folder</Button>
         <span className="vault-name">{vault.metadata.name || vault.id}</span>
-      </div>
-    );
-    return super.render(
+      </div>;
+    return <Sidebar header={header}>
       <div>
         <div className="user-invite">
           <div className="add-user">
@@ -78,7 +78,7 @@ class VaultSettingsBar extends Sidebar {
           </table>
         </div>
       </div>
-    );
+    </Sidebar>
   }
 }
 

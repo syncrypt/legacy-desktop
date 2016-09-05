@@ -1,13 +1,17 @@
 import React from 'react';
 import Sidebar from './Sidebar';
+import SyncryptComponent from './SyncryptComponent';
 import './AccountSettingsBar.css';
 import { Button, FormGroup, FormControl, ControlLabel } from 'react-bootstrap';
 import { connect } from 'react-redux';
 
-class AccountSettingsBar extends Sidebar {
+class AccountSettingsBar extends SyncryptComponent {
   constructor(props) {
     super(props);
     this.bindFunctions(["updateAccount"]);
+    this.state = {
+      errors: [],
+    };
   }
 
   updateAccount() {
@@ -17,13 +21,11 @@ class AccountSettingsBar extends Sidebar {
   render() {
     const { account } = this.props;
 
-    this.setHeader(
-      <div className="account-settings-header">
-        Account Settings
-      </div>
-    );
+    const header = <div className="account-settings-header">
+            Account Settings
+        </div>;
 
-    return super.render(
+    return <Sidebar header={header}>
       <div className="account-settings">
         <form>
           <FormGroup controlId="formBasicText">
@@ -50,7 +52,7 @@ class AccountSettingsBar extends Sidebar {
           </FormGroup>
         </form>
       </div>
-    );
+      </Sidebar>
   }
 }
 

@@ -1,37 +1,19 @@
 import React, { PropTypes } from 'react';
 import SyncryptComponent from '../components/SyncryptComponent';
 import { connect } from 'react-redux';
+import * as actions from '../actions';
+import { bindActionCreators } from 'redux';
 import './SidebarToggle.css';
 
 class SidebarToggle extends SyncryptComponent {
-  constructor(props) {
-    super(props);
-    this.bindFunctions(["toggle"]);
-    this.state = {
-      direction: "right"
-    };
-  }
-
-  static propTypes = {
-    onClick: PropTypes.func.isRequired
-  };
-
-  toggle() {
-    var direction = "left"
-    if(this.state.direction == "left") {
-      direction = "right"
-    }
-    this.setState({direction: direction});
-    this.props.onClick();
-  }
-
   className() {
-    return "sidebar-toggle toggle-" + this.state.direction;
+    return "sidebar-toggle toggle-" + this.props.direction;
   }
 
   render() {
+    let { toggleSidebar } = bindActionCreators(actions, this.props.dispatch);
     return (
-      <div className={this.className()} onClick={this.toggle}>
+      <div className={this.className()} onClick={toggleSidebar}>
         <img src="./assets/triangle.png" />
       </div>
     );
