@@ -6,6 +6,7 @@ import { connect } from 'react-redux';
 import { shell } from 'electron';
 import SyncryptComponent from './SyncryptComponent';
 import rest from '../api';
+import { addVaultUser } from '../actions';
 
 class VaultSettingsBar extends SyncryptComponent {
   static propTypes = {
@@ -20,7 +21,7 @@ class VaultSettingsBar extends SyncryptComponent {
   addUser() {
     let email = this.getFormValueByRef('email');
     console.log("adding user:", email);
-    // TODO this.props.dispatch(addVaultUser(this.props.vault, email));
+    this.props.dispatch(addVaultUser(this.props.vault, email));
   }
 
   openVaultFolder() {

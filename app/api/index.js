@@ -21,6 +21,7 @@ export default reduxApi({
   vaultusers: {
     url: `/v1/vault/:id/users/`,
     transformer: transformers.array,
+    crud: true
   },
   vaultuserkeys: {
     url: `/v1/vault/:id/user/:email/keys/`,

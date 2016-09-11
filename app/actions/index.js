@@ -24,3 +24,15 @@ export function selectVault(vaultItem) {
 export function toggleSidebar() {
   return {type: 'TOGGLE_SIDEBAR'}
 }
+
+export function addVaultUser(vaultItem, email) {
+  return (dispatch) => {
+    dispatch(rest.actions.vaultusers.post(
+        {id: vaultItem.id},
+        { body: JSON.stringify({ email: email }) },
+        () => {
+          // After add, reload vault users
+          dispatch(rest.actions.vaultusers({id: vaultItem.id}))
+        }))
+  }
+}
