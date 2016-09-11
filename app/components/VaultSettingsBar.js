@@ -58,7 +58,6 @@ class VaultSettingsBar extends SyncryptComponent {
               <th></th>
               <th className="name"><h2>Members</h2></th>
               <th className="other">Joined</th>
-              <th className="other">Uploads</th>
             </tr>
 
             {
@@ -71,7 +70,6 @@ class VaultSettingsBar extends SyncryptComponent {
                     {user.name} <span className="email">{user.email}</span>
                   </td>
                   <td className="other">{user.join_date}</td>
-                  <td className="other">{user.uploads}</td>
                 </tr>
               )
             }
@@ -91,9 +89,8 @@ function mapStateToProps(state, ownProps) {
       ({
         icon_url: "https://avatars0.githubusercontent.com/u/17142?v=3&s=460",
         email: vu.email,
-        name: vu.email,
-        join_date: "01.08.2016",
-        uploads: 1000
+        name: vu.first_name + " " + vu.last_name,
+        join_date: vu.access_granted_at
       }))
   };
 }
