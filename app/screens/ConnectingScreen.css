@@ -1,5 +1,9 @@
 .connecting-screen {
-  background: linear-gradient(0deg, #3B6491, #F3967F);
+  /*background: linear-gradient(0deg, #3B6491, #F3967F);*/
+  height: 100%;
+}
+
+#granim-canvas {
   height: 100%;
 }
 
