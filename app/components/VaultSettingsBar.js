@@ -7,6 +7,7 @@ import { shell } from 'electron';
 import SyncryptComponent from './SyncryptComponent';
 import rest from '../api';
 import { addVaultUser } from '../actions';
+import crypto from 'crypto';
 
 class VaultSettingsBar extends SyncryptComponent {
   static propTypes = {
@@ -81,6 +82,15 @@ class VaultSettingsBar extends SyncryptComponent {
   }
 }
 
+function md5(data) {
+  return crypto.createHash('md5').update(data).digest("hex");
+}
+
+function gravatarIconUrl(email) {
+  var hash = md5(email.trim().toLowerCase());
+  return "https://www.gravatar.com/avatar/" + hash;
+}
+
 function mapStateToProps(state, ownProps) {
   const { routeParams } = ownProps;
   const { vaults, vaultusers } = state;
@@ -88,7 +98,7 @@ function mapStateToProps(state, ownProps) {
     vault: vaults.data.filter((v) => v.id == routeParams.vault_id)[0],
     vault_members: (vaultusers.data || []).map((vu) =>
       ({
-        icon_url: "https://avatars0.githubusercontent.com/u/17142?v=3&s=460",
+        icon_url: gravatarIconUrl(vu.email),
         email: vu.email,
         name: vu.first_name + " " + vu.last_name,
         join_date: vu.access_granted_at
