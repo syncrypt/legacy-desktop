@@ -19,8 +19,8 @@ class ConnectingScreen extends SyncryptComponent {
         }
       }
     });
-
   }
+
   render() {
     return (
       <div className="connecting-screen">
