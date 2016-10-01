@@ -25,6 +25,10 @@ export function toggleSidebar() {
   return {type: 'TOGGLE_SIDEBAR'}
 }
 
+export function refreshUserKeys(email) {
+  return rest.actions.userkeys({ email: email })
+}
+
 export function addVaultUser(vaultItem, email) {
   return (dispatch) => {
     dispatch(rest.actions.vaultusers.post(

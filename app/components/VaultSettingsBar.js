@@ -6,8 +6,10 @@ import { connect } from 'react-redux';
 import { shell } from 'electron';
 import SyncryptComponent from './SyncryptComponent';
 import rest from '../api';
-import { addVaultUser } from '../actions';
-import crypto from 'crypto';
+import { addVaultUser, refreshUserKeys } from '../actions';
+
+import AddUserDialog from './AddUserDialog';
+import UserIcon from './UserIcon';
 
 class VaultSettingsBar extends SyncryptComponent {
   static propTypes = {
@@ -17,12 +19,18 @@ class VaultSettingsBar extends SyncryptComponent {
   constructor(props) {
     super(props);
     this.bindFunctions(["addUser", "openVaultFolder"]);
+    this.state = { showAddDialog: false, addDialogUser: null }
   }
 
   addUser() {
     let email = this.getFormValueByRef('email');
     console.log("adding user:", email);
-    this.props.dispatch(addVaultUser(this.props.vault, email));
+    this.props.dispatch(refreshUserKeys(email));
+    //   this.props.dispatch(addVaultUser(this.props.vault, email));
+    this.setState({
+      showAddDialog: true,
+      addDialogEmail: email
+    })
   }
 
   openVaultFolder() {
@@ -66,7 +74,7 @@ class VaultSettingsBar extends SyncryptComponent {
               this.props.vault_members.map((user, i) =>
                 <tr key={i} className="vault-member">
                   <td>
-                    <img className="vault-member-icon" src={user.icon_url} />
+                    <UserIcon email={user.email} />
                   </td>
                   <td className="name">
                     {user.name} <span className="email">{user.email}</span>
@@ -77,18 +85,10 @@ class VaultSettingsBar extends SyncryptComponent {
             }
           </table>
         </div>
-      </div>
+        </div>
+        <AddUserDialog show={this.state.showAddDialog} email={this.state.addDialogEmail} />
     </Sidebar>
   }
-}
-
-function md5(data) {
-  return crypto.createHash('md5').update(data).digest("hex");
-}
-
-function gravatarIconUrl(email) {
-  var hash = md5(email.trim().toLowerCase());
-  return "https://www.gravatar.com/avatar/" + hash;
 }
 
 function mapStateToProps(state, ownProps) {
@@ -98,7 +98,6 @@ function mapStateToProps(state, ownProps) {
     vault: vaults.data.filter((v) => v.id == routeParams.vault_id)[0],
     vault_members: (vaultusers.data || []).map((vu) =>
       ({
-        icon_url: gravatarIconUrl(vu.email),
         email: vu.email,
         name: vu.first_name + " " + vu.last_name,
         join_date: vu.access_granted_at

@@ -23,6 +23,10 @@ export default reduxApi({
     transformer: transformers.array,
     crud: true
   },
+  userkeys: {
+    url: `/v1/user/:email/keys/`,
+    transformer: transformers.array,
+  },
   vaultuserkeys: {
     url: `/v1/vault/:id/user/:email/keys/`,
     transformer: transformers.array,
