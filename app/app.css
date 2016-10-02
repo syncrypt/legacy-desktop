@@ -50,3 +50,7 @@ a:hover {
 .container {
   width: 100%;
 }
+
+.modal-content {
+  border-radius: 0px;
+}
