@@ -36,3 +36,6 @@ main.js
 main.js.map
 
 client/
+
+# vi
+*.sw?
