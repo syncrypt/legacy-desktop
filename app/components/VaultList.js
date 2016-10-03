@@ -53,7 +53,7 @@ class NewVaultItem extends Component {
   render() {
     const { vault } = this.props;
     return (
-      <div className="card new-vault-card" xs={4} {...this.props}>
+      <div className="card new-vault-card" {...this.props}>
         <div className="vault-plus"></div>
       </div>
     );
