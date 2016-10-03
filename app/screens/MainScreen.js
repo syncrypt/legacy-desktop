@@ -87,12 +87,18 @@ class MainScreen extends SyncryptComponent {
 
 function mapStateToProps(state, ownProps) {
   const { vaults, flyingvaults, navigation } = state;
+
+  // Remove all cloned vaults from flyingvaults...
+  let clonedVaults = vaults.data || []
+  let clonedVaultIds = clonedVaults.map((v) => v.id);
+  let flyingVaults = (flyingvaults.data || []).filter((fv) => !clonedVaultIds.includes(fv.id))
+
   return {
     selectedVault: navigation.selected_vault_id ? (vaults.data || [])
             .filter((v) => v.id == navigation.selected_vault_id)[0] : null,
     sidebarHidden: navigation.sidebarHidden,
-    vaults: vaults.data || [],
-    flyingVaults: flyingvaults.data || [],
+    vaults: clonedVaults,
+    flyingVaults: flyingVaults,
     stats: state.stats.sync ? state.stats.data.stats : {}
   };
 }
