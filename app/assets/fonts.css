@@ -26,5 +26,5 @@
   font-family: 'Hind';
   font-style: normal;
   font-weight: 700;
-  src: local('Hind Bold'), local('Hind-Bold'), url(hind700.tif) format('truetype');
+  src: local('Hind Bold'), local('Hind-Bold'), url(hind700.ttf) format('truetype');
 }
