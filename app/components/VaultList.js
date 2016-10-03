@@ -85,7 +85,7 @@ class VaultList extends SyncryptComponent {
 
   constructor() {
     super()
-    this.bindFunctions(["addNewVault", "addNewVaultCallback"]);
+    this.bindFunctions(["addNewVault", "addNewVaultCallback", "cloneVault"]);
   }
 
   addNewVault() {
@@ -99,6 +99,14 @@ class VaultList extends SyncryptComponent {
         )
     );
     }
+  }
+
+  cloneVault() {
+    var folders = remote.dialog.showOpenDialog({
+      properties: ['openDirectory', 'createDirectory'],
+      buttonLabel: "Clone into this directory"
+    });
+    alert("Not implemented yet");
   }
 
   addNewVaultCallback(err, data) {
@@ -126,7 +134,7 @@ class VaultList extends SyncryptComponent {
               key={v.id}
               vault={v}
               selected={this.props.selectedVault && v.id === this.props.selectedVault.id || false}
-              onClick={() => alert("Not implemented yet!")}
+              onClick={() => this.cloneVault(v)}
             />
           )
         }
