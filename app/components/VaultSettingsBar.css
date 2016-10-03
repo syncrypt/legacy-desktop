@@ -1,3 +1,9 @@
+.vault-settings-header {
+  overflow: hidden;
+  white-space: nowrap;
+  height: 50px;
+}
+
 .vault-settings-header button {
   position: relative;
   margin-left: 15px;

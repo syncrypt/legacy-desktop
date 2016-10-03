@@ -29,14 +29,16 @@ export function refreshUserKeys(email) {
   return rest.actions.userkeys({ email: email })
 }
 
-export function addVaultUser(vaultItem, email) {
+export function addVaultUser(vaultItem, email, fingerprints, callback) {
   return (dispatch) => {
+    console.log("adding user:", email);
     dispatch(rest.actions.vaultusers.post(
         {id: vaultItem.id},
-        { body: JSON.stringify({ email: email }) },
+        { body: JSON.stringify({ email: email, fingerprints: fingerprints }) },
         () => {
           // After add, reload vault users
           dispatch(rest.actions.vaultusers({id: vaultItem.id}))
+          if (callback) callback();
         }))
   }
 }

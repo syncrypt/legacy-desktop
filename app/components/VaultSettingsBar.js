@@ -18,18 +18,23 @@ class VaultSettingsBar extends SyncryptComponent {
 
   constructor(props) {
     super(props);
-    this.bindFunctions(["addUser", "openVaultFolder"]);
+    this.bindFunctions(["addUser", "openVaultFolder", "onAddUserClose"]);
     this.state = { showAddDialog: false, addDialogUser: null }
   }
 
   addUser() {
     let email = this.getFormValueByRef('email');
-    console.log("adding user:", email);
     this.props.dispatch(refreshUserKeys(email));
-    //   this.props.dispatch(addVaultUser(this.props.vault, email));
     this.setState({
       showAddDialog: true,
       addDialogEmail: email
+    })
+  }
+
+  onAddUserClose() {
+    this.setState({
+      showAddDialog: false,
+      addDialogEmail: null
     })
   }
 
@@ -86,7 +91,7 @@ class VaultSettingsBar extends SyncryptComponent {
           </table>
         </div>
         </div>
-        <AddUserDialog show={this.state.showAddDialog} email={this.state.addDialogEmail} />
+        <AddUserDialog vault={vault} show={this.state.showAddDialog} onClose={this.onAddUserClose} email={this.state.addDialogEmail || ""} />
     </Sidebar>
   }
 }
