@@ -49,7 +49,7 @@ class AddUserDialog extends SyncryptComponent {
 
   render () {
     let fingerprints = this.state.fingerprints;
-    return <Modal show={this.props.show} className='add-user-dialog'>
+    return <Modal show={this.props.show} className='add-user-dialog' backdrop={true} onHide={this.props.onClose}>
       <Modal.Header>
         Invite User
       </Modal.Header>

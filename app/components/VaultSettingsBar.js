@@ -1,4 +1,5 @@
 import React, { PropTypes } from 'react';
+import ReactDOM from 'react-dom';
 import Sidebar from './Sidebar';
 import './VaultSettingsBar.css';
 import { Button, FormGroup, FormControl } from 'react-bootstrap';
@@ -18,7 +19,7 @@ class VaultSettingsBar extends SyncryptComponent {
 
   constructor(props) {
     super(props);
-    this.bindFunctions(["addUser", "openVaultFolder", "onAddUserClose"]);
+    this.bindFunctions(["addUser", "openVaultFolder", "onAddUserClose", "onAddUserKeyDown"]);
     this.state = { showAddDialog: false, addDialogUser: null }
   }
 
@@ -32,10 +33,17 @@ class VaultSettingsBar extends SyncryptComponent {
   }
 
   onAddUserClose() {
+    ReactDOM.findDOMNode(this.refs.email).value = "";
     this.setState({
       showAddDialog: false,
       addDialogEmail: null
     })
+  }
+
+  onAddUserKeyDown(event) {
+    if (event.keyCode == 13) {
+      this.addUser();
+    }
   }
 
   openVaultFolder() {
@@ -61,7 +69,7 @@ class VaultSettingsBar extends SyncryptComponent {
               <h2>Invite Users</h2>
               <span>
                 <div className="user-plus" onClick={this.addUser}></div>
-                <FormControl ref="email" className="email-input" type="text" placeholder="Email" />
+                <FormControl ref="email" className="email-input" type="text" placeholder="Email" onKeyDown={this.onAddUserKeyDown}  />
               </span>
             </form>
           </div>
