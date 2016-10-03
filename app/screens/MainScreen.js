@@ -56,10 +56,11 @@ class MainScreen extends SyncryptComponent {
     const {dispatch} = this.props;
     dispatch(rest.actions.stats.sync());
     dispatch(rest.actions.vaults.sync());
+    dispatch(rest.actions.flyingvaults.sync());
   }
 
   render() {
-    const {vaults, stats } = this.props;
+    const {vaults, flyingVaults, stats } = this.props;
 
     let boundActions = bindActionCreators(actions, this.props.dispatch);
 
@@ -71,6 +72,7 @@ class MainScreen extends SyncryptComponent {
             <Row>
               <VaultList
                 vaults={vaults}
+                flyingVaults={flyingVaults}
                 selectedVault={this.props.selectedVault}
                 onVaultSelect={boundActions.selectVault} />
             </Row>
@@ -84,12 +86,13 @@ class MainScreen extends SyncryptComponent {
 }
 
 function mapStateToProps(state, ownProps) {
-  const { vaults, navigation } = state;
+  const { vaults, flyingvaults, navigation } = state;
   return {
     selectedVault: navigation.selected_vault_id ? (vaults.data || [])
             .filter((v) => v.id == navigation.selected_vault_id)[0] : null,
     sidebarHidden: navigation.sidebarHidden,
     vaults: vaults.data || [],
+    flyingVaults: flyingvaults.data || [],
     stats: state.stats.sync ? state.stats.data.stats : {}
   };
 }

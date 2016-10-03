@@ -45,6 +45,10 @@
   cursor: pointer;
 }
 
+.flying-vault-card {
+  cursor: pointer;
+}
+
 .vault-plus {
   width: 70px;
   height:70px;
@@ -116,3 +120,9 @@
   bottom: 5px;
   right: -5px;
 }
+
+
+.flying-vault-card {
+   border: 1px dashed #e6e6e6;
+}
+

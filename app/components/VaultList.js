@@ -48,6 +48,23 @@ class VaultItem extends SyncryptComponent {
   }
 }
 
+class FlyingVaultItem extends SyncryptComponent {
+  static propTypes = {
+    vault: PropTypes.object.isRequired,
+    onClick: PropTypes.func.isRequired
+  };
+
+  render() {
+    const { vault } = this.props;
+    return (
+      <div className="card flying-vault-card" onClick={this.props.onClick}>
+        <div className="vault-plus"></div>
+        <div className="vault-title">{vault.id}</div>
+      </div>
+    );
+  }
+}
+
 class NewVaultItem extends Component {
   /* Just shows a empty vault with a "+" button */
   render() {
@@ -100,6 +117,16 @@ class VaultList extends SyncryptComponent {
               selected={this.props.selectedVault && v.id === this.props.selectedVault.id || false}
               onClick={() => this.props.onVaultSelect(
                   (this.props.selectedVault && v.id === this.props.selectedVault.id) ? null : v)}
+            />
+          )
+        }
+        {
+          this.props.flyingVaults.map(v =>
+            <FlyingVaultItem
+              key={v.id}
+              vault={v}
+              selected={this.props.selectedVault && v.id === this.props.selectedVault.id || false}
+              onClick={() => alert("Not implemented yet!")}
             />
           )
         }

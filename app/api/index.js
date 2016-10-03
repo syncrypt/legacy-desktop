@@ -18,6 +18,10 @@ export default reduxApi({
     transformer: transformers.array,
     crud: true
   },
+  flyingvaults: {
+    url: `/v1/flying-vault/`,
+    transformer: transformers.array
+  },
   vaultusers: {
     url: `/v1/vault/:id/users/`,
     transformer: transformers.array,
