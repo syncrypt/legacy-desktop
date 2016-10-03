@@ -26,7 +26,10 @@ export function toggleSidebar() {
 }
 
 export function refreshUserKeys(email) {
-  return rest.actions.userkeys({ email: email })
+  return (dispatch) => {
+    dispatch(rest.actions.userkeys.reset());
+    dispatch(rest.actions.userkeys({ email: email }));
+  }
 }
 
 export function addVaultUser(vaultItem, email, fingerprints, callback) {
