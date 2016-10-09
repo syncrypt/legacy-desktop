@@ -7,6 +7,10 @@ export function logout() {
   });
 }
 
+export function openAccountSettings() {
+  hashHistory.push('/account/');
+}
+
 export function selectVault(vaultItem) {
   return (dispatch) => {
     if (vaultItem) {
