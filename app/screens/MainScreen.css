@@ -3,10 +3,25 @@
   -webkit-transition: width 0.5s;
 }
 
-.expanded {
+.main-screen.expanded {
   width: 100%;
   -webkit-transition: width 0.5s;
 }
+
+.main-screen > .container {
+  width: 60%;
+  position: absolute;
+  top: 64px;
+  bottom: 26px;
+  overflow-y: auto;
+  -webkit-transition: width 0.5s;
+}
+
+.main-screen.expanded > .container {
+  width: 100%;
+  -webkit-transition: width 0.5s;
+}
+
 
 .main-screen-header {
   height: 64px;
