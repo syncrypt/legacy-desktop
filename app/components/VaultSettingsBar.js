@@ -7,7 +7,7 @@ import { connect } from 'react-redux';
 import { shell } from 'electron';
 import SyncryptComponent from './SyncryptComponent';
 import rest from '../api';
-import { addVaultUser, refreshUserKeys, setVaultMetadata, deleteVault } from '../actions';
+import { addVaultUser, refreshUserKeys, setVaultMetadata, deleteVault, removeVault } from '../actions';
 
 import AddUserDialog from './AddUserDialog';
 import UserIcon from './UserIcon';
@@ -21,7 +21,7 @@ class VaultSettingsBar extends SyncryptComponent {
     super(props);
     this.bindFunctions([
       "addUser", "openVaultFolder", "onAddUserClose", "onAddUserKeyDown",
-      "editName", "editNameKeyPressed", "deleteVault"
+      "editName", "editNameKeyPressed", "deleteVault", "removeVault"
     ]);
     this.state = { showAddDialog: false, addDialogUser: null, editName: false }
   }
@@ -64,6 +64,11 @@ class VaultSettingsBar extends SyncryptComponent {
       })
     }
   }
+
+  removeVault() {
+    this.props.dispatch(removeVault(this.props.vault))
+  }
+
 
   deleteVault() {
     this.props.dispatch(deleteVault(this.props.vault))
@@ -149,7 +154,8 @@ class VaultSettingsBar extends SyncryptComponent {
         </div>
 
         <Button onClick={this.openVaultFolder}>Open Vault Folder</Button>
-        <Button onClick={this.deleteVault}>Remove this vault</Button>
+        <Button onClick={this.removeVault}>Remove this vault</Button>
+        <Button onClick={this.deleteVault}>DELETE this vault</Button>
 
         </div>
         <AddUserDialog vault={vault} show={this.state.showAddDialog} onClose={this.onAddUserClose} email={this.state.addDialogEmail || ""} />
