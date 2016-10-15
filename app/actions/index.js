@@ -79,7 +79,24 @@ export function cloneVault(vault, path, cb) {
 }
 
 export function deleteVault(vault, cb) {
-  alert("Not implemented yet");
+  return (dispatch) => {
+    console.log(`Deleting vault ${vault.id}`)
+    dispatch(rest.actions.vault.delete({ id: vault.id, wipe: 1},
+      {},
+      (err) => {
+        if(err) {
+          console.log(`Error deleting vault ${vault.id}`)
+        }
+        else {
+          hashHistory.push(`/main/`);
+          dispatch(rest.actions.vaults())
+        }
+        if (cb) {
+          cb(err)
+        }
+      }
+    ))
+  }
 }
 
 export function removeVault(vault, cb) {
