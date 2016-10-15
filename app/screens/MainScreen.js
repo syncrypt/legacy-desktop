@@ -55,6 +55,7 @@ class MainScreen extends SyncryptComponent {
   componentDidMount() {
     const {dispatch} = this.props;
     dispatch(rest.actions.stats.sync());
+    dispatch(rest.actions.user.sync());
     dispatch(rest.actions.vaults.sync());
     dispatch(rest.actions.flyingvaults.sync());
   }

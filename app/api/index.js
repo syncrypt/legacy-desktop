@@ -50,6 +50,10 @@ export default reduxApi({
     url: `/v1/vault/:id/user/:email/keys/`,
     transformer: transformers.array,
   },
+  user: {
+    url: `/v1/auth/user/`,
+    transformer: transformers.object
+  },
   auth: {
     url: `/v1/auth/:method/`,
     helpers: {

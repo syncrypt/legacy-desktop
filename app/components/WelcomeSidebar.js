@@ -16,7 +16,7 @@ class WelcomeSidebar extends SyncryptComponent {
 
     return <Sidebar header={header}>
         <div>
-            <h1>Welcome, {this.props.account.first_name}!</h1>
+            <h1>Welcome, {this.props.user.first_name}!</h1>
             <p>
                 Thanks for using the Alpha version of Syncrypt.
             </p>
@@ -38,11 +38,7 @@ class WelcomeSidebar extends SyncryptComponent {
 
 function mapStateToProps(state) {
   return {
-    account: {
-      email: "chris@syncrypt.space",
-      first_name: "Christopher",
-      last_name: "Bertels"
-    }
+    user: state.user.data
   };
 }
 
