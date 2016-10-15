@@ -126,5 +126,10 @@
 
 
 .flying-vault-card {
-   border: 1px dashed #e6e6e6;
+  border: 1px dashed #e6e6e6;
+}
+
+
+.flying-vault-card canvas {
+  opacity: 0.3;
 }
