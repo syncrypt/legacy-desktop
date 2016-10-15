@@ -1,19 +1,16 @@
 import React, { PropTypes } from 'react';
-import crypto from 'crypto';
-
-function md5(data) {
-  return crypto.createHash('md5').update(data).digest("hex");
-}
-
-function gravatarIconUrl(email) {
-  var hash = md5(email.trim().toLowerCase());
-  return "https://www.gravatar.com/avatar/" + hash;
-}
+import jdenticon from 'jdenticon';
+import {md5} from '../utils';
 
 export default class UserIcon extends React.Component {
+  componentDidMount() {
+    jdenticon.update(this.refs.iconCanvas);
+  }
+
   render () {
-    var iconUrl = gravatarIconUrl(this.props.email);
-    return <img className="vault-member-icon" src={iconUrl} />;
+    return(
+      <canvas ref="iconCanvas" className="vault-member-icon" width="50" height="50" data-jdenticon-hash={md5(this.props.email)}>
+      </canvas>
+    );
   }
 }
-

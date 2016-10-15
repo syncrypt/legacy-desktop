@@ -119,6 +119,7 @@
     "font-awesome": "^4.6.3",
     "granim": "^1.0.31",
     "isomorphic-fetch": "^2.2.1",
+    "jdenticon": "^1.3.2",
     "jsdom": "^9.6.0",
     "postcss": "^5.2.4",
     "react": "^15.3.2",
