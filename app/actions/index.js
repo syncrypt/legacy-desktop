@@ -70,7 +70,30 @@ export function cloneVault(vault, path, cb) {
           console.log(`Error cloning vault ${vault.id} into ${path}`)
         }
         dispatch(rest.actions.vaults())
-        cb(err)
+        if (cb) {
+          cb(err)
+        }
+      }
+    ))
+  }
+}
+
+export function deleteVault(vault, cb) {
+  return (dispatch) => {
+    console.log(`Deleting vault ${vault.id}`)
+    dispatch(rest.actions.vault.delete({id: vault.id},
+      { },
+      (err) => {
+        if(err) {
+          console.log(`Error deleting vault ${vault.id}`)
+        }
+        else {
+          hashHistory.push(`/main/`);
+          dispatch(rest.actions.vaults())
+        }
+        if (cb) {
+          cb(err)
+        }
       }
     ))
   }
