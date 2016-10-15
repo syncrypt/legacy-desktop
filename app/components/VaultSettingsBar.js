@@ -7,7 +7,7 @@ import { connect } from 'react-redux';
 import { shell } from 'electron';
 import SyncryptComponent from './SyncryptComponent';
 import rest from '../api';
-import { addVaultUser, refreshUserKeys } from '../actions';
+import { addVaultUser, refreshUserKeys, setVaultMetadata } from '../actions';
 
 import AddUserDialog from './AddUserDialog';
 import UserIcon from './UserIcon';
@@ -19,8 +19,11 @@ class VaultSettingsBar extends SyncryptComponent {
 
   constructor(props) {
     super(props);
-    this.bindFunctions(["addUser", "openVaultFolder", "onAddUserClose", "onAddUserKeyDown"]);
-    this.state = { showAddDialog: false, addDialogUser: null }
+    this.bindFunctions([
+      "addUser", "openVaultFolder", "onAddUserClose", "onAddUserKeyDown",
+      "editName", "editNameKeyPressed"
+    ]);
+    this.state = { showAddDialog: false, addDialogUser: null, editName: false }
   }
 
   addUser() {
@@ -46,6 +49,39 @@ class VaultSettingsBar extends SyncryptComponent {
     }
   }
 
+  editName() {
+    this.setState({
+      editName: true
+    })
+    ReactDOM.findDOMNode(this.refs.vaultName).value = this.props.vault.metadata.name;
+    ReactDOM.findDOMNode(this.refs.vaultName).focus();
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if(nextProps.vault.id !== this.props.vault.id) {
+      this.setState({
+        editName: false
+      })
+    }
+  }
+
+  editNameKeyPressed(e) {
+    if (e.key === 'Enter') {
+      this.props.dispatch(
+        setVaultMetadata(
+          this.props.vault,
+          Object.assign({},
+            this.props.vault.metadata,
+            { name: this.getFormValueByRef("vaultName") }
+          )
+        )
+      )
+      this.setState({
+        editName: false
+      })
+    }
+  }
+
   openVaultFolder() {
     if (process.platform === 'darwin') {
       shell.openExternal("file://" + this.props.vault.folder);
@@ -58,8 +94,17 @@ class VaultSettingsBar extends SyncryptComponent {
     const { vault } = this.props;
     const header =
       <div className="vault-settings-header">
-        <Button onClick={this.openVaultFolder}>Open Vault Folder</Button>
-        <span className="vault-name">{vault.metadata.name || vault.id}</span>
+        <FormControl ref="vaultName"
+                     type="text"
+                     style={{'display': this.state.editName ? 'block' : 'none'}}
+                     className="vault-name-edit"
+                     autoFocus={true}
+                     onKeyPress={this.editNameKeyPressed} />
+        <span className="vault-name"
+              style={{'display': this.state.editName ? 'none' : 'block'}}
+              onDoubleClick={this.editName}>
+          {vault.metadata.name || vault.id}
+        </span>
       </div>;
     return <Sidebar header={header}>
       <div>
@@ -98,6 +143,9 @@ class VaultSettingsBar extends SyncryptComponent {
             }
           </table>
         </div>
+
+        <Button onClick={this.openVaultFolder}>Open Vault Folder</Button>
+
         </div>
         <AddUserDialog vault={vault} show={this.state.showAddDialog} onClose={this.onAddUserClose} email={this.state.addDialogEmail || ""} />
     </Sidebar>

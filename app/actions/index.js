@@ -40,12 +40,22 @@ export function addVaultUser(vaultItem, email, fingerprints, callback) {
   return (dispatch) => {
     console.log("adding user:", email);
     dispatch(rest.actions.vaultusers.post(
-        {id: vaultItem.id},
-        { body: JSON.stringify({ email: email, fingerprints: fingerprints }) },
-        () => {
-          // After add, reload vault users
-          dispatch(rest.actions.vaultusers({id: vaultItem.id}))
-          if (callback) callback();
-        }))
+      {id: vaultItem.id},
+      { body: JSON.stringify({ email: email, fingerprints: fingerprints }) },
+      () => {
+        // After add, reload vault users
+        dispatch(rest.actions.vaultusers({id: vaultItem.id}))
+        if (callback) callback();
+      }
+    ))
+  }
+}
+
+export function setVaultMetadata(vault, metadata) {
+  return (dispatch) => {
+    console.log(`Setting vault metadata for ${vault.id}`)
+    dispatch(rest.actions.vault.setMetadata(vault, metadata, () => {
+      dispatch(rest.actions.vaults())
+    }))
   }
 }

@@ -59,7 +59,7 @@ class FlyingVaultItem extends SyncryptComponent {
     const { vault } = this.props;
     return (
       <div className="card flying-vault-card" onClick={this.props.onClick}>
-        <div className="vault-plus"></div>
+        <VaultIcon vault={vault} />
         <div className="vault-title">{vault.metadata && vault.metadata.name || vault.id}</div>
       </div>
     );

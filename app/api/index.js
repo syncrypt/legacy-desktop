@@ -18,6 +18,21 @@ export default reduxApi({
     transformer: transformers.array,
     crud: true
   },
+  vault: {
+    url: `/v1/vault/:id/`,
+    crud: true,
+    helpers: {
+      setMetadata(vault, metadata, cb) {
+        return [
+          { id: vault.id }, {
+            body: JSON.stringify({ metadata }),
+            method: "put"
+          },
+          cb
+        ];
+      },
+    }
+  },
   flyingvaults: {
     url: `/v1/flying-vault/`,
     transformer: transformers.array
