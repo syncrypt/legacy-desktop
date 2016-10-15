@@ -7,6 +7,10 @@ export default class UserIcon extends React.Component {
     jdenticon.update(this.refs.iconCanvas);
   }
 
+  componentDidUpdate(props) {
+    jdenticon.update(this.refs.iconCanvas);
+  }
+
   render () {
     return(
       <canvas ref="iconCanvas" className="vault-member-icon" width="50" height="50" data-jdenticon-hash={md5(this.props.email)}>
