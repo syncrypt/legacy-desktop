@@ -89,7 +89,7 @@ class VaultList extends SyncryptComponent {
 
   constructor() {
     super()
-    this.bindFunctions(["addNewVault", "addNewVaultCallback", "cloneVault"]);
+    this.bindFunctions(["addNewVault", "addNewVaultCallback", "performCloneVault"]);
   }
 
   addNewVault() {
@@ -126,16 +126,17 @@ class VaultList extends SyncryptComponent {
     );
   }
 
-  cloneVault(vault) {
+  performCloneVault(vault) {
     var folders = remote.dialog.showOpenDialog({
       properties: ['openDirectory', 'createDirectory'],
       buttonLabel: "Clone into this directory"
     });
+
     if (folders && folders.length == 1) {
       this.props.dispatch(cloneVault(vault, folders[0], (err) => {
         if(err) {
           alert("Folder is not empty. Please create a new directory instead.")
-          return this.cloneVault(vault);
+          return this.performCloneVault(vault);
         }
       }))
     }
@@ -166,7 +167,7 @@ class VaultList extends SyncryptComponent {
               key={v.id}
               vault={v}
               selected={this.props.selectedVault && v.id === this.props.selectedVault.id || false}
-              onClick={() => this.cloneVault(v)}
+              onClick={() => this.performCloneVault(v)}
             />
           )
         }
