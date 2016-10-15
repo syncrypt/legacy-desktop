@@ -4,6 +4,7 @@ import { Grid, Col, ListGroup, ListGroupItem, Badge, Button } from 'react-bootst
 import { shell, remote } from 'electron';
 import { connect } from 'react-redux';
 import SyncryptComponent from './SyncryptComponent';
+import VaultIcon from './VaultIcon';
 import rest from '../api';
 
 import './VaultList.css';
@@ -36,7 +37,7 @@ class VaultItem extends SyncryptComponent {
     const { vault } = this.props;
     return (
       <div className={this.className()} onClick={this.clickedItem}>
-        <div className="vault-icon"></div>
+        <VaultIcon vault={vault} />
         <div className="vault-title">{vault.metadata.name || vault.id}</div>
 
         <div className="footer-vault">

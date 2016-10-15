@@ -25,7 +25,6 @@
 
 .vault-card-selected {
   display: inline-block;
-  font-size: 1000px;
   background: linear-gradient(0deg, #667381, #F3967F);
 }
 
@@ -77,9 +76,9 @@
   margin-left: 60px;
   margin-right: 70px;
   margin-top: 10px;
-  background-color: #f9b194;
+  /*background-color: #f9b194;*/
   padding: 0px;
-  border-radius: 50px;
+  /*border-radius: 50px;*/
 }
 
 .vault-title {
@@ -125,4 +124,3 @@
 .flying-vault-card {
    border: 1px dashed #e6e6e6;
 }
-
