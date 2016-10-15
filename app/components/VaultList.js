@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 import SyncryptComponent from './SyncryptComponent';
 import VaultIcon from './VaultIcon';
 import rest from '../api';
-
+import { cloneVault } from '../actions';
 import './VaultList.css';
 
 class VaultItem extends SyncryptComponent {
@@ -102,12 +102,19 @@ class VaultList extends SyncryptComponent {
     }
   }
 
-  cloneVault() {
+  cloneVault(vault) {
     var folders = remote.dialog.showOpenDialog({
       properties: ['openDirectory', 'createDirectory'],
       buttonLabel: "Clone into this directory"
     });
-    alert("Not implemented yet");
+    if (folders && folders.length == 1) {
+      this.props.dispatch(cloneVault(vault, folders[0], (err) => {
+        if(err) {
+          alert("Folder is not empty. Please create a new directory instead.")
+          return this.cloneVault(vault);
+        }
+      }))
+    }
   }
 
   addNewVaultCallback(err, data) {
