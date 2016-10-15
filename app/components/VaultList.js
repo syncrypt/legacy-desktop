@@ -7,6 +7,7 @@ import SyncryptComponent from './SyncryptComponent';
 import VaultIcon from './VaultIcon';
 import rest from '../api';
 import { cloneVault } from '../actions';
+import fs from 'fs';
 import './VaultList.css';
 
 class VaultItem extends SyncryptComponent {
@@ -78,6 +79,8 @@ class NewVaultItem extends Component {
   }
 }
 
+const IGNORE_FILES = [".DS_Store", ".vault"];
+
 class VaultList extends SyncryptComponent {
   static propTypes = {
     vaults: PropTypes.array.isRequired,
@@ -92,14 +95,35 @@ class VaultList extends SyncryptComponent {
   addNewVault() {
     var folders = remote.dialog.showOpenDialog({properties: ['openDirectory']});
     if (folders.length > 0) {
-      this.props.dispatch(
-        rest.actions.vaults.post(
-          {},
-          { body: JSON.stringify({ folder: folders[0] }) },
-          this.addNewVaultCallback
-        )
-    );
+      var folder = folders[0];
+      fs.readdir(folder, (err, files) => {
+        // if the folder is already a vault, simply add it
+        if(files.includes(".vault")) {
+          return this.performAddNewVault(folder)
+        }
+
+        files = files.filter((f) => !IGNORE_FILES.includes(f))
+        // if we have existing files in directory to be added and it's not a vault,
+        // confirm with user before creating vault & uploading files to server.
+        if(files.length > 0) {
+          if(confirm(`Creating a new vault from this directory will upload all files (${files.length}) currently inside it.`)) {
+            this.performAddNewVault(folder)
+          }
+        } else {
+          this.performAddNewVault(folder)
+        }
+      })
     }
+  }
+
+  performAddNewVault(folder) {
+    this.props.dispatch(
+      rest.actions.vaults.post(
+        {},
+        { body: JSON.stringify({ folder: folder }) },
+        this.addNewVaultCallback
+      )
+    );
   }
 
   cloneVault(vault) {
