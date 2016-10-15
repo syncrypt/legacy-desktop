@@ -7,7 +7,8 @@ import { connect } from 'react-redux';
 import { shell } from 'electron';
 import SyncryptComponent from './SyncryptComponent';
 import rest from '../api';
-import { addVaultUser, refreshUserKeys, setVaultMetadata, deleteVault, removeVault } from '../actions';
+import { addVaultUser, refreshUserKeys, setVaultMetadata, deleteVault,
+         removeVault, removeVaultUser } from '../actions';
 
 import AddUserDialog from './AddUserDialog';
 import UserIcon from './UserIcon';
@@ -21,7 +22,8 @@ class VaultSettingsBar extends SyncryptComponent {
     super(props);
     this.bindFunctions([
       "addUser", "openVaultFolder", "onAddUserClose", "onAddUserKeyDown",
-      "editName", "editNameKeyPressed", "deleteVault", "removeVault"
+      "editName", "editNameKeyPressed", "deleteVault", "removeVault",
+      "removeVaultUser"
     ]);
     this.state = { showAddDialog: false, addDialogUser: null, editName: false }
   }
@@ -67,6 +69,10 @@ class VaultSettingsBar extends SyncryptComponent {
 
   removeVault() {
     this.props.dispatch(removeVault(this.props.vault))
+  }
+
+  removeVaultUser(user) {
+    this.props.dispatch(removeVaultUser(this.props.vault, user.email))
   }
 
 
@@ -134,7 +140,7 @@ class VaultSettingsBar extends SyncryptComponent {
             <tr>
               <th></th>
               <th className="name"><h2>Members</h2></th>
-              <th className="other">Joined</th>
+              <th className="other"></th>
             </tr>
 
             {
@@ -145,8 +151,9 @@ class VaultSettingsBar extends SyncryptComponent {
                   </td>
                   <td className="name">
                     {user.name} <span className="email">{user.email}</span>
+                    <span className="join_date">{user.join_date}</span>
                   </td>
-                  <td className="other">{user.join_date}</td>
+                  <td className="other">{ i > 0 ? <Button onClick={() => this.removeVaultUser(user)}>X</Button> : null }</td>
                 </tr>
               )
             }

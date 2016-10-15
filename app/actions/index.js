@@ -51,6 +51,24 @@ export function addVaultUser(vaultItem, email, fingerprints, callback) {
   }
 }
 
+export function removeVaultUser(vaultItem, email, callback) {
+  return (dispatch) => {
+    console.log("removing user:", email);
+    dispatch(rest.actions.vaultuser.delete(
+      {id: vaultItem.id, email: email},
+      {},
+      (err) => {
+        if (err) {
+          alert("Error removing the user. Are you the owner of the vault?");
+        }
+        // After add, reload vault users
+        dispatch(rest.actions.vaultusers({id: vaultItem.id}))
+        if (callback) callback();
+      }
+    ))
+  }
+}
+
 export function setVaultMetadata(vault, metadata) {
   return (dispatch) => {
     console.log(`Setting vault metadata for ${vault.id}`)

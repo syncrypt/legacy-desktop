@@ -82,11 +82,16 @@
 }
 
 .member-list .name {
-  width: 50%;
+  width: 70%;
+}
+
+.member-list .name .join_date {
+  font-size: small;
+  color: #bbbbbb;
 }
 
 .member-list .other {
-  width: 30%;
+  width: 10%;
 }
 
 .member-list .email {
