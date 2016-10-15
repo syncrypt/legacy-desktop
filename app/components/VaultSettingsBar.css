@@ -55,7 +55,7 @@
   display: inline-flex;
   width:  40px;
   height: 40px;
-  background-image: url(../assets/add_button.png);
+  background-image: url(../assets/add.png);
   background-size: 40px 40px;
   background-repeat: no-repeat;
 }
@@ -63,7 +63,7 @@
 .add-user .user-plus:hover {
   width:  40px;
   height: 40px;
-  background-image: url(../assets/add_button_hover.png);
+  background-image: url(../assets/add.png);
   background-size: 40px 40px;
   background-repeat: no-repeat;
   cursor: pointer;

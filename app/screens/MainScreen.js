@@ -16,8 +16,8 @@ class Header extends SyncryptComponent {
     const {vaults, stats} = this.props;
     return (
       <div className="main-screen-header">
-        <div className="main-screen-stats">
-          <Button onClick={this.props.onLogoutClick}>Logout</Button>
+        <div className="main-screen-buttons">
+          <div className="logout-button" onClick={this.props.onLogoutClick}></div>
         </div>
       </div>
     );

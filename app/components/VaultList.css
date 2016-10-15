@@ -50,7 +50,7 @@
 .vault-plus {
   width: 70px;
   height:70px;
-  background-image:url(../assets/add_button.png);
+  background-image:url(../assets/add.png);
   background-size: 70px 70px;
   background-repeat: no-repeat;
   margin-left: 70px;
@@ -60,7 +60,7 @@
 .vault-plus:hover {
   width: 70px;
   height:70px;
-  background-image:url(../assets/add_button_hover.png);
+  background-image:url(../assets/add.png);
   background-size: 70px 70px;
   background-repeat: no-repeat;
   margin-left: 70px;
