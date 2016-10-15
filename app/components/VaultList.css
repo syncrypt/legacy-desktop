@@ -84,12 +84,17 @@
 .vault-title {
   font-weight: 300;
   font-size: 13px;
-  color: #e6e6e6;
+  color: #666666;
   text-align: center;
   width: 100%;
   margin-top: 11px;
   margin-left: 10px;
   margin-right: 10px;
+}
+
+.vault-card-selected .vault-title,
+.vault-card:hover .vault-title {
+  color: #e6e6e6;
 }
 
 .vault-users {
