@@ -17,7 +17,7 @@ build: off
 matrix:
   fast_finish: true
 artifacts:
-  - path: SyncryptDesktop.zip
+  - path: SyncryptDesktop-$env:platform.zip
     name: SyncryptDesktop
 test_script:
   - npm run package
@@ -25,3 +25,16 @@ test_script:
 version: '{build}'
 shallow_clone: true
 clone_depth: 1
+deploy:
+  release: SyncryptDesktop-v$(appveyor_build_version)
+  description: 'Windows $env:platform Build'
+  provider: GitHub
+  auth_token:
+    secure: cm6YGcbZ4btLnz/4ZdN9FsqObCDSK3QC9i5XIP2TmUcWVQ45sKjDSdBLGMgb0XVm
+  artifact: /SyncryptDesktop.*\.zip/            # upload all NuGet packages to release assets
+  draft: false
+  prerelease: false
+  on:
+    branch: master                 # release from master branch only
+    appveyor_repo_tag: true        # deploy on tag push only
+
