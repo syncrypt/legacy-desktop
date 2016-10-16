@@ -17,7 +17,7 @@ build: off
 matrix:
   fast_finish: true
 artifacts:
-  - path: SyncryptDesktop-$env:platform.zip
+  - path: SyncryptDesktop.zip
     name: SyncryptDesktop
 test_script:
   - npm run package
@@ -31,7 +31,7 @@ deploy:
   provider: GitHub
   auth_token:
     secure: cm6YGcbZ4btLnz/4ZdN9FsqObCDSK3QC9i5XIP2TmUcWVQ45sKjDSdBLGMgb0XVm
-  artifact: /SyncryptDesktop.*\.zip/            # upload all NuGet packages to release assets
+  artifact: /SyncryptDesktop.zip/            # upload all NuGet packages to release assets
   draft: false
   prerelease: false
   on:
