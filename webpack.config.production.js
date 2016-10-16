@@ -22,22 +22,12 @@ const config = validate(merge(baseConfig, {
 
   module: {
     loaders: [
-      // Extract all .global.css to style.css as is
       {
-        test: /\.global\.css$/,
-        loader: ExtractTextPlugin.extract(
+        test: /\.css$/,
+        loaders: [
           'style-loader',
           'css-loader'
-        )
-      },
-
-      // Pipe other styles through css modules and apend to style.css
-      {
-        test: /^((?!\.global).)*\.css$/,
-        loader: ExtractTextPlugin.extract(
-          'style-loader',
-          'css-loader?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]'
-        )
+        ]
       }
     ]
   },
