@@ -1,17 +1,17 @@
 import React, { PropTypes } from 'react';
 import ReactDOM from 'react-dom';
 import Sidebar from './Sidebar';
-import './VaultSettingsBar.css';
 import { Button, FormGroup, FormControl } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import { shell } from 'electron';
 import SyncryptComponent from './SyncryptComponent';
 import rest from '../api';
-import { addVaultUser, refreshUserKeys, setVaultMetadata, deleteVault,
-         removeVault, removeVaultUser } from '../actions';
-
 import AddUserDialog from './AddUserDialog';
 import UserIcon from './UserIcon';
+import { addVaultUser, refreshUserKeys, setVaultMetadata, deleteVault,
+    removeVault, removeVaultUser } from '../actions';
+
+import './VaultSettingsBar.css';
 
 class VaultSettingsBar extends SyncryptComponent {
   static propTypes = {

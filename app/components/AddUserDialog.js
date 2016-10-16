@@ -1,10 +1,11 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
-import { Modal, Button, Checkbox, FormGroup } from 'react-bootstrap'
+import { Modal, Button, Checkbox, FormGroup } from 'react-bootstrap';
 import UserIcon from './UserIcon';
 import SyncryptComponent from './SyncryptComponent';
-import './AddUserDialog.css';
 import { addVaultUser, refreshUserKeys } from '../actions';
+
+import './AddUserDialog.css';
 
 class AddUserDialog extends SyncryptComponent {
 
@@ -82,6 +83,9 @@ class AddUserDialog extends SyncryptComponent {
   }
 }
 
-export default connect(({ userkeys }) => ({
-  userkeys: userkeys
-}))(AddUserDialog);
+export default connect(({ userkeys }) => {
+  return {
+    userkeys: userkeys
+  }
+})(AddUserDialog);
+
