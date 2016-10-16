@@ -35,12 +35,11 @@ class VaultItem extends SyncryptComponent {
   }
 
   render() {
-    const { vault } = this.props;
+    const { vault, state } = this.props;
     return (
       <div className={this.className()} onClick={this.clickedItem}>
         <VaultIcon vault={vault} />
-        <div className="vault-title">{vault.metadata.name || vault.id}</div>
-
+        <div className="vault-title">{vault.metadata.name || vault.id} ({state})</div>
         <div className="footer-vault">
           <div className="vault-users">{vault.user_count}</div>
           <div className="vault-activity">{vault.size || "? GB"}</div>
@@ -155,6 +154,7 @@ class VaultList extends SyncryptComponent {
             <VaultItem
               key={v.id}
               vault={v}
+              state={this.props.vaultStates[v.resource_uri]}
               selected={this.props.selectedVault && v.id === this.props.selectedVault.id || false}
               onClick={() => this.props.onVaultSelect(
                   (this.props.selectedVault && v.id === this.props.selectedVault.id) ? null : v)}
@@ -176,4 +176,8 @@ class VaultList extends SyncryptComponent {
   }
 }
 
-export default connect()(VaultList)
+export default connect(({ stats }) => {
+  return {
+    vaultStates: stats.data.states || {}
+  }
+})(VaultList)
