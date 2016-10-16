@@ -105,7 +105,7 @@ class VaultList extends SyncryptComponent {
         // if we have existing files in directory to be added and it's not a vault,
         // confirm with user before creating vault & uploading files to server.
         if(files.length > 0) {
-          if(confirm(`Creating a new vault from this directory will upload all files (${files.length}) currently inside it.`)) {
+          if(confirm(`You selected a folder that isn't a vault yet.\nCreating a new vault from this directory will upload all files (${files.length}) currently inside it.`)) {
             this.performAddNewVault(folder)
           }
         } else {
