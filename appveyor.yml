@@ -18,9 +18,8 @@ matrix:
 artifacts:
   - path: SyncryptDesktop.zip
     name: SyncryptDesktop
-build:
+test_script:
   - npm run package
-after_build:
   - 7z a SyncryptDesktop.zip release\*
 version: '{build}'
 shallow_clone: true
