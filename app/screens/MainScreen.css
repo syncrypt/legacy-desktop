@@ -32,7 +32,7 @@
   margin-bottom: 10px;
   background-image:url(../assets/logo.png);
   background-repeat:no-repeat;
-  background-position: 20px ;
+  background-position: 20px 2px;
   background-size: 170px;
   width: 100%;
 }
