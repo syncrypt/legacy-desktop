@@ -42,15 +42,31 @@ class VaultItem extends SyncryptComponent {
     }
   }
 
+  syncStatusClassName(state) {
+    if(state === "syncing") {
+      return "vault-status-syncing"
+    } else {
+      return "vault-status-synced"
+    }
+  }
+
   render() {
     const { vault, state } = this.props;
+    var syncStateClass = "vault-status-synced";
+    if(state === "syncing") {
+       syncStateClass = "vault-status-syncing"
+    }
+
     return (
       <div className={this.className()} onClick={this.clickedItem}>
         <VaultIcon vault={vault} />
         <div className="vault-info">
           <div className="vault-title">{vault.metadata.name || vault.id}</div>
           <hr/>
-          <div className="vault-updated-at">{vault.updated_at || "Last updated 2 hours ago"}</div>
+          <div className="vault-updated-at">
+            <div className={syncStateClass}></div>
+            {vault.updated_at || "Last updated 2 hours ago"}
+          </div>
           <div className="footer-vault">
             <div className="vault-activity">{vault.size || "? GB"}</div>
             <div className="vault-users">{vault.user_count || 0}</div>
@@ -189,7 +205,7 @@ class VaultList extends SyncryptComponent {
         <hr className="flying-vault-seperator" />
         <div className="flying-vault-info">
           <span className="title">Available vaults on Server</span>
-          <span className="subtitle">Click to clone to computer</span>
+          <span className="subtitle">Click to clone to your computer</span>
         </div>
         {
           this.props.flyingVaults.map(v =>
