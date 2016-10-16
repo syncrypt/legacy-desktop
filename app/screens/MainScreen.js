@@ -17,6 +17,7 @@ class Header extends SyncryptComponent {
     return (
       <div className="main-screen-header">
         <div className="main-screen-buttons">
+          <div className="settings-button" onClick={this.props.onSettingsClick}></div>
           <div className="logout-button" onClick={this.props.onLogoutClick}></div>
         </div>
       </div>
@@ -42,6 +43,7 @@ class MainScreen extends SyncryptComponent {
 
   constructor(props) {
     super(props);
+    this.bindFunctions(["openAccountSettings"]);
   }
 
   className() {
@@ -60,6 +62,10 @@ class MainScreen extends SyncryptComponent {
     dispatch(rest.actions.flyingvaults.sync());
   }
 
+  openAccountSettings() {
+    alert("Coming soon");
+  }
+
   render() {
     const {vaults, flyingVaults, stats } = this.props;
 
@@ -68,7 +74,9 @@ class MainScreen extends SyncryptComponent {
     return (
       <div>
         <div className={this.className()}>
-          <Header stats={stats} onLogoutClick={boundActions.logout} />
+          <Header stats={stats}
+                  onLogoutClick={boundActions.logout}
+                  onSettingsClick={this.openAccountSettings} />
           <Grid>
             <Row>
               <VaultList
