@@ -39,10 +39,14 @@ class VaultItem extends SyncryptComponent {
     return (
       <div className={this.className()} onClick={this.clickedItem}>
         <VaultIcon vault={vault} />
-        <div className="vault-title">{vault.metadata.name || vault.id} ({state})</div>
-        <div className="footer-vault">
-          <div className="vault-users">{vault.user_count}</div>
-          <div className="vault-activity">{vault.size || "? GB"}</div>
+        <div className="vault-info">
+          <div className="vault-title">{vault.metadata.name || vault.id}</div>
+          <hr/>
+          <div className="vault-updated-at">{vault.updated_at || "Last updated 2 hours ago"}</div>
+          <div className="footer-vault">
+            <div className="vault-activity">{vault.size || "? GB"}</div>
+            <div className="vault-users">{vault.user_count || 0}</div>
+          </div>
         </div>
       </div>
     );
@@ -60,7 +64,15 @@ class FlyingVaultItem extends SyncryptComponent {
     return (
       <div className="card flying-vault-card" onClick={this.props.onClick}>
         <VaultIcon vault={vault} />
-        <div className="vault-title">{vault.metadata && vault.metadata.name || vault.id}</div>
+        <div className="vault-info">
+          <div className="vault-title">{vault.metadata && vault.metadata.name || vault.id}</div>
+          <hr/>
+          <div className="vault-updated-at">{vault.updated_at || "Last updated 2 hours ago"}</div>
+          <div className="footer-vault">
+            <div className="vault-activity">{vault.size || "? GB"}</div>
+            <div className="vault-users">{vault.user_count || 0}</div>
+          </div>
+        </div>
       </div>
     );
   }
@@ -71,9 +83,7 @@ class NewVaultItem extends Component {
   render() {
     const { vault } = this.props;
     return (
-      <div className="card new-vault-card" {...this.props}>
-        <div className="vault-plus"></div>
-      </div>
+      <div className="vault-plus" {...this.props}></div>
     );
   }
 }
@@ -148,7 +158,6 @@ class VaultList extends SyncryptComponent {
   render() {
     return (
       <div className="vault-list">
-        <NewVaultItem onClick={this.addNewVault} />
         {
           this.props.vaults.map(v =>
             <VaultItem
@@ -161,6 +170,12 @@ class VaultList extends SyncryptComponent {
             />
           )
         }
+        <NewVaultItem onClick={this.addNewVault} />
+        <hr/>
+        <div className="flying-vault-info">
+          <span className="title">Available vaults on Server</span>
+          <span className="subtitle">Click to clone to computer</span>
+        </div>
         {
           this.props.flyingVaults.map(v =>
             <FlyingVaultItem

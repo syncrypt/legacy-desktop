@@ -12,19 +12,20 @@
 .card {
    display: inline-block;
    border: 1px solid #e6e6e6;
-   height: 190px;
-   width: 240px;
+   height: 130px;
+   width: 350px;
    overflow: hidden;
    margin-left:20px;
    margin-top: 10px;
    padding: 10px;
    position: relative;
    transition: all 0.25s;
+   background-color: #efddda;
 }
 
 .vault-card-selected {
   display: inline-block;
-  background: linear-gradient(0deg, #667381, #F3967F);
+  /*background: linear-gradient(0deg, #667381, #F3967F);*/
 }
 
 .vault-card {
@@ -32,82 +33,106 @@
 }
 
 .vault-card:hover {
-  background: linear-gradient(0deg, #667381, #F3967F);
+  /*background: linear-gradient(0deg, #667381, #F3967F);*/
   opacity: 0.7;
   transition: all 0.25s;
   cursor: pointer;
 }
 
-.new-vault-card {
-  background-color: white;
-  cursor: pointer;
+.vault-card-selected .vault-title,
+.vault-card:hover .vault-title {
+  color: #000000;
 }
 
 .flying-vault-card {
   cursor: pointer;
+  display: inline-block;
+}
+
+.flying-vault-info {
+  overflow: hidden;
+  margin-left: 20px;
+  color: #eee;
+}
+
+.flying-vault-info .title {
+  font-size: 25px;
+  display: block;
+}
+
+.flying-vault-info .subtitle {
+  font-size: 15px;
+  margin-bottom: 10px;
+  display: block;
 }
 
 .vault-plus {
-  width: 70px;
-  height:70px;
+  width: 350px;
+  height: 130px;
   background-image:url(../assets/add.png);
-  background-size: 70px 70px;
+  background-size: 90px 90px;
   background-repeat: no-repeat;
-  margin-left: 70px;
-  margin-top: 50px;
-  padding: 0px;
+  display: inline-block;
+  position: relative;
+  top: 20px;
+  left: 130px;
+  opacity: 0.5;
 }
 .vault-plus:hover {
-  width: 70px;
-  height:70px;
+  width: 350px;
+  height: 130px;
   background-image:url(../assets/add.png);
-  background-size: 70px 70px;
+  background-size: 90px 90px;
   background-repeat: no-repeat;
-  margin-left: 70px;
-  margin-right: 50px;
-  margin-top: 50px;
-  padding: 0px;
+  display: inline-block;
+  position: relative;
+  top: 20px;
+  left: 130px;
+  opacity: 1.0;
 }
 
-.vault-icon {
-  height: 100px;
-  width: 100px;
-  margin-left: 60px;
-  margin-right: 70px;
-  margin-top: 10px;
-  /*background-color: #f9b194;*/
-  padding: 0px;
-  /*border-radius: 50px;*/
+.vault-info {
+  padding-left: 100px;
+  margin-right: 18px;
+}
+
+.vault-info hr {
+  border-color: #d1c8c6;
+  margin-top: 4px;
 }
 
 .vault-title {
-  font-weight: 300;
-  font-size: 13px;
+  font-weight: 600;
+  font-size: 14px;
   color: #666666;
-  text-align: center;
+  text-align: left;
   width: 100%;
-  margin-top: 11px;
-  margin-left: 10px;
+  height: 1em;
+  margin-top: 10px;
   margin-right: 10px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+
 }
 
-.vault-card-selected .vault-title,
-.vault-card:hover .vault-title {
-  color: #e6e6e6;
+.vault-updated-at {
+  font-size: 12px;
+  position: absolute;
+  bottom: 45px;
 }
 
 .vault-users {
   background-image:url(../assets/avatar.png);
   background-size: 20px;
   background-repeat: no-repeat;
-  padding-left: 35px;
+  padding-left: 25px;
   font-weight: 300;
   font-size: 15px;
-  color: #b3b3b3;
+  color: #666666;
   width: 80px;
+  margin-left: 90px;
   position: absolute;
-  bottom: 5px;
-  left: 20px;
+  bottom: 10px;
 }
 
 .vault-activity {
@@ -116,12 +141,11 @@
   background-repeat: no-repeat;
   font-weight: 300;
   font-size: 15px;
-  color: #b3b3b3;
+  color: #666666;
   padding-left: 25px;
   width: 80px;
   position: absolute;
-  bottom: 5px;
-  right: -5px;
+  bottom: 10px;
 }
 
 

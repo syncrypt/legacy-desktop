@@ -1,14 +1,15 @@
 .sidebar {
-  width: 40%;
+  width: 30%;
   height: 100%;
   position: absolute;
   right: 0;
   top: 0;
   font-size: 15px;
   border-left-style: solid;
-  border-left-color: #e6e6e6;
+  border-left-color: #f8b194;
   border-left-width: 2px;
   transition: all 0.5s;
+  background: linear-gradient(0deg, #7a8390, #d4a49a);
 }
 
 .collapsed {
@@ -26,7 +27,7 @@
 .sidebar .header {
   height: 64px;
   position: relative;
-  background-color: #b6c3e6;
+  background-color: #a07f78;
   margin-bottom: 10px;
   background-repeat:no-repeat;
   background-position: 30px 0px;

@@ -1,0 +1,15 @@
+.vault-icon {
+  height: 72px;
+  width: 72px;
+  float: left;
+}
+.vault-icon canvas {
+  height: 72px;
+  width: 72px;
+  margin-left: 5px;
+  margin-right: 20px;
+  margin-top: 15px;
+  /*background-color: #f9b194;*/
+  padding: 0px;
+  /*border-radius: 50px;*/
+}

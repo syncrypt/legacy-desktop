@@ -1,5 +1,5 @@
 .main-screen {
-  width: 60%;
+  width: 70%;
   -webkit-transition: width 0.5s;
 }
 
@@ -9,12 +9,13 @@
 }
 
 .main-screen > .container {
-  width: 60%;
+  width: 70%;
   position: absolute;
   top: 64px;
   bottom: 26px;
   overflow-y: auto;
   -webkit-transition: width 0.5s;
+  background: linear-gradient(0deg, #404f60, #c17d6f);
 }
 
 .main-screen.expanded > .container {
@@ -26,7 +27,7 @@
 .main-screen-header {
   height: 64px;
   position: relative;
-  background-color: #b6c3e6;
+  background-color: #a07f78;
   margin-bottom: 10px;
   background-image:url(../assets/logo.png);
   background-repeat:no-repeat;
@@ -63,8 +64,8 @@
   right: 0px;
   bottom: 0px;
   height: 26px;
-  background-color: #b6c3e6;
-  color: #666;
+  background-color: #4d4d4d;
+  color: #fff;
   padding: 5px;
 }
 

@@ -78,9 +78,9 @@ class MainScreen extends SyncryptComponent {
                 onVaultSelect={boundActions.selectVault} />
             </Row>
           </Grid>
-          <Footer vaults={vaults} stats={stats} />
         </div>
         { this.props.sidebar }
+        <Footer vaults={vaults} stats={stats} />
       </div>
     );
   }
