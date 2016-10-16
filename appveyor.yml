@@ -13,6 +13,7 @@ install:
   - npm install -g npm@latest
   - set PATH=%APPDATA%\npm;%PATH%
   - npm install
+build: off
 matrix:
   fast_finish: true
 artifacts:
