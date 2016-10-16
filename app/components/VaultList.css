@@ -1,3 +1,13 @@
+.vault-list .flying-vault-seperator {
+  width: 50%;
+  border-color: #efddda;
+  border-width: thin;
+  border-collapse: collapse;
+  opacity: 0.66;
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
 .vaulticon {
     height: 60px;
     width: 60px;
@@ -26,6 +36,7 @@
 .vault-card-selected {
   display: inline-block;
   /*background: linear-gradient(0deg, #667381, #F3967F);*/
+  background-color: #efeeea;
 }
 
 .vault-card {

@@ -171,7 +171,7 @@ class VaultList extends SyncryptComponent {
           )
         }
         <NewVaultItem onClick={this.addNewVault} />
-        <hr/>
+        <hr className="flying-vault-seperator" />
         <div className="flying-vault-info">
           <span className="title">Available vaults on Server</span>
           <span className="subtitle">Click to clone to computer</span>

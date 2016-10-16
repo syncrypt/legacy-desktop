@@ -80,7 +80,6 @@ class MainScreen extends SyncryptComponent {
           </Grid>
         </div>
         { this.props.sidebar }
-        <Footer vaults={vaults} stats={stats} />
       </div>
     );
   }
