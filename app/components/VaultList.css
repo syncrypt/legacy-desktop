@@ -169,3 +169,44 @@
 .flying-vault-card canvas {
   opacity: 0.3;
 }
+
+.vault-remove-button {
+  display: none;
+  background-image:url(../assets/remove_vault.png);
+  background-repeat:no-repeat;
+  background-size: 25px 25px;
+  width: 25px;
+  height: 25px;
+  opacity: 0.44;
+  position: absolute;
+  top: 2px;
+  right: 2px;
+}
+
+.vault-remove-button:hover {
+  cursor: pointer;
+  opacity: 1.0;
+}
+
+.vault-folder-button {
+  display: none;
+  background-image:url(../assets/folder.png);
+  background-repeat:no-repeat;
+  background-size: 20px 20px;
+  width: 20px;
+  height: 20px;
+  opacity: 0.44;
+  position: absolute;
+  bottom: 10px;
+  right: 4px;
+}
+
+.vault-folder-button:hover {
+  cursor: pointer;
+  opacity: 1.0;
+}
+
+.card:hover .vault-remove-button,
+.card:hover .vault-folder-button {
+  display: block;
+}

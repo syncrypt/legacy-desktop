@@ -6,14 +6,14 @@ import { connect } from 'react-redux';
 import SyncryptComponent from './SyncryptComponent';
 import VaultIcon from './VaultIcon';
 import rest from '../api';
-import { cloneVault } from '../actions';
+import { cloneVault, removeVault } from '../actions';
 import fs from 'fs';
 import './VaultList.css';
 
 class VaultItem extends SyncryptComponent {
   constructor(props) {
     super(props);
-    this.bindFunctions(["clickedItem"]);
+    this.bindFunctions(["clickedItem", "openVaultFolder"]);
   }
 
   static propTypes = {
@@ -34,6 +34,14 @@ class VaultItem extends SyncryptComponent {
     }
   }
 
+  openVaultFolder() {
+    if (process.platform === 'darwin') {
+      shell.openExternal("file://" + this.props.vault.folder);
+    } else {
+      shell.openItem(this.props.vault.folder);
+    }
+  }
+
   render() {
     const { vault, state } = this.props;
     return (
@@ -48,6 +56,8 @@ class VaultItem extends SyncryptComponent {
             <div className="vault-users">{vault.user_count || 0}</div>
           </div>
         </div>
+        <div className="vault-remove-button" onClick={this.props.onRemoveClick}></div>
+        <div className="vault-folder-button" onClick={this.openVaultFolder}></div>
       </div>
     );
   }
@@ -155,6 +165,10 @@ class VaultList extends SyncryptComponent {
     this.props.dispatch(rest.actions.vaults());
   }
 
+  removeVault(vault) {
+    this.props.dispatch(removeVault(vault))
+  }
+
   render() {
     return (
       <div className="vault-list">
@@ -167,6 +181,7 @@ class VaultList extends SyncryptComponent {
               selected={this.props.selectedVault && v.id === this.props.selectedVault.id || false}
               onClick={() => this.props.onVaultSelect(
                   (this.props.selectedVault && v.id === this.props.selectedVault.id) ? null : v)}
+              onRemoveClick={() => this.removeVault(v)}
             />
           )
         }
