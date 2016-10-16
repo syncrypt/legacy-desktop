@@ -78,6 +78,18 @@
 }
 
 .vault-plus {
+   display: inline-block;
+   height: 130px;
+   width: 350px;
+   overflow: hidden;
+   margin-left:20px;
+   margin-top: 10px;
+   padding: 10px;
+   position: relative;
+   transition: all 0.25s;
+}
+
+.vault-plus-icon {
   width: 90px;
   height: 90px;
   background-image:url(../assets/add_orange.png);
@@ -85,11 +97,11 @@
   background-repeat: no-repeat;
   display: inline-block;
   position: relative;
-  top: -20px;
+  top: 20px;
   left: 130px;
   opacity: 0.5;
 }
-.vault-plus:hover {
+.vault-plus-icon:hover {
   width: 90px;
   height: 90px;
   background-image:url(../assets/add.png);
@@ -97,7 +109,7 @@
   background-repeat: no-repeat;
   display: inline-block;
   position: relative;
-  top: -20px;
+  top: 20px;
   left: 130px;
   opacity: 1.0;
   cursor: pointer;

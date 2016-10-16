@@ -109,7 +109,9 @@ class NewVaultItem extends Component {
   render() {
     const { vault } = this.props;
     return (
-      <div className="vault-plus" {...this.props}></div>
+      <div className="vault-plus">
+        <div className="vault-plus-icon" {...this.props}></div>
+      </div>
     );
   }
 }
