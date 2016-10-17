@@ -187,6 +187,31 @@ class VaultList extends SyncryptComponent {
     this.props.dispatch(removeVault(vault))
   }
 
+  flyingVaultList() {
+    if(this.props.flyingVaults.length == 0) {
+      return <div></div>;
+    }
+    return(
+      <div>
+        <hr className="flying-vault-seperator" />
+        <div className="flying-vault-info">
+          <span className="title">Available vaults on Server</span>
+          <span className="subtitle">Click to clone to your computer</span>
+        </div>
+        {
+          this.props.flyingVaults.map(v =>
+            <FlyingVaultItem
+              key={v.id}
+              vault={v}
+              selected={this.props.selectedVault && v.id === this.props.selectedVault.id || false}
+              onClick={() => this.performCloneVault(v)}
+            />
+          )
+        }
+      </div>
+    );
+  }
+
   render() {
     return (
       <div className="vault-list">
@@ -204,21 +229,7 @@ class VaultList extends SyncryptComponent {
           )
         }
         <NewVaultItem onClick={this.addNewVault} />
-        <hr className="flying-vault-seperator" />
-        <div className="flying-vault-info">
-          <span className="title">Available vaults on Server</span>
-          <span className="subtitle">Click to clone to your computer</span>
-        </div>
-        {
-          this.props.flyingVaults.map(v =>
-            <FlyingVaultItem
-              key={v.id}
-              vault={v}
-              selected={this.props.selectedVault && v.id === this.props.selectedVault.id || false}
-              onClick={() => this.performCloneVault(v)}
-            />
-          )
-        }
+        {this.flyingVaultList()}
       </div>
     );
   }

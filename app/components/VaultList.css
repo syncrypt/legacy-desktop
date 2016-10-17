@@ -1,3 +1,7 @@
+.vault-list {
+  margin-bottom: 80px;
+}
+
 .vault-list .flying-vault-seperator {
   width: 50%;
   border-color: #efddda;
@@ -9,28 +13,28 @@
 }
 
 .vaulticon {
-    height: 60px;
-    width: 60px;
-    margin-bottom: 10px;
-    background-image:url(../assets/vault.png);
-    background-repeat:no-repeat;
-    background-position: 0px 0px;
-    background-size: 60px;
-    margin-right: 20px;
+  height: 60px;
+  width: 60px;
+  margin-bottom: 10px;
+  background-image:url(../assets/vault.png);
+  background-repeat:no-repeat;
+  background-position: 0px 0px;
+  background-size: 60px;
+  margin-right: 20px;
 }
 
 .card {
-   display: inline-block;
-   border: 1px solid #e6e6e6;
-   height: 130px;
-   width: 350px;
-   overflow: hidden;
-   margin-left:20px;
-   margin-top: 10px;
-   padding: 10px;
-   position: relative;
-   transition: all 0.25s;
-   background-color: #efddda;
+  display: inline-block;
+  border: 1px solid #e6e6e6;
+  height: 130px;
+  width: 350px;
+  overflow: hidden;
+  margin-left:20px;
+  margin-top: 10px;
+  padding: 10px;
+  position: relative;
+  transition: all 0.25s;
+  background-color: #efddda;
 }
 
 .vault-card-selected {
@@ -58,6 +62,15 @@
 .flying-vault-card {
   cursor: pointer;
   display: inline-block;
+  margin-left:20px;
+  margin-top: 10px;
+  padding: 10px;
+  transition: all 0.5s;
+  background-color: #aaa;
+}
+
+.flying-vault-card:hover {
+  background-color: #efddda;
 }
 
 .flying-vault-info {
