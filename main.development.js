@@ -43,7 +43,7 @@ app.on('ready', async () => {
 
   mainWindow = new BrowserWindow({
     show: false,
-    width: 1024,
+    width: 1135,
     height: 728,
     title: "Syncrypt",
     frame: true,
