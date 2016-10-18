@@ -1,0 +1,28 @@
+/* button text next to icon */
+.icon-button span.icon-button-text {
+  font-weight: 600;
+  font-size: 15px;
+  position: relative;
+  top: -15px;
+}
+
+.icon-button:hover {
+  opacity: 0.66;
+  cursor: pointer;
+}
+
+.icon-button .icon {
+  display: inline-block;
+  background-repeat:no-repeat;
+  background-size: 40px 40px;
+  width: 40px;
+  height: 40px;
+}
+
+.icon.feedback {
+  background-image:url(../assets/feedback.png);
+}
+
+.icon.update {
+  background-image:url(../assets/update.png);
+}

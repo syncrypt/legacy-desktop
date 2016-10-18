@@ -5,8 +5,22 @@ import { Button, FormGroup, FormControl, ControlLabel } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import { openAccountSettings } from '../actions';
 import './WelcomeSidebar.css';
+import IconButton from './IconButton';
 
 class WelcomeSidebar extends SyncryptComponent {
+  constructor(props) {
+    super(props);
+    this.bindFunctions(["openFeedbackDialog", "checkForUpdates"]);
+  }
+
+  openFeedbackDialog() {
+    alert("Coming soon.")
+  }
+
+  checkForUpdates() {
+    alert("Coming soon.")
+  }
+
   render() {
     const { account } = this.props;
     const header = <div className="account-settings-header">
@@ -27,9 +41,16 @@ class WelcomeSidebar extends SyncryptComponent {
             bug reports and ideas for UI/UX improvement.
           </p>
           <ul>
-            <li><Button class='btn'>Feedback</Button></li>
-            <li><Button class='btn'>Check for update</Button></li>
-            <li><Button class='btn'>Account settings</Button></li>
+            <li>
+              <IconButton icon="feedback"
+                          text="Give Feedback"
+                          onClick={this.openFeedbackDialog} />
+            </li>
+            <li>
+              <IconButton icon="update"
+                          text="Check for updates"
+                          onClick={this.checkForUpdates} />
+            </li>
           </ul>
         </div>
       </Sidebar>

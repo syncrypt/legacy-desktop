@@ -10,6 +10,7 @@ import VaultSettingsBar from '../components/VaultSettingsBar';
 import AccountSettingsBar from '../components/AccountSettingsBar';
 import { hashHistory } from 'react-router';
 import * as actions from '../actions';
+import IconButton from "../components/IconButton";
 
 class Header extends SyncryptComponent {
   render() {
@@ -17,8 +18,8 @@ class Header extends SyncryptComponent {
     return (
       <div className="main-screen-header">
         <div className="main-screen-buttons">
-          <div className="settings-button" onClick={this.props.onSettingsClick}></div>
-          <div className="logout-button" onClick={this.props.onLogoutClick}></div>
+          <IconButton icon="settings" onClick={this.props.onSettingsClick} />
+          <IconButton icon="logout" onClick={this.props.onLogoutClick} />
         </div>
       </div>
     );
@@ -63,7 +64,7 @@ class MainScreen extends SyncryptComponent {
   }
 
   openAccountSettings() {
-    alert("Coming soon");
+    alert("Coming soon.");
   }
 
   render() {

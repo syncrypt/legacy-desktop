@@ -70,31 +70,3 @@
   color: #fff;
   padding: 5px;
 }
-
-.settings-button {
-  background-image:url(../assets/settings.png);
-  background-repeat:no-repeat;
-  background-size: 40px 40px;
-  width: 40px;
-  height: 40px;
-  opacity: 0.66;
-}
-
-.settings-button:hover {
-  cursor: pointer;
-  opacity: 1.0;
-}
-
-.logout-button {
-  background-image:url(../assets/logout.png);
-  background-repeat:no-repeat;
-  background-size: 40px 40px;
-  width: 40px;
-  height: 40px;
-  opacity: 0.66;
-}
-
-.logout-button:hover {
-  cursor: pointer;
-  opacity: 1.0;
-}
