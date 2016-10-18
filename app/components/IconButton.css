@@ -1,3 +1,7 @@
+.icon-button {
+  display: inline;
+}
+
 /* button text next to icon */
 .icon-button span.icon-button-text {
   font-weight: 600;
