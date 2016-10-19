@@ -194,6 +194,19 @@ class VaultSettingsBar extends SyncryptComponent {
     return null;
   }
 
+  deleteVaultButton() {
+    if (this.isVaultOwner()) {
+      return(
+        <li>
+          <IconButton icon="trash"
+                      text="DELETE this vault on Server"
+                      onClick={this.deleteVault} />
+        </li>
+      );
+    }
+    return null;
+  }
+
   render() {
     const { vault } = this.props;
 
@@ -233,11 +246,7 @@ class VaultSettingsBar extends SyncryptComponent {
                         text="Open Vault Folder"
                         onClick={this.openVaultFolder} />
           </li>
-          <li>
-            <IconButton icon="trash"
-                        text="DELETE this vault on Server"
-                        onClick={this.deleteVault} />
-          </li>
+          { this.deleteVaultButton() }
         </ul>
 
       </div>
