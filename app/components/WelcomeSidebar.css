@@ -11,3 +11,7 @@
 .welcome-sidebar p {
   font-size: 16px;
 }
+
+.welcome-sidebar ul {
+  padding-left: 0px;
+}
