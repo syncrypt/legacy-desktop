@@ -38,7 +38,7 @@ export function refreshUserKeys(email) {
 
 export function addVaultUser(vaultItem, email, fingerprints, callback) {
   return (dispatch) => {
-    console.log("adding user:", email);
+    console.log("Adding user:", email, " to vault: ", vaultItem.id);
     dispatch(rest.actions.vaultusers.post(
       {id: vaultItem.id},
       { body: JSON.stringify({ email: email, fingerprints: fingerprints }) },

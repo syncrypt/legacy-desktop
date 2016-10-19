@@ -8,6 +8,7 @@ import SyncryptComponent from './SyncryptComponent';
 import rest from '../api';
 import AddUserDialog from './AddUserDialog';
 import UserIcon from './UserIcon';
+import IconButton from './IconButton';
 import { addVaultUser, refreshUserKeys, setVaultMetadata, deleteVault,
     removeVault, removeVaultUser } from '../actions';
 
@@ -28,12 +29,30 @@ class VaultSettingsBar extends SyncryptComponent {
     this.state = { showAddDialog: false, addDialogUser: null, editName: false }
   }
 
+  isVaultOwner() {
+    let owner = this.props.vault_members[0];
+    if(owner) {
+      return this.props.user.email === owner.email;
+    }
+    return false;
+  }
+
+  withOwnerPermissions(fun) {
+    if(this.isVaultOwner()) {
+      fun()
+    } else {
+      alert("Permission Denied: You're not the vault owner.")
+    }
+  }
+
   addUser() {
-    let email = this.getFormValueByRef('email');
-    this.props.dispatch(refreshUserKeys(email));
-    this.setState({
-      showAddDialog: true,
-      addDialogEmail: email
+    this.withOwnerPermissions(() => {
+      let email = this.getFormValueByRef('email');
+      this.props.dispatch(refreshUserKeys(email));
+      this.setState({
+        showAddDialog: true,
+        addDialogEmail: email
+      })
     })
   }
 
@@ -68,29 +87,43 @@ class VaultSettingsBar extends SyncryptComponent {
   }
 
   removeVault() {
-    this.props.dispatch(removeVault(this.props.vault))
+    if(confirm("This will only remove the vault from the active list of vaults on this computer. It won't delete it on the Server.")) {
+      this.props.dispatch(removeVault(this.props.vault))
+    }
   }
 
   removeVaultUser(user) {
-    this.props.dispatch(removeVaultUser(this.props.vault, user.email))
+    let userInfo = ``;
+    this.withOwnerPermissions(() => {
+      if(confirm(`Remove user\n${user.name} (${user.email})\nfrom vault\n'${this.props.vault.metadata.name}'?`)) {
+        this.props.dispatch(removeVaultUser(this.props.vault, user.email))
+      }
+    })
   }
 
 
   deleteVault() {
-    this.props.dispatch(deleteVault(this.props.vault))
+    this.withOwnerPermissions(() => {
+      if(confirm("Do you really want to delete this vault from the server?\nWe won't delete your files locally but you will have to re-upload your vault's files if you want to share or back them up again.")) {
+        this.props.dispatch(deleteVault(this.props.vault))
+      }
+    })
   }
 
   editNameKeyPressed(e) {
     if (e.key === 'Enter') {
-      this.props.dispatch(
-        setVaultMetadata(
-          this.props.vault,
-          Object.assign({},
-            this.props.vault.metadata,
-            { name: this.getFormValueByRef("vaultName") }
+      this.withOwnerPermissions(() => {
+        this.props.dispatch(
+          setVaultMetadata(
+            this.props.vault,
+            Object.assign({},
+              this.props.vault.metadata,
+              { name: this.getFormValueByRef("vaultName") }
+            )
           )
         )
-      )
+      })
+
       this.setState({
         editName: false
       })
@@ -105,9 +138,10 @@ class VaultSettingsBar extends SyncryptComponent {
     }
   }
 
-  render() {
+  header() {
     const { vault } = this.props;
-    const header =
+
+    return(
       <div className="vault-settings-header">
         <FormControl ref="vaultName"
                      type="text"
@@ -118,23 +152,54 @@ class VaultSettingsBar extends SyncryptComponent {
         <span className="vault-name"
               style={{'display': this.state.editName ? 'none' : 'block'}}
               onDoubleClick={this.editName}>
-          {vault.metadata.name || vault.id}
+          { vault.metadata.name || vault.id }
         </span>
-      </div>;
-    return <Sidebar header={header}>
-      <div>
+        <span className="vault-id">
+          { vault.id }
+        </span>
+      </div>
+    );
+  }
+
+  removeUserButton(user) {
+    if (this.isVaultOwner()) {
+      return(
+        <IconButton icon="trash"
+                    onClick={() => this.removeVaultUser(user)} />
+      );
+    }
+    return null;
+  }
+
+  addUserForm() {
+    if (this.isVaultOwner()) {
+      return (
         <div className="user-invite">
           <div className="add-user">
             <form>
               <h2>Invite Users</h2>
               <span>
                 <div className="user-plus" onClick={this.addUser}></div>
-                <FormControl ref="email" className="email-input" type="text" placeholder="Email" onKeyDown={this.onAddUserKeyDown}  />
+                <FormControl ref="email"
+                             className="email-input"
+                             type="text"
+                             placeholder="Email"
+                             onKeyDown={this.onAddUserKeyDown} />
               </span>
             </form>
           </div>
         </div>
+      );
+    }
+    return null;
+  }
 
+  render() {
+    const { vault } = this.props;
+
+    return <Sidebar header={this.header()}>
+      <div className="vault-settings-bar">
+        {this.addUserForm()}
         <div className="member-list">
           <table>
             <tr>
@@ -153,19 +218,33 @@ class VaultSettingsBar extends SyncryptComponent {
                     {user.name} <span className="email">{user.email}</span>
                     <span className="join_date">{user.join_date}</span>
                   </td>
-                  <td className="other">{ i > 0 ? <Button onClick={() => this.removeVaultUser(user)}>X</Button> : null }</td>
+                  <td className="other">
+                    { i > 0 ? this.removeUserButton(user) : null }
+                  </td>
                 </tr>
               )
             }
           </table>
         </div>
 
-        <Button onClick={this.openVaultFolder}>Open Vault Folder</Button>
-        <Button onClick={this.removeVault}>Remove this vault</Button>
-        <Button onClick={this.deleteVault}>DELETE this vault</Button>
+        <ul>
+          <li>
+            <IconButton icon="folder"
+                        text="Open Vault Folder"
+                        onClick={this.openVaultFolder} />
+          </li>
+          <li>
+            <IconButton icon="trash"
+                        text="DELETE this vault on Server"
+                        onClick={this.deleteVault} />
+          </li>
+        </ul>
 
-        </div>
-        <AddUserDialog vault={vault} show={this.state.showAddDialog} onClose={this.onAddUserClose} email={this.state.addDialogEmail || ""} />
+      </div>
+      <AddUserDialog vault={vault}
+                     show={this.state.showAddDialog}
+                     onClose={this.onAddUserClose}
+                     email={this.state.addDialogEmail || ""} />
     </Sidebar>
   }
 }
@@ -174,6 +253,7 @@ function mapStateToProps(state, ownProps) {
   const { routeParams } = ownProps;
   const { vaults, vaultusers } = state;
   return {
+    user: state.user.data,
     vault: vaults.data.filter((v) => v.id == routeParams.vault_id)[0],
     vault_members: (vaultusers.data || []).map((vu) =>
       ({

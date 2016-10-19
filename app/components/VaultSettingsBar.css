@@ -27,6 +27,15 @@
   font-weight: bold;
 }
 
+.vault-id {
+  position: relative;
+  top: 8px;
+  left: 10px;
+  font-weight: 600;
+  font-size: 12px;
+  font-family: monospace;
+}
+
 .user-invite .add-user span {
   float: none;
 }
@@ -40,13 +49,14 @@
 }
 
 .add-user .email-input {
-  width: 80%;
+  width: 70%;
   display: inline;
   position: relative;
   top: -15px;
   margin-left: 30px;
   margin-top: -11px;
   border-bottom: 2px solid #e6e6e6;
+  font-size: 18px;
 }
 
 .add-user .user-plus {
@@ -101,4 +111,9 @@
 .vault-member-icon {
   height: 50px;
   width: 50px;
+}
+
+
+.vault-settings-bar ul {
+  padding-left: 0px;
 }
