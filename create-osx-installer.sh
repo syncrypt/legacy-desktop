@@ -1,7 +1,12 @@
 #!/bin/sh
 
+if [ -z "$*" ]; then
+  echo "No version given. Aborting";
+  exit 1;
+fi
+
 appPath="release/darwin-x64/Syncrypt-darwin-x64"
-installerName="Syncrypt-Installer.dmg"
+installerName="Syncrypt-Desktop-$1.dmg"
 pushd $appPath
 
 test -f ./$installerName && rm ./$installerName
@@ -9,7 +14,7 @@ test -f ./$installerName && rm ./$installerName
 rm -f version LICENSE LICENSES.chromium.html
 
 create-dmg \
---volname "Syncrypt Installer" \
+--volname "Syncrypt $1 Installer" \
 --volicon "../../../app/app.icns" \
 --window-pos 200 120 \
 --window-size 800 400 \
@@ -19,5 +24,7 @@ create-dmg \
 --app-drop-link 600 185 \
 $installerName \
 .
+
+shasum -a 256 "Syncrypt-Desktop-$1.dmg" > "Syncrypt-Desktop-$1.dmg.sha256"
 
 popd
