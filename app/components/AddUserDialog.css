@@ -1,5 +1,9 @@
-
 .add-user-dialog .vault-member-icon {
-    margin-right: 15px;
-    margin-bottom: 15px;
+  margin-right: 10px;
+}
+
+.add-user-dialog .user-info .user-email {
+  position: relative;
+  top: -15px;
+  font-weight: 600;
 }

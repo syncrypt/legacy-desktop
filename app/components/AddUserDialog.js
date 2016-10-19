@@ -8,7 +8,6 @@ import { addVaultUser, refreshUserKeys } from '../actions';
 import './AddUserDialog.css';
 
 class AddUserDialog extends SyncryptComponent {
-
   static propTypes = {
     show: PropTypes.bool.isRequired,
     email: PropTypes.string.isRequired
@@ -56,16 +55,19 @@ class AddUserDialog extends SyncryptComponent {
         Invite User
       </Header>
       <Body>
-        <UserIcon email={this.props.email} />
-        {this.props.email}
+        <div className="user-info">
+          <UserIcon email={this.props.email} />
+          <span className="user-email">{this.props.email}</span>
+        </div>
         <div>
           <h4>Device keys</h4>
           {this.props.userkeys.loading ? "Loading..." :
             this.props.userkeys.data.map((userkey) =>
               <div>
                 <FormGroup>
-                  <Checkbox inline checked={fingerprints.includes(userkey.fingerprint)}
-                        onChange={() => this.toggleFingerprint(userkey.fingerprint)}>
+                  <Checkbox inline
+                            checked={fingerprints.includes(userkey.fingerprint)}
+                            onChange={() => this.toggleFingerprint(userkey.fingerprint)}>
                     {userkey.description} ({userkey.fingerprint})
                   </Checkbox>
                 </FormGroup>
@@ -74,10 +76,14 @@ class AddUserDialog extends SyncryptComponent {
           </div>
         </Body>
         <Footer>
-          <Button className="btn" onClick={this.props.onClose}>Cancel</Button>
+          <Button className="btn" onClick={this.props.onClose}>
+            Cancel
+          </Button>
           <Button className="btn btn-primary"
-            disabled={fingerprints.length == 0}
-            onClick={this.onAddUser}>Invite user and send keys</Button>
+                  disabled={fingerprints.length == 0}
+                  onClick={this.onAddUser}>
+            Invite user and send keys
+          </Button>
         </Footer>
       </Modal>
   }
@@ -88,4 +94,3 @@ export default connect(({ userkeys }) => {
     userkeys: userkeys
   }
 })(AddUserDialog);
-
