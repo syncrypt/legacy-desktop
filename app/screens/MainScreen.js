@@ -10,7 +10,11 @@ import VaultSettingsBar from '../components/VaultSettingsBar';
 import AccountSettingsBar from '../components/AccountSettingsBar';
 import { hashHistory } from 'react-router';
 import * as actions from '../actions';
-import IconButton from "../components/IconButton";
+import IconButton from '../components/IconButton';
+import ReactDOM from 'react-dom';
+
+import 'perfect-scrollbar/dist/css/perfect-scrollbar.css';
+import PerfectScrollbar from 'perfect-scrollbar';
 
 class Header extends SyncryptComponent {
   render() {
@@ -61,6 +65,9 @@ class MainScreen extends SyncryptComponent {
     dispatch(rest.actions.user.sync());
     dispatch(rest.actions.vaults.sync());
     dispatch(rest.actions.flyingvaults.sync());
+
+    var container = ReactDOM.findDOMNode(this.refs.container);
+    PerfectScrollbar.initialize(container);
   }
 
   openAccountSettings() {
@@ -78,7 +85,7 @@ class MainScreen extends SyncryptComponent {
           <Header stats={stats}
                   onLogoutClick={boundActions.logout}
                   onSettingsClick={this.openAccountSettings} />
-          <Grid>
+          <Grid ref="container">
             <Row>
               <VaultList
                 vaults={vaults}
