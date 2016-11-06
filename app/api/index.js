@@ -1,10 +1,41 @@
 import "isomorphic-fetch";
 import reduxApi, {transformers} from "redux-api";
+import fs from 'fs';
+import expandHomeDir from 'expand-home-dir';
+
+const daemonConfig = expandHomeDir('~/.config/syncrypt/config');
+
+var readAuthToken = function(resolve, reject) {
+  console.info('Trying to read auth token');
+  fs.readFile(daemonConfig, 'utf-8', function (err, data) {
+    if (err) {
+      reject();
+      return;
+    }
+    const token = new RegExp("auth_token = ([a-zA-Z0-9]+)").exec(data);
+    if (token && token.length == 2) {
+      console.log("The auth token is: " + token[1]);
+      resolve(token[1]);
+    }
+    else {
+      reject();
+    }
+  });
+}
 
 var adapterFetch = function(fetch) {
+  let authToken = new Promise((resolve) => {
+    let retry = () => setTimeout(() => readAuthToken(resolve, retry), 1000);
+    readAuthToken(resolve, retry);
+  });
   return function(url, opts) {
-    opts.credentials = 'same-origin';
-    return fetch(url, opts).then((resp)=> resp.json());
+    return authToken.then((token) => {
+      opts.credentials = 'same-origin';
+      opts.headers = Object.assign(opts.headers || {}, {
+        'X-AuthToken': token
+      });
+      return fetch(url, opts)
+    }).then((resp)=> resp.json());
   };
 }
 
