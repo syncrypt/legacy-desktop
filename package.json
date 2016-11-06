@@ -125,7 +125,7 @@
     "redux-api": "^0.9.13",
     "redux-thunk": "^2.1.0",
     "source-map-support": "^0.4.5",
-    "url-loader": "^0.5.7",
+    "url-loader": "^0.5.7"
   },
   "devEngines": {
     "node": "4.x || 5.x || 6.x",
