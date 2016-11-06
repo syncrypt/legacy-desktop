@@ -26,8 +26,9 @@ version: '{build}'
 shallow_clone: true
 clone_depth: 1
 deploy:
-  release: SyncryptDesktop-v$(appveyor_build_version)
-  description: 'Windows $env:platform Build'
+  tag: v0.3.2
+  release: SyncryptDesktop-v0.3.2
+  description: 'Windows Build'
   provider: GitHub
   auth_token:
     secure: cm6YGcbZ4btLnz/4ZdN9FsqObCDSK3QC9i5XIP2TmUcWVQ45sKjDSdBLGMgb0XVm
