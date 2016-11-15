@@ -68,7 +68,7 @@ class VaultItem extends SyncryptComponent {
             {vault.updated_at || "Last updated 2 hours ago"}
           </div>
           <div className="footer-vault">
-            <div className="vault-activity">{vault.size || "? GB"}</div>
+            <div className="vault-activity">{vault.size || "?"}</div>
             <div className="vault-users">{vault.user_count || 0}</div>
           </div>
         </div>
@@ -95,7 +95,7 @@ class FlyingVaultItem extends SyncryptComponent {
           <hr/>
           <div className="vault-updated-at">{vault.updated_at || "Last updated 2 hours ago"}</div>
           <div className="footer-vault">
-            <div className="vault-activity">{vault.size || "? GB"}</div>
+            <div className="vault-activity">{vault.size || "?"}</div>
             <div className="vault-users">{vault.user_count || 0}</div>
           </div>
         </div>

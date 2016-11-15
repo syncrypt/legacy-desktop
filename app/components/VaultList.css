@@ -176,6 +176,7 @@
   width: 80px;
   position: absolute;
   bottom: 10px;
+  white-space: nowrap;
 }
 
 .vault-status-syncing {
