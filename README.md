@@ -4,7 +4,13 @@ This is a platform independent GUI for the [Syncrypt
 client](https://github.com/syncrypt/client). Based on
 [electron-react-boilerplate](https://github.com/chentsulin).
 
-This is currently in development and not suited for production yet.
+Syncrypt is a fully encrypted file storage service for groups and private
+backups.
+
+The source code for this desktop client is released under the GNU General Public
+License Version 3. For more information have a look at the `LICENSE` file in this
+directory. Additional information on the GNU GPLv3 can be found here:
+http://www.gnu.org/licenses/quick-guide-gplv3.html
 
 ## Install
 
