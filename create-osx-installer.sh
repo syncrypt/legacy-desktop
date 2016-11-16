@@ -6,7 +6,7 @@ if [ -z "$*" ]; then
 fi
 
 appPath="release/darwin-x64/Syncrypt-darwin-x64"
-installerName="Syncrypt-Desktop-$1.dmg"
+installerName="syncrypt-desktop-$1.mac-osx.dmg"
 pushd $appPath
 
 test -f ./$installerName && rm ./$installerName
@@ -25,6 +25,6 @@ create-dmg \
 $installerName \
 .
 
-shasum -a 256 "Syncrypt-Desktop-$1.dmg" > "Syncrypt-Desktop-$1.dmg.sha256"
+shasum -a 256 $installerName > "$installerName.sha256"
 
 popd
