@@ -1,0 +1,27 @@
+.feedback-sidebar h1 {
+  font-size: 22px;
+}
+
+.feedback-sidebar h2 {
+  font-size: 16px;
+  font-weight: 500;
+  padding-bottom: 15px;
+}
+
+.feedback-sidebar p {
+  font-size: 16px;
+}
+
+.feedback-sidebar ul {
+  padding-left: 0px;
+}
+
+.feedback-text {
+  font-size: 15px;
+  margin-bottom: 25px;
+}
+
+textarea.form-control {
+  width: 100%;
+  height: 200px;
+}

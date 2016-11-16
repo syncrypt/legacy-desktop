@@ -6,8 +6,6 @@ import rest from '../api'
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { Button, Container, Grid, Row, Col } from 'react-bootstrap';
-import VaultSettingsBar from '../components/VaultSettingsBar';
-import AccountSettingsBar from '../components/AccountSettingsBar';
 import { hashHistory } from 'react-router';
 import * as actions from '../actions';
 import IconButton from '../components/IconButton';

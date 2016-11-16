@@ -29,6 +29,10 @@ export function toggleSidebar() {
   return {type: 'TOGGLE_SIDEBAR'}
 }
 
+export function openFeedbackSideBar() {
+  hashHistory.push(`/main/feedback/`)
+}
+
 export function refreshUserKeys(email) {
   return (dispatch) => {
     dispatch(rest.actions.userkeys.reset());

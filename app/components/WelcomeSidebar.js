@@ -6,15 +6,13 @@ import { connect } from 'react-redux';
 import { openAccountSettings } from '../actions';
 import './WelcomeSidebar.css';
 import IconButton from './IconButton';
+import * as actions from '../actions';
+import { bindActionCreators } from 'redux';
 
 class WelcomeSidebar extends SyncryptComponent {
   constructor(props) {
     super(props);
-    this.bindFunctions(["openFeedbackDialog", "checkForUpdates"]);
-  }
-
-  openFeedbackDialog() {
-    alert("Coming soon.")
+    this.bindFunctions(["checkForUpdates"]);
   }
 
   checkForUpdates() {
@@ -22,6 +20,8 @@ class WelcomeSidebar extends SyncryptComponent {
   }
 
   render() {
+    let { openFeedbackSideBar } = bindActionCreators(actions, this.props.dispatch);
+
     const { account } = this.props;
     const header = <div className="account-settings-header">
       Syncrypt Alpha
@@ -44,7 +44,7 @@ class WelcomeSidebar extends SyncryptComponent {
             <li>
               <IconButton icon="feedback"
                           text="Give Feedback"
-                          onClick={this.openFeedbackDialog} />
+                          onClick={openFeedbackSideBar} />
             </li>
             <li>
               <IconButton icon="update"
