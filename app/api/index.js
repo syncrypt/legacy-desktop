@@ -89,6 +89,17 @@ export default reduxApi({
     url: `/v1/auth/user/`,
     transformer: transformers.object
   },
+  feedback: {
+    url: `/v1/feedback/`,
+    helpers: {
+      send(feedback_text) {
+        return [{}, {
+          body: JSON.stringify({ feedback_text }),
+          method: 'post',
+        }];
+      },
+    }
+  },
   auth: {
     url: `/v1/auth/:method/`,
     helpers: {

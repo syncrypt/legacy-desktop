@@ -5,6 +5,7 @@ import { Button, FormGroup, FormControl, ControlLabel } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import './FeedbackSidebar.css';
 import IconButton from './IconButton';
+import rest from '../api';
 
 class FeedbackSidebar extends SyncryptComponent {
   constructor(props) {
@@ -13,7 +14,7 @@ class FeedbackSidebar extends SyncryptComponent {
   }
 
   sendFeedback() {
-    alert("TODO")
+    this.props.dispatch(rest.actions.feedback.send(this.getFormValueByRef('feedback-text')))
   }
 
   render() {
