@@ -6,6 +6,7 @@ import { connect } from 'react-redux';
 import './FeedbackSidebar.css';
 import IconButton from './IconButton';
 import rest from '../api';
+import { hashHistory } from 'react-router';
 
 class FeedbackSidebar extends SyncryptComponent {
   constructor(props) {
@@ -15,6 +16,7 @@ class FeedbackSidebar extends SyncryptComponent {
 
   sendFeedback() {
     this.props.dispatch(rest.actions.feedback.send(this.getFormValueByRef('feedback-text')))
+    hashHistory.push(`/main/`)
   }
 
   render() {
