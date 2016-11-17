@@ -63,7 +63,7 @@ class WelcomeSidebar extends SyncryptComponent {
               </p>
               <ul>
                 <li>
-                  <IconButton icon="update"
+                  <IconButton icon="download"
                               text="Download"
                               onClick={this.openReleasesDownload} />
                 </li>
