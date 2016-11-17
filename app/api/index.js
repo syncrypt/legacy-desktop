@@ -100,6 +100,10 @@ export default reduxApi({
       },
     }
   },
+  version: {
+    url: `/v1/version/`,
+    transformer: transformers.object
+  },
   auth: {
     url: `/v1/auth/:method/`,
     helpers: {

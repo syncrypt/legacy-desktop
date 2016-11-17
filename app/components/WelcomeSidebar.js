@@ -8,6 +8,7 @@ import './WelcomeSidebar.css';
 import IconButton from './IconButton';
 import * as actions from '../actions';
 import { bindActionCreators } from 'redux';
+import rest from '../api';
 
 class WelcomeSidebar extends SyncryptComponent {
   constructor(props) {
@@ -15,14 +16,22 @@ class WelcomeSidebar extends SyncryptComponent {
     this.bindFunctions(["checkForUpdates"]);
   }
 
+  componentDidMount() {
+    this.checkForUpdates();
+  }
+
   checkForUpdates() {
-    alert("Coming soon.")
+    this.props.dispatch(rest.actions.version())
+  }
+
+  openReleasesDownload() {
+    alert("Coming soon")
   }
 
   render() {
     let { openFeedbackSideBar } = bindActionCreators(actions, this.props.dispatch);
 
-    const { account } = this.props;
+    const { account, version } = this.props;
     const header = <div className="account-settings-header">
       Syncrypt Alpha
     </div>;
@@ -46,12 +55,34 @@ class WelcomeSidebar extends SyncryptComponent {
                           text="Give Feedback"
                           onClick={openFeedbackSideBar} />
             </li>
-            <li>
-              <IconButton icon="update"
-                          text="Check for updates"
-                          onClick={this.checkForUpdates} />
-            </li>
           </ul>
+          { !this.props.loadingVersion ? (version.update_available ?
+            <div>
+              <p>
+                An update is available to version {version.available_version}!
+              </p>
+              <ul>
+                <li>
+                  <IconButton icon="update"
+                              text="Download"
+                              onClick={this.openReleasesDownload} />
+                </li>
+              </ul>
+            </div>
+            :
+            <div>
+              <ul>
+                <li>
+                  <IconButton icon="update"
+                              text="Check for updates"
+                              onClick={this.checkForUpdates} />
+                </li>
+              </ul>
+              <p>
+                The installed version is update to date.
+              </p>
+            </div> ) : <p>Checking for latest version...</p>
+          }
         </div>
       </Sidebar>
     );
@@ -60,7 +91,9 @@ class WelcomeSidebar extends SyncryptComponent {
 
 function mapStateToProps(state) {
   return {
-    user: state.user.data
+    user: state.user.data,
+    version: state.version.data,
+    loadingVersion: state.version.loading
   };
 }
 
