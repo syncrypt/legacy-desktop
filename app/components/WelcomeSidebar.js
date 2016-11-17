@@ -3,6 +3,7 @@ import Sidebar from './Sidebar';
 import SyncryptComponent from './SyncryptComponent';
 import { Button, FormGroup, FormControl, ControlLabel } from 'react-bootstrap';
 import { connect } from 'react-redux';
+import { shell } from 'electron';
 import { openAccountSettings } from '../actions';
 import './WelcomeSidebar.css';
 import IconButton from './IconButton';
@@ -25,7 +26,7 @@ class WelcomeSidebar extends SyncryptComponent {
   }
 
   openReleasesDownload() {
-    alert("Coming soon")
+    shell.openExternal("https://alpha.syncrypt.space/releases/");
   }
 
   render() {
