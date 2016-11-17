@@ -11,11 +11,15 @@ import { hashHistory } from 'react-router';
 class FeedbackSidebar extends SyncryptComponent {
   constructor(props) {
     super(props);
-    this.bindFunctions(["sendFeedback"]);
+    this.bindFunctions(["sendFeedback", "cancel"]);
   }
 
   sendFeedback() {
     this.props.dispatch(rest.actions.feedback.send(this.getFormValueByRef('feedback-text')))
+    hashHistory.push(`/main/`)
+  }
+
+  cancel() {
     hashHistory.push(`/main/`)
   }
 
@@ -37,6 +41,7 @@ class FeedbackSidebar extends SyncryptComponent {
               <ControlLabel>Your Feedback</ControlLabel>
               <FormControl className="feedback-text" componentClass="textarea" ref="feedback-text" placeholder="Type your feedback here."/>
               <Button onClick={this.sendFeedback}>Send Feedback</Button>
+              &nbsp;<Button onClick={this.cancel}>Cancel</Button>
             </FormGroup>
           </form>
         </div>
