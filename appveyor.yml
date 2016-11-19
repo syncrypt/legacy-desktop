@@ -1,6 +1,7 @@
 os: unstable
 cache:
   - node_modules
+  - '%USERPROFILE%\.electron'
   - '%APPDATA%\npm-cache'               # npm cache
 environment:
   matrix:
