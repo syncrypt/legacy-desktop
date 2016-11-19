@@ -49,6 +49,6 @@ deploy:
   draft: true
   prerelease: false
   on:
-    branch: appveyor-releases
+    branch: master
     appveyor_repo_tag: true
 
