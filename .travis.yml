@@ -18,9 +18,14 @@ install:
 - export CXX="g++-4.8"
 - npm install
 
-script:
-- npm run package
-- zip SyncryptDesktop.zip -r release
+script: |
+  npm run package
+  if [[ $TRAVIS_OS_NAME == 'osx' ]]; then
+    zip SyncryptDesktop-darwin-x64.zip -r release
+  else
+    zip SyncryptDesktop-linux-x64.zip -r release
+  fi
+
 deploy:
   provider: releases
   api_key:
