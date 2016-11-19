@@ -9,7 +9,7 @@ client](https://github.com/syncrypt/client). Based on
 
 Download Syncrypt from our [official releases
 page](http://alpha.syncrypt.space/releases/). Note that Syncrypt is currently
-in closed alpha. You can get your alpha invite at [the homepage](https://syncrypt.space).
+in closed alpha. You can get your alpha invite [here](https://syncrypt.space).
 
 ## License
 
