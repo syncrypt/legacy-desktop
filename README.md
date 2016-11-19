@@ -1,11 +1,17 @@
 # Syncrypt GUI
 
-This is a platform independent GUI for the [Syncrypt
+Syncrypt is a fully encrypted file storage service for groups and private
+backups. This is a platform independent GUI for the [Syncrypt
 client](https://github.com/syncrypt/client). Based on
 [electron-react-boilerplate](https://github.com/chentsulin).
 
-Syncrypt is a fully encrypted file storage service for groups and private
-backups.
+## Download
+
+Download Syncrypt from our [official releases
+page](http://alpha.syncrypt.space/releases/). Note that Syncrypt is currently
+in closed alpha. You can get your alpha invite at [the homepage](https://syncrypt.space).
+
+## License
 
 The source code for this desktop client is released under the GNU General Public
 License Version 3. For more information have a look at the `LICENSE` file in this
