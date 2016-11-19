@@ -1,6 +1,7 @@
 os: unstable
 cache:
   - node_modules
+  - '%APPDATA%\npm-cache'               # npm cache
 environment:
   matrix:
     - nodejs_version: 6
@@ -26,25 +27,24 @@ install:
   - npm install -g npm@latest
   - set PATH=%APPDATA%\npm;%PATH%
   - npm install
-build: off
 matrix:
   fast_finish: true
 artifacts:
-  - path: syncrypt-desktop\*.zip
-
+  - path: \*.zip
 build_script:
   # Build the compiled extension
   - npm run package
   - 7z a syncrypt-desktop-%SYNCRYPT_VER%-win-%PLATFORM%.zip release\*
 
   # Set "build version number" to "short-commit-hash" or when tagged to "tag name" (Travis style)
+test: off
 shallow_clone: true
 clone_depth: 1
 deploy:
   provider: GitHub
   auth_token:
     secure: cm6YGcbZ4btLnz/4ZdN9FsqObCDSK3QC9i5XIP2TmUcWVQ45sKjDSdBLGMgb0XVm
-  artifact: /syncrypt-desktop.*\.zip/
+  artifact: /.*\.zip/
   draft: true
   prerelease: false
   on:
