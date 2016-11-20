@@ -22,8 +22,9 @@ class VaultItem extends SyncryptComponent {
     selected: PropTypes.bool.isRequired
   };
 
-  clickedItem() {
+  clickedItem(e) {
     this.props.onClick(this);
+    e.stopPropagation();
   }
 
   className() {
@@ -34,12 +35,13 @@ class VaultItem extends SyncryptComponent {
     }
   }
 
-  openVaultFolder() {
+  openVaultFolder(e) {
     if (process.platform === 'darwin') {
       shell.openExternal("file://" + this.props.vault.folder);
     } else {
       shell.openItem(this.props.vault.folder);
     }
+    e.stopPropagation();
   }
 
   syncStatusClassName(state) {
@@ -129,8 +131,9 @@ class VaultList extends SyncryptComponent {
     this.bindFunctions(["addNewVault", "performCloneVault"]);
   }
 
-  addNewVault() {
+  addNewVault(e) {
     var folders = remote.dialog.showOpenDialog({properties: ['openDirectory']});
+    e.stopPropagation();
     if (folders.length > 0) {
       var folder = folders[0];
       fs.readdir(folder, (err, files) => {
@@ -194,7 +197,7 @@ class VaultList extends SyncryptComponent {
               key={v.id}
               vault={v}
               selected={this.props.selectedVault && v.id === this.props.selectedVault.id || false}
-              onClick={() => this.performCloneVault(v)}
+              onClick={(e) => { this.performCloneVault(v); e.stopPropagation() }}
             />
           )
         }
@@ -204,7 +207,7 @@ class VaultList extends SyncryptComponent {
 
   render() {
     return (
-      <div className="vault-list">
+      <div className="vault-list" onClick={() => this.props.onVaultSelect(null)}>
         {
           this.props.vaults.map(v =>
             <VaultItem
@@ -214,7 +217,7 @@ class VaultList extends SyncryptComponent {
               selected={this.props.selectedVault && v.id === this.props.selectedVault.id || false}
               onClick={() => this.props.onVaultSelect(
                   (this.props.selectedVault && v.id === this.props.selectedVault.id) ? null : v)}
-              onRemoveClick={() => this.removeVault(v)}
+              onRemoveClick={(e) => { this.removeVault(v); e.stopPropagation()}}
             />
           )
         }
