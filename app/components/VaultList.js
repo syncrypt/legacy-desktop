@@ -7,6 +7,7 @@ import SyncryptComponent from './SyncryptComponent';
 import VaultIcon from './VaultIcon';
 import rest from '../api';
 import { addVault, cloneVault, removeVault } from '../actions';
+import TimeAgo from 'react-timeago';
 import fs from 'fs';
 import './VaultList.css';
 
@@ -67,7 +68,7 @@ class VaultItem extends SyncryptComponent {
           <hr/>
           <div className="vault-updated-at">
             <div className={syncStateClass}></div>
-            {vault.updated_at || "Last updated 2 hours ago"}
+            <TimeAgo date={vault.modification_date || "2016-11-20T19:38:17+00:00"} />
           </div>
           <div className="footer-vault">
             <div className="vault-activity">{vault.size || "?"}</div>
@@ -95,7 +96,9 @@ class FlyingVaultItem extends SyncryptComponent {
         <div className="vault-info">
           <div className="vault-title">{vault.metadata && vault.metadata.name || vault.id}</div>
           <hr/>
-          <div className="vault-updated-at">{vault.updated_at || "Last updated 2 hours ago"}</div>
+          <div className="vault-updated-at">
+            <TimeAgo date={vault.modification_date || "2016-11-20T19:38:17+00:00"} />
+          </div>
           <div className="footer-vault">
             <div className="vault-activity">{vault.size || "?"}</div>
             <div className="vault-users">{vault.user_count || 0}</div>
