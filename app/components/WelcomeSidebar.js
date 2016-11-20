@@ -17,10 +17,6 @@ class WelcomeSidebar extends SyncryptComponent {
     this.bindFunctions(["checkForUpdates"]);
   }
 
-  componentDidMount() {
-    this.checkForUpdates();
-  }
-
   checkForUpdates() {
     this.props.dispatch(rest.actions.version())
   }

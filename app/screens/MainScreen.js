@@ -63,6 +63,7 @@ class MainScreen extends SyncryptComponent {
     dispatch(rest.actions.user.sync());
     dispatch(rest.actions.vaults.sync());
     dispatch(rest.actions.flyingvaults.sync());
+    dispatch(rest.actions.version())
 
     var container = ReactDOM.findDOMNode(this.refs.container);
     PerfectScrollbar.initialize(container);
