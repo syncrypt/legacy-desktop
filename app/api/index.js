@@ -39,6 +39,14 @@ var adapterFetch = function(fetch) {
   };
 }
 
+function strictArrayTransformer(data, prevData, action) {
+  if (data && data.resource_uri) {
+    console.log('Single object returned, ignoring non-array response')
+    return prevData;
+  }
+  return transformers.array(data, prevData, action);
+}
+
 export default reduxApi({
   stats: {
     url: `/v1/stats`,
@@ -46,7 +54,7 @@ export default reduxApi({
   },
   vaults: {
     url: `/v1/vault/`,
-    transformer: transformers.array,
+    transformer: strictArrayTransformer,
     crud: true
   },
   vault: {
@@ -61,7 +69,7 @@ export default reduxApi({
           },
           cb
         ];
-      },
+      }
     }
   },
   flyingvaults: {
@@ -70,7 +78,7 @@ export default reduxApi({
   },
   vaultusers: {
     url: `/v1/vault/:id/users/`,
-    transformer: transformers.array,
+    transformer: strictArrayTransformer,
     crud: true
   },
   vaultuser: {
