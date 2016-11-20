@@ -188,8 +188,8 @@ class VaultList extends SyncryptComponent {
       <div>
         <hr className="flying-vault-seperator" />
         <div className="flying-vault-info">
-          <span className="title">Available vaults on Server</span>
-          <span className="subtitle">Click to clone to your computer</span>
+          <span className="title">Available vaults</span>
+          <span className="subtitle">Click on a vault to clone it to your computer</span>
         </div>
         {
           this.props.flyingVaults.map(v =>
