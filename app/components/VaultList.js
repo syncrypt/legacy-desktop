@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 import SyncryptComponent from './SyncryptComponent';
 import VaultIcon from './VaultIcon';
 import rest from '../api';
-import { cloneVault, removeVault } from '../actions';
+import { addVault, cloneVault, removeVault } from '../actions';
 import fs from 'fs';
 import './VaultList.css';
 
@@ -126,7 +126,7 @@ class VaultList extends SyncryptComponent {
 
   constructor() {
     super()
-    this.bindFunctions(["addNewVault", "addNewVaultCallback", "performCloneVault"]);
+    this.bindFunctions(["addNewVault", "performCloneVault"]);
   }
 
   addNewVault() {
@@ -154,13 +154,7 @@ class VaultList extends SyncryptComponent {
   }
 
   performAddNewVault(folder) {
-    this.props.dispatch(
-      rest.actions.vaults.post(
-        {},
-        { body: JSON.stringify({ folder: folder }) },
-        this.addNewVaultCallback
-      )
-    );
+    this.props.dispatch(addVault(folder))
   }
 
   performCloneVault(vault) {
@@ -177,10 +171,6 @@ class VaultList extends SyncryptComponent {
         }
       }))
     }
-  }
-
-  addNewVaultCallback(err, data) {
-    this.props.dispatch(rest.actions.vaults());
   }
 
   removeVault(vault) {

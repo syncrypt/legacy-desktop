@@ -82,11 +82,29 @@ export function setVaultMetadata(vault, metadata) {
   }
 }
 
+export function addVault(path, cb) {
+  return (dispatch) => {
+    console.log(`Adding vault from ${path}`)
+    dispatch(rest.actions.vaults.post({},
+        { body: JSON.stringify({folder: path}) },
+      (err) => {
+        if(err) {
+          console.error(`Error adding vault from ${path}`)
+        }
+        dispatch(rest.actions.vaults())
+        if (cb) {
+          cb(err)
+        }
+      }
+    ))
+  }
+}
+
 export function cloneVault(vault, path, cb) {
   return (dispatch) => {
     console.log(`Cloning vault ${vault.id} into ${path}`)
     dispatch(rest.actions.vaults.post({},
-      { body: JSON.stringify({id: vault.id, folder: path}) },
+        { body: JSON.stringify({id: vault.id, folder: path}) },
       (err) => {
         if(err) {
           console.log(`Error cloning vault ${vault.id} into ${path}`)
