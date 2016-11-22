@@ -56,6 +56,7 @@ class WelcomeSidebar extends SyncryptComponent {
           { !this.props.loadingVersion ? (version.update_available ?
             <div>
               <p>
+                Running version {version.installed_version}.<br/>
                 An update is available to version {version.available_version}!
               </p>
               <ul>
