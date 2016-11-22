@@ -68,7 +68,7 @@ class VaultItem extends SyncryptComponent {
           <hr/>
           <div className="vault-updated-at">
             <div className={syncStateClass}></div>
-            <TimeAgo date={vault.modification_date || "2016-11-20T19:38:17+00:00"} />
+            { vault.modification_date ? <TimeAgo date={vault.modification_date} /> : null }
           </div>
           <div className="footer-vault">
             <div className="vault-activity">{vault.size || "?"}</div>
@@ -97,7 +97,7 @@ class FlyingVaultItem extends SyncryptComponent {
           <div className="vault-title">{vault.metadata && vault.metadata.name || vault.id}</div>
           <hr/>
           <div className="vault-updated-at">
-            <TimeAgo date={vault.modification_date || "2016-11-20T19:38:17+00:00"} />
+            { vault.modification_date ? <TimeAgo date={vault.modification_date} /> : null }
           </div>
           <div className="footer-vault">
             <div className="vault-activity">{vault.size || "?"}</div>
