@@ -3,11 +3,6 @@ language: node_js
 node_js:
   - "6"
 
-matrix:
-  include:
-    - os: linux
-    - os: osx
-
 cache:
   directories:
     - node_modules
@@ -18,18 +13,16 @@ addons:
     - ubuntu-toolchain-r-test
     packages:
     - g++-4.8
+    - wine
 
 install:
 - export CXX="g++-4.8"
 - npm install
 
 script: |
-  npm run package
-  if [[ $TRAVIS_OS_NAME == 'osx' ]]; then
-    zip SyncryptDesktop-darwin-x64.zip -r release
-  else
-    zip SyncryptDesktop-linux-x64.zip -r release
-  fi
+  npm run package-all
+  zip SyncryptDesktop-linux-x64.zip -r release/linux-x64/Syncrypt-linux-x64/
+  zip SyncryptDesktop-darwin-x64.zip -r release/darwin-x64/Syncrypt-darwin-x64/
 
 deploy:
   provider: releases
