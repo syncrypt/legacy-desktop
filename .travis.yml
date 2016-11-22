@@ -13,14 +13,13 @@ addons:
     - ubuntu-toolchain-r-test
     packages:
     - g++-4.8
-    - wine
 
 install:
 - export CXX="g++-4.8"
 - npm install
 
 script: |
-  npm run package-all
+  npm run package-posix
   zip SyncryptDesktop-linux-x64.zip -r release/linux-x64/Syncrypt-linux-x64/
   zip SyncryptDesktop-darwin-x64.zip -r release/darwin-x64/Syncrypt-darwin-x64/
 

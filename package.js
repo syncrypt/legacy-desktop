@@ -38,6 +38,7 @@ const depsExternal = Object
 const appName = argv.name || argv.n || pkg.productName;
 const shouldUseAsar = argv.asar || argv.a || false;
 const shouldBuildAll = argv.all || false;
+const posixOnly = argv.posix || false;
 
 
 const DEFAULT_OPTS = {
@@ -105,8 +106,13 @@ async function startPack() {
     // Start the packing process
     if (shouldBuildAll) {
       // build for all platforms
-      const archs = ['ia32', 'x64'];
-      const platforms = ['linux', 'win32', 'darwin'];
+      const archs = ['x64'];
+      const platforms = ['linux', 'darwin'];
+      if(posixOnly) {
+        console.log("POSIX only: Skipping windows")
+      } else {
+        platforms.append('win32')
+      }
 
       platforms.forEach(plat => {
         archs.forEach(arch => {
