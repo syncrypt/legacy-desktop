@@ -93,28 +93,36 @@ class WelcomeSidebar extends SyncryptComponent {
             </div> ) : <p>Checking for latest version...</p>
           }
 
-          <Collapsible trigger="User Interface Help ▼" triggerWhenOpen="User Interface Help ▲">
+          <Collapsible trigger="User Interface Help ▼"
+                       triggerWhenOpen="User Interface Help ▲">
             <div className="help-text">
               <p>
                 You can start creating new vaults (or adding existing vaults you
-                have created before) by clicking on the <span className="plus-icon-inline"></span> button on the left.
-                <br/>
-                Once you've added vaults, you can inspect their details by clicking
-                on the vault card. A vault specific sidebar will open and will show
-                you the users that have access to it. You can also add users to a
-                vault there.
+                have created before) by clicking on the
+                <span className="plus-icon-inline"></span> button on the left.
               </p>
               <p>
-                When adding a user to a vault, you will be prompted to select the
-                user's keys you want to give access to. We create a cryptographic
-                key pair for every device a user uses syncrypt on.
+                Once you've added vaults, you can inspect their details by
+                clicking on the vault card. A vault specific sidebar will open
+                and will show you the users that have access to it. You can also
+                add users to a vault there.
+              </p>
+              <p>
+                To rename a vault, simply double-click on the name at the top of
+                the vault's sidebar. Below the name you can see the uniquely
+                generated ID of the vault.
+              </p>
+              <p>
+                When adding a user to a vault, you will be prompted to select
+                the user's keys you want to give access to. We create a
+                cryptographic key pair for every device a user uses syncrypt on.
                 By default all of the user's keys will be added to the vault.
               </p>
               <p>
-                To the bottom you will see any vaults you have been invited to that
-                you currently don't have downloaded to your computer. You can
-                download them by clicking on their semi-transparent card and choose
-                a destination to save the vault to.
+                To the bottom you will see any vaults you have been invited to
+                which you currently don't have downloaded to your computer. You
+                can download them by clicking on their semi-transparent card and
+                choose a destination to save the vault to.
               </p>
             </div>
           </Collapsible>
