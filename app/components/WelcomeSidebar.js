@@ -77,7 +77,7 @@ class WelcomeSidebar extends SyncryptComponent {
                 </li>
               </ul>
               <p>
-                The installed version is update to date.
+                The installed version is up to date.
               </p>
             </div> ) : <p>Checking for latest version...</p>
           }
