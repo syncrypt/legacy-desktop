@@ -119,6 +119,7 @@
     "postcss": "^5.2.5",
     "react": "^15.3.2",
     "react-bootstrap": "^0.29.5",
+    "react-collapsible": "^1.2.0",
     "react-dom": "^15.3.2",
     "react-redux": "^4.4.5",
     "react-router": "^2.8.1",

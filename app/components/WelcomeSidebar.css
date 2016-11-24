@@ -1,17 +1,46 @@
 .welcome-sidebar h1 {
-  font-size: 22px;
+  font-size: 20px;
+  margin-top: 0px;
 }
 
 .welcome-sidebar h2 {
-  font-size: 16px;
+  font-size: 15px;
   font-weight: 500;
   padding-bottom: 15px;
 }
 
 .welcome-sidebar p {
-  font-size: 16px;
+  font-size: 14px;
 }
 
 .welcome-sidebar ul {
   padding-left: 0px;
+}
+
+.plus-icon-inline {
+  display: inline-block;
+  background-image: url(../assets/add.png);
+  background-repeat:no-repeat;
+  background-size: 15px 15px;
+  width: 14px;
+  height: 14px;
+  position: relative;
+  top: 2px;
+}
+
+.Collapsible {
+  margin-top: 20px;
+}
+
+.Collapsible__trigger {
+  font-size: 15px;
+  font-weight: bold;
+}
+
+.Collapsible__trigger:hover {
+  cursor: pointer;
+}
+
+.help-text {
+  margin-top: 10px;
 }

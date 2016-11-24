@@ -22,7 +22,7 @@ class Sidebar extends SyncryptComponent {
         <div className="header">
           {this.props.header}
         </div>
-        <div>
+        <div className="body">
           <SidebarToggle direction={this.props.hidden ? 'left' : 'right'} />
           <div className="content">
             {this.props.children}

@@ -15,7 +15,7 @@
   position: relative;
   top: 18px;
   left: 10px;
-  font-size: 20px;
+  font-size: 15px;
   font-weight: bold;
 }
 
@@ -23,13 +23,13 @@
   position: relative;
   top: -20px;
   left: 10px;
-  font-size: 20px;
+  font-size: 15px;
   font-weight: bold;
 }
 
 .vault-id {
   position: relative;
-  top: 8px;
+  top: 12px;
   left: 10px;
   font-weight: 600;
   font-size: 12px;
