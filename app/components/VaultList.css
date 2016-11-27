@@ -149,6 +149,7 @@
   font-size: 12px;
   position: absolute;
   bottom: 45px;
+  width: 140px;
 }
 
 .vault-users {
@@ -179,7 +180,13 @@
   white-space: nowrap;
 }
 
-.vault-status-syncing {
+@keyframes rotating {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.vault-status-syncing,
+.vault-status-initializing {
   background-image:url(../assets/update_vault.png);
   background-size: 22px 22px;
   margin-left: -2px;
@@ -189,6 +196,7 @@
   height: 22px;
   background-repeat: no-repeat;
   float: left;
+  animation: rotating 2s linear infinite;
 }
 
 .vault-status-synced {

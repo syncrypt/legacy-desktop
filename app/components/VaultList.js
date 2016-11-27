@@ -45,21 +45,12 @@ class VaultItem extends SyncryptComponent {
     e.stopPropagation();
   }
 
-  syncStatusClassName(state) {
-    if(state === "syncing") {
-      return "vault-status-syncing"
-    } else {
-      return "vault-status-synced"
-    }
-  }
-
   render() {
     const { vault, state } = this.props;
     var syncStateClass = "vault-status-synced";
-    if(state === "syncing") {
-       syncStateClass = "vault-status-syncing"
+    if (["syncing", "initializing"].includes(state)) {
+       syncStateClass = `vault-status-${state}`
     }
-
     return (
       <div className={this.className()} onClick={this.clickedItem}>
         <VaultIcon vault={vault} />
@@ -68,6 +59,7 @@ class VaultItem extends SyncryptComponent {
           <hr/>
           <div className="vault-updated-at">
             <div className={syncStateClass}></div>
+            { state == 'initializing' ? <div>Generating key&hellip;</div> : null }
             { vault.modification_date ? <TimeAgo date={vault.modification_date} /> : null }
           </div>
           <div className="footer-vault">
