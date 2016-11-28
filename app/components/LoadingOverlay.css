@@ -1,0 +1,26 @@
+.loading-overlay .inner {
+    background-color: rgba(0,0,0,0.4);
+    border-radius: 5px;
+    padding: 15px;
+    color: #cccccc;
+    width: 250px;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    position: relative;
+}
+
+.loading-overlay {
+  position: absolute;
+  top: 20%;
+  padding-top: 70px;
+  text-align: center;
+  height: 60px;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.spinner .three-bounce>div {
+  background-color: #cccccc !important;
+}

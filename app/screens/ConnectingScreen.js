@@ -3,6 +3,7 @@ import SyncryptComponent from '../components/SyncryptComponent';
 import { Link } from 'react-router';
 import './ConnectingScreen.css';
 import Granim from 'granim'
+import LoadingOverlay from '../components/LoadingOverlay';
 
 class ConnectingScreen extends SyncryptComponent {
   componentDidMount() {
@@ -25,8 +26,7 @@ class ConnectingScreen extends SyncryptComponent {
     return (
       <div className="connecting-screen">
         <canvas id="granim-canvas"></canvas>
-        <div className="banner">
-        </div>
+        <LoadingOverlay reason='Loading Syncrypt...' />
       </div>
     );
   }

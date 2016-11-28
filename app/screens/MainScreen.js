@@ -10,6 +10,7 @@ import { hashHistory } from 'react-router';
 import * as actions from '../actions';
 import IconButton from '../components/IconButton';
 import ReactDOM from 'react-dom';
+import LoadingOverlay from '../components/LoadingOverlay';
 
 import 'perfect-scrollbar/dist/css/perfect-scrollbar.css';
 import PerfectScrollbar from 'perfect-scrollbar';
@@ -76,7 +77,7 @@ class MainScreen extends SyncryptComponent {
   }
 
   render() {
-    const {vaults, flyingVaults, stats } = this.props;
+    const {vaults, flyingVaults, stats, isLoading } = this.props;
 
     let boundActions = bindActionCreators(actions, this.props.dispatch);
 
@@ -87,6 +88,7 @@ class MainScreen extends SyncryptComponent {
                   onLogoutClick={boundActions.logout}
                   onSettingsClick={this.openAccountSettings} />
           <Grid ref="container">
+            { isLoading ? <LoadingOverlay reason="Updating vaults" /> : null }
             <Row>
               <VaultList
                 vaults={vaults}
@@ -107,14 +109,16 @@ function mapStateToProps(state, ownProps) {
 
   // Remove all cloned vaults from flyingvaults...
   let clonedVaults = vaults.data || []
-  let clonedVaultIds = clonedVaults.map((v) => v.id);
+  let clonedVaultIds = clonedVaults.map((v) => v.id)
   let flyingVaults = (flyingvaults.data || []).filter((fv) => !clonedVaultIds.includes(fv.id))
+  let isLoading = flyingvaults.loading || vaults.loading
 
   return {
     selectedVault: navigation.selected_vault_id ? (vaults.data || [])
             .filter((v) => v.id == navigation.selected_vault_id)[0] : null,
     sidebarHidden: navigation.sidebarHidden,
     vaults: clonedVaults,
+    isLoading: isLoading,
     flyingVaults: flyingVaults,
     stats: state.stats.sync ? state.stats.data.stats : {}
   };
