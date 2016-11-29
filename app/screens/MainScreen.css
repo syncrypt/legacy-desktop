@@ -53,9 +53,8 @@
 
 .main-screen-buttons {
   position: absolute;
-  right: 12px;
-  top: 12px;
-  bottom: 12px;
+  right: 10px;
+  top: 17px;
   display: flex;
 }
 

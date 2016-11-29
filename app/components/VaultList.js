@@ -10,6 +10,7 @@ import { addVault, cloneVault, removeVault } from '../actions';
 import TimeAgo from 'react-timeago';
 import fs from 'fs';
 import './VaultList.css';
+import ReactTooltip from 'react-tooltip'
 
 class VaultItem extends SyncryptComponent {
   constructor(props) {
@@ -53,6 +54,9 @@ class VaultItem extends SyncryptComponent {
     }
     return (
       <div className={this.className()} onClick={this.clickedItem}>
+        <ReactTooltip id="button-tooltip" place="bottom" delayShow={250} type="dark" effect="solid"/>
+        <ReactTooltip place="bottom" delayShow={250} type="dark"/>
+
         <VaultIcon vault={vault} />
         <div className="vault-info">
           <div className="vault-title">{vault.metadata.name || vault.id}</div>
@@ -60,15 +64,15 @@ class VaultItem extends SyncryptComponent {
           <div className="vault-updated-at">
             <div className={syncStateClass}></div>
             { state == 'initializing' ? <div>Generating key&hellip;</div> : null }
-            { vault.modification_date ? <TimeAgo date={vault.modification_date} /> : null }
+            { vault.modification_date ? <TimeAgo data-tip="Time since last file was uploaded" date={vault.modification_date} /> : null }
           </div>
           <div className="footer-vault">
-            <div className="vault-activity">{vault.size || "?"}</div>
-            <div className="vault-users">{vault.user_count || 0}</div>
+            <div data-tip="Total vault size with all file revisions" className="vault-activity">{vault.size || "?"}</div>
+            <div data-tip="Users with access to vault" className="vault-users">{vault.user_count || 0}</div>
           </div>
         </div>
-        <div className="vault-remove-button" onClick={this.props.onRemoveClick}></div>
-        <div className="vault-folder-button" onClick={this.openVaultFolder}></div>
+        <div data-tip="Remove vault from sync" data-for="button-tooltip" className="vault-remove-button" onClick={this.props.onRemoveClick}></div>
+        <div data-tip="Open Vault Folder" data-for="button-tooltip" className="vault-folder-button" onClick={this.openVaultFolder}></div>
       </div>
     );
   }
@@ -84,6 +88,8 @@ class FlyingVaultItem extends SyncryptComponent {
     const { vault } = this.props;
     return (
       <div className="card flying-vault-card" onClick={this.props.onClick}>
+        <ReactTooltip place="bottom" delayShow={250} type="dark"/>
+
         <VaultIcon vault={vault} />
         <div className="vault-info">
           <div className="vault-title">{vault.metadata && vault.metadata.name || vault.id}</div>
@@ -106,7 +112,7 @@ class NewVaultItem extends Component {
   render() {
     const { vault } = this.props;
     return (
-      <div className="vault-plus">
+      <div data-tip="Create a new vault / Add an existing vault folder" className="vault-plus">
         <div className="vault-plus-icon" {...this.props}></div>
       </div>
     );

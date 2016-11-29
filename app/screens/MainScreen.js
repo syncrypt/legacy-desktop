@@ -13,6 +13,7 @@ import ReactDOM from 'react-dom';
 
 import 'perfect-scrollbar/dist/css/perfect-scrollbar.css';
 import PerfectScrollbar from 'perfect-scrollbar';
+import ReactTooltip from 'react-tooltip'
 
 class Header extends SyncryptComponent {
   render() {
@@ -20,8 +21,9 @@ class Header extends SyncryptComponent {
     return (
       <div className="main-screen-header">
         <div className="main-screen-buttons">
-          <IconButton icon="settings" onClick={this.props.onSettingsClick} />
-          <IconButton icon="logout" onClick={this.props.onLogoutClick} />
+          <ReactTooltip id="header-tooltip" place="bottom" delayShow={250} type="dark" effect="solid"/>
+          <IconButton data-tip="Account Settings" data-for="header-tooltip" icon="settings" onClick={this.props.onSettingsClick} />
+          <IconButton data-tip="Logout" data-for="header-tooltip" icon="logout" onClick={this.props.onLogoutClick} />
         </div>
       </div>
     );
