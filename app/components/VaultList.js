@@ -112,7 +112,11 @@ class NewVaultItem extends Component {
   render() {
     const { vault } = this.props;
     return (
-      <div data-tip="Create a new vault / Add an existing vault folder" className="vault-plus">
+      <div data-tip="Create a new vault / Add an existing vault folder"
+           data-offset="{'bottom': -15, 'left': -10}"
+           data-for="new-vault-item-tooltip"
+           className="vault-plus">
+        <ReactTooltip id="new-vault-item-tooltip" place="bottom" delayShow={250} type="dark" effect="solid"/>
         <div className="vault-plus-icon" {...this.props}></div>
       </div>
     );
