@@ -47,9 +47,28 @@ class AddUserDialog extends SyncryptComponent {
       }));
   }
 
+  renderUserKeys(fingerprints) {
+    if(this.props.userkeys.loading) {
+      return "Loading...";
+    } else {
+      return this.props.userkeys.data.map((userkey) =>
+        <div>
+          <FormGroup>
+            <Checkbox inline
+                      checked={fingerprints.includes(userkey.fingerprint)}
+                      onChange={() => this.toggleFingerprint(userkey.fingerprint)}>
+              {userkey.description} ({userkey.fingerprint})
+            </Checkbox>
+          </FormGroup>
+        </div>
+      );
+    }
+  }
+
   render () {
     let fingerprints = this.state.fingerprints;
     let { Header, Footer, Body } = Modal;
+
     return <Modal show={this.props.show} className='add-user-dialog' backdrop={true} onHide={this.props.onClose}>
       <Header>
         Invite User
@@ -61,31 +80,20 @@ class AddUserDialog extends SyncryptComponent {
         </div>
         <div>
           <h4>Device keys</h4>
-          {this.props.userkeys.loading ? "Loading..." :
-            this.props.userkeys.data.map((userkey) =>
-              <div>
-                <FormGroup>
-                  <Checkbox inline
-                            checked={fingerprints.includes(userkey.fingerprint)}
-                            onChange={() => this.toggleFingerprint(userkey.fingerprint)}>
-                    {userkey.description} ({userkey.fingerprint})
-                  </Checkbox>
-                </FormGroup>
-              </div>
-            )}
+          { fingerprints.length > 0 ? this.renderUserKeys(fingerprints) : "No keys found for this email." }
           </div>
-        </Body>
-        <Footer>
-          <Button className="btn" onClick={this.props.onClose}>
-            Cancel
-          </Button>
-          <Button className="btn btn-primary"
-                  disabled={fingerprints.length == 0}
-                  onClick={this.onAddUser}>
-            Invite user and send keys
-          </Button>
-        </Footer>
-      </Modal>
+      </Body>
+      <Footer>
+        <Button className="btn" onClick={this.props.onClose}>
+          Cancel
+        </Button>
+        <Button className="btn btn-primary"
+                disabled={fingerprints.length == 0}
+                onClick={this.onAddUser}>
+          Invite user and send keys
+        </Button>
+      </Footer>
+    </Modal>
   }
 }
 
