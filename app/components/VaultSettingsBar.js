@@ -47,12 +47,14 @@ class VaultSettingsBar extends SyncryptComponent {
 
   addUser() {
     this.withOwnerPermissions(() => {
-      let email = this.getFormValueByRef('email');
-      this.props.dispatch(refreshUserKeys(email));
-      this.setState({
-        showAddDialog: true,
-        addDialogEmail: email
-      })
+      let email = this.getFormValueByRef('email').trim();
+      if(email != "") {
+        this.props.dispatch(refreshUserKeys(email));
+        this.setState({
+          showAddDialog: true,
+          addDialogEmail: email
+        })
+      }
     })
   }
 
