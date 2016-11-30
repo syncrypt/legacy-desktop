@@ -11,7 +11,7 @@ import UserIcon from './UserIcon';
 import IconButton from './IconButton';
 import { addVaultUser, refreshUserKeys, setVaultMetadata, deleteVault,
     removeVault, removeVaultUser } from '../actions';
-
+import TimeAgo from 'react-timeago';
 import './VaultSettingsBar.css';
 
 class VaultSettingsBar extends SyncryptComponent {
@@ -222,25 +222,33 @@ class VaultSettingsBar extends SyncryptComponent {
             </tr>
 
             {
-              this.props.vault_members.map((user, i) =>
-                <tr key={i} className="vault-member">
+              this.props.vault_members.map((user, i) => {
+                return <tr key={i} className="vault-member">
                   <td>
                     <UserIcon email={user.email} />
                   </td>
                   <td className="name">
                     {user.name} <span className="email">{user.email}</span>
-                    <span className="join_date">{user.join_date}</span>
+                    {
+                      user.join_date ?
+                        <span className="join-date">
+                          Joined <TimeAgo date={user.join_date} />
+                        </span>:
+
+                        null
+                    }
+
                   </td>
                   <td className="other">
                     { i > 0 ? this.removeUserButton(user) : null }
                   </td>
                 </tr>
-              )
+              })
             }
           </table>
         </div>
 
-        <ul>
+        <ul className="vault-buttons">
           <li>
             <IconButton icon="folder"
                         text="Open Vault Folder"

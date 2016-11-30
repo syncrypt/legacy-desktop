@@ -95,9 +95,9 @@
   width: 70%;
 }
 
-.member-list .name .join_date {
-  font-size: small;
-  color: #bbbbbb;
+.member-list .name .join-date {
+  font-size: 11px;
+  color: #000;
 }
 
 .member-list .other {
@@ -116,4 +116,11 @@
 
 .vault-settings-bar ul {
   padding-left: 0px;
+}
+
+.vault-buttons {
+  padding-top: 2em;
+}
+.vault-buttons li {
+  padding-left: 20px;
 }
