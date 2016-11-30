@@ -31,7 +31,6 @@ class WelcomeSidebar extends SyncryptComponent {
 
   componentDidMount() {
     var container = ReactDOM.findDOMNode(this.refs.welcomeSidebar);
-    console.log("sidebar: ", container)
     PerfectScrollbar.initialize(container);
   }
 

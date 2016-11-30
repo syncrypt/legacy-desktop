@@ -9,8 +9,8 @@ import rest from '../api';
 import { addVault, cloneVault, removeVault } from '../actions';
 import TimeAgo from 'react-timeago';
 import fs from 'fs';
-import './VaultList.css';
 import ReactTooltip from 'react-tooltip'
+import './VaultList.css';
 
 class VaultItem extends SyncryptComponent {
   constructor(props) {
