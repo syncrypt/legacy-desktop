@@ -134,7 +134,7 @@
     "url-loader": "^0.5.7"
   },
   "devEngines": {
-    "node": "4.x || 5.x || 6.x",
-    "npm": "3.x"
+    "node": ">=4.x",
+    "npm": ">=3.x"
   }
 }
