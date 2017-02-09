@@ -215,7 +215,7 @@ class VaultList extends SyncryptComponent {
       <div className="vault-list" onClick={() => this.props.onVaultSelect(null)}>
         <div className="vault-list-info">
           <span className="title">Local vaults</span>
-          <span className="subtitle">These vaults are cloned & synced on this computer.</span>
+          <span className="subtitle">These vaults are cloned and synchronized on this computer.</span>
         </div>
         {
           this.props.vaults.map(v =>
