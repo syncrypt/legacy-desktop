@@ -192,7 +192,7 @@ class VaultList extends SyncryptComponent {
     return(
       <div>
         <hr className="flying-vault-seperator" />
-        <div className="flying-vault-info">
+        <div className="vault-list-info">
           <span className="title">Available vaults</span>
           <span className="subtitle">Click on a vault to clone it to your computer</span>
         </div>
@@ -213,6 +213,10 @@ class VaultList extends SyncryptComponent {
   render() {
     return (
       <div className="vault-list" onClick={() => this.props.onVaultSelect(null)}>
+        <div className="vault-list-info">
+          <span className="title">Local vaults</span>
+          <span className="subtitle">These vaults are cloned & synced on this computer.</span>
+        </div>
         {
           this.props.vaults.map(v =>
             <VaultItem

@@ -74,18 +74,18 @@
   background-color: #efddda;
 }
 
-.flying-vault-info {
+.vault-list-info {
   overflow: hidden;
   margin-left: 20px;
   color: #eee;
 }
 
-.flying-vault-info .title {
+.vault-list-info .title {
   font-size: 25px;
   display: block;
 }
 
-.flying-vault-info .subtitle {
+.vault-list-info .subtitle {
   font-size: 15px;
   margin-bottom: 10px;
   display: block;
