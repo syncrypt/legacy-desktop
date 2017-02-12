@@ -7,6 +7,7 @@ import { shell } from 'electron';
 import SyncryptComponent from './SyncryptComponent';
 import rest from '../api';
 import AddUserDialog from './AddUserDialog';
+import VaultDialog from './VaultDialog';
 import UserIcon from './UserIcon';
 import IconButton from './IconButton';
 import { addVaultUser, refreshUserKeys, setVaultMetadata, deleteVault,
@@ -24,9 +25,14 @@ class VaultSettingsBar extends SyncryptComponent {
     this.bindFunctions([
       "addUser", "openVaultFolder", "onAddUserClose", "onAddUserKeyDown",
       "editName", "editNameKeyPressed", "deleteVault", "removeVault",
-      "removeVaultUser"
+      "removeVaultUser", "onVaultDialogClose"
     ]);
-    this.state = { showAddDialog: false, addDialogUser: null, editName: false }
+    this.state = {
+      showAddDialog: false,
+      showVaultDialog: true,
+      addDialogUser: null,
+      editName: false,
+    }
   }
 
   isVaultOwner() {
@@ -63,6 +69,12 @@ class VaultSettingsBar extends SyncryptComponent {
     this.setState({
       showAddDialog: false,
       addDialogEmail: null
+    })
+  }
+
+  onVaultDialogClose() {
+    this.setState({
+      showVaultDialog: false,
     })
   }
 
@@ -264,6 +276,9 @@ class VaultSettingsBar extends SyncryptComponent {
                      show={this.state.showAddDialog}
                      onClose={this.onAddUserClose}
                      email={this.state.addDialogEmail || ""} />
+      <VaultDialog   vault={vault}
+                     onClose={this.onVaultDialogClose}
+                     show={this.state.showVaultDialog} />
     </Sidebar>
   }
 }
