@@ -61,13 +61,17 @@ class VaultItem extends SyncryptComponent {
         <div className="vault-info">
           <div className="vault-title">{vault.metadata.name || vault.id}</div>
           <hr/>
-          <div className="vault-updated-at">
-            <div className={syncStateClass}></div>
-            { state == 'initializing' ? <div>Generating key&hellip;</div> : null }
-            { vault.modification_date ? <TimeAgo data-tip="Time since last file was uploaded" date={vault.modification_date} /> : null }
+          <div className="vault-info-item">
+            <div className="vault-updated-at">
+              <div className={syncStateClass}></div>
+              { state == 'initializing' ? <div>Generating key&hellip;</div> : null }
+              { vault.modification_date ? <TimeAgo data-tip="Time since last file was uploaded" date={vault.modification_date} /> : null }
+            </div>
           </div>
-          <div className="footer-vault">
+          <div className="vault-info-item">
             <div data-tip="Total vault size with all file revisions" className="vault-activity">{vault.size || "?"}</div>
+          </div>
+          <div className="vault-info-item">
             <div data-tip="Users with access to vault" className="vault-users">{vault.user_count || 0}</div>
           </div>
         </div>
@@ -113,7 +117,7 @@ class NewVaultItem extends Component {
     const { vault } = this.props;
     return (
       <div data-tip="Create a new vault / Add an existing vault folder"
-           data-offset="{'bottom': -15, 'left': -10}"
+           data-offset="{'bottom': -15, 'left': 0}"
            data-for="new-vault-item-tooltip"
            className="vault-plus">
         <ReactTooltip id="new-vault-item-tooltip" place="bottom" delayShow={250} type="dark" effect="solid"/>
