@@ -1,3 +1,5 @@
-.vault-dialog {
+.vault-dialog .modal-dialog {
+    width: 90%;
+    max-width: 900px;
 }
 

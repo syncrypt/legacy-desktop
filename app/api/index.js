@@ -112,6 +112,10 @@ export default reduxApi({
     url: `/v1/version/`,
     transformer: transformers.object
   },
+  vaultlog: {
+    url: `/v1/log-by-vault/:vault_id/`,
+    transformer: transformers.array
+  },
   auth: {
     url: `/v1/auth/:method/`,
     helpers: {

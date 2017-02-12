@@ -1,0 +1,11 @@
+.vault-log {
+    max-height: 450px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.vault-log td {
+    overflow-x: hidden;
+    white-space: nowrap;
+    font-size: smaller;
+}
