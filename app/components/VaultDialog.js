@@ -17,7 +17,7 @@ class VaultDialog extends SyncryptComponent {
     let { Header, Footer, Body } = Modal;
     let { vault } = this.props;
 
-    return <Modal show={this.props.show} className='add-user-dialog' backdrop={true} onHide={this.props.onClose}>
+    return <Modal show={this.props.show} className='vault-dialog' backdrop={true} onHide={this.props.onClose}>
       <Header>
         {vault.metadata.name || "Vault"}
       </Header>
