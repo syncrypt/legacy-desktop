@@ -11,6 +11,7 @@ import TimeAgo from 'react-timeago';
 import fs from 'fs';
 import ReactTooltip from 'react-tooltip'
 import './VaultList.css';
+import { bytesToSize } from '../utils'
 
 class VaultItem extends SyncryptComponent {
   constructor(props) {
@@ -67,7 +68,7 @@ class VaultItem extends SyncryptComponent {
             { vault.modification_date ? <TimeAgo data-tip="Time since last file was uploaded" date={vault.modification_date} /> : null }
           </div>
           <div className="footer-vault">
-            <div data-tip="Total vault size with all file revisions" className="vault-activity">{vault.size || "?"}</div>
+            <div data-tip="Total vault size with all file revisions" className="vault-activity">{bytesToSize(vault.size || 0)}</div>
             <div data-tip="Users with access to vault" className="vault-users">{vault.user_count || 0}</div>
           </div>
         </div>
@@ -98,7 +99,7 @@ class FlyingVaultItem extends SyncryptComponent {
             { vault.modification_date ? <TimeAgo date={vault.modification_date} /> : null }
           </div>
           <div className="footer-vault">
-            <div className="vault-activity">{vault.size || "?"}</div>
+            <div className="vault-activity">{bytesToSize(vault.size || 0)}</div>
             <div className="vault-users">{vault.user_count || 0}</div>
           </div>
         </div>
